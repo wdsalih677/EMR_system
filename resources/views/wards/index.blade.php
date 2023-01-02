@@ -101,7 +101,13 @@
                                 <input id="name" type="text" name="name" value="{{ $ward->name }}" class="form-control">
                                 <label for="Name" class="mr-sm-2">نوع العنبر
                                     :</label>
-                                <input id="name" type="text" name="ward_type" value="{{ $ward->ward_type }}" class="form-control">
+                                {{-- <input id="name" type="text" name="ward_type" value="{{ $ward->ward_type }}" class="form-control"> --}}
+                                <select name="ward_type" class="form-control">
+                                  <option value="{{ $ward->ward_type }}">{{ $ward->ward_type }}</option>
+                                  <option>رجال</option>
+                                  <option>نساء</option>
+                                  <option>أطفال</option>
+                                </select>
                             </div>
                             <div class="col">
                                 <label for="Name_en"class="mr-sm-2">القسم :</label>
@@ -202,7 +208,12 @@
                                         <input id="name" type="text" name="name" class="form-control">
                                         <label for="Name" class="mr-sm-2">نوع العنبر
                                             :</label>
-                                        <input id="name" type="text" name="ward_type" class="form-control">
+                                            <select name="ward_type" class="form-control">
+                                                <option selected disabled>--حدد النوع--</option>
+                                              <option>رجال</option>
+                                              <option>نساء</option>
+                                              <option>أطفال</option>
+                                            </select>
                                     </div>
                                     <div class="col">
                                         <label for="Name_en"class="mr-sm-2">القسم</label>

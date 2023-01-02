@@ -139,10 +139,9 @@ class SectionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request)
+    public function destroy(Request $request ,$id)
     {
-        $doctors = Section::findOrFail($request->id);
-        $doctors->delete();
+        Section::destroy($id);
         toastr()->success("تم حذف القسم بنجاح");
         return redirect()->route('section.index');
     }

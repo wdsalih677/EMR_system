@@ -143,7 +143,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form action="{{ route('section.destroy','id') }}" method="Delete">
+                    <form action="{{ route('section.destroy',$section->id) }}" method="POST">
                         {{ method_field('Delete') }}
                         @csrf
                         هل تريد الحذف؟
