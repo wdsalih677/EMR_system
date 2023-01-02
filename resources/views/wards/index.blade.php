@@ -93,26 +93,27 @@
                     <!-- add_form -->
                     <form action="{{ route('ward.update','id') }}" method="POST">
                         {{ method_field('patch') }}
+                        <input type="hidden" name="id" value="{{ $ward->id }}">
                         @csrf
                         <div class="row">
                             <div class="col">
                                 <label for="Name" class="mr-sm-2">الإسم
                                     :</label>
-                                <input id="name" type="text" name="name" value="{{ $ward->name }}" class="form-control">
+                                <input id="name" type="text" name="name" value="{{ $ward->name }}" class="form-control" required>
                                 <label for="Name" class="mr-sm-2">نوع العنبر
                                     :</label>
                                 {{-- <input id="name" type="text" name="ward_type" value="{{ $ward->ward_type }}" class="form-control"> --}}
-                                <select name="ward_type" class="form-control">
-                                  <option value="{{ $ward->ward_type }}">{{ $ward->ward_type }}</option>
-                                  <option>رجال</option>
-                                  <option>نساء</option>
-                                  <option>أطفال</option>
+                                <select name="ward_type" class="form-control" required>
+                                    <option value="{{ $ward->ward_type }}">{{ $ward->ward_type }}</option>
+                                    <option>رجال</option>
+                                    <option>نساء</option>
+                                    <option>أطفال</option>
                                 </select>
                             </div>
                             <div class="col">
                                 <label for="Name_en"class="mr-sm-2">القسم :</label>
                                 <div class="box">
-                                    <select class="fancyselect" name="section_id">
+                                    <select class="fancyselect" name="section_id" required>
                                         @foreach ($wards as $ward)
                                             <option value="{{ $ward->sections->id }}" {{ $ward->section_id == $ward->sections->id ? 'selected' : '' }}>{{ $ward->sections->name }}</option>
                                         @endforeach
@@ -149,14 +150,13 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form action="" method="post">
+                    <form action="{{ route('ward.destroy',$ward->id) }}" method="POST">
                         {{ method_field('Delete') }}
                         @csrf
                         هل تريد الحذف؟
-                        <label id="Name" type="text" name="Name" class="form-control"></label>
+                        <label id="Name" type="text" name="Name"  value="{{ $ward->name }}" class="form-control">{{ $ward->name }}</label>
 
-                        <input id="id" type="hidden" name="id" class="form-control"
-                            value="">
+                        <input id="id" type="hidden" name="id" value="{{ $ward->id }}" class="form-control">
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary"
                                 data-dismiss="modal">إغلاق</button>

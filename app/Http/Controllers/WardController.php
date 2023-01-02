@@ -101,7 +101,35 @@ class WardController extends Controller
      */
     public function update(Request $request, $id)
     {
-       return $request;
+        $role =  [
+            'name'   => 'required|min:5|max:100',
+            'ward_type' => 'required|min:5|max:100',
+            'section_id'=>'required',
+        ];
+        $messages =[
+            'name.required'=>'يجب إدخال اسم العنبر',
+            'name.min'=>'يجب أن لا يقل اسم العنبر عن 5 احرف',
+
+            'ward_type.required'=>'يجب إدخال نوع العنابر',
+            'ward_type.min'=>'يجب أن لا يقل نوع العنبر عن خمس أحرف',
+            'ward_type.min'=>'يجب أن لا يزيد نوع العنبر عن 100 أحرف',
+
+            'section_id.required'=>'يجب إختيار القسم ',
+        ];
+        //validate
+        $validator = Validator::make($request->all(),$role,$messages);
+        if($validator  -> fails()){
+            return redirect()->back()->withErrors( $validator)->withInput($request->all());
+        }
+        //update
+        $wards = Ward::findOrFail($request->id);
+        $wards->update([
+            'name'      =>$request->name,
+            'ward_type'    =>$request->ward_type,
+            'section_id' =>$request->section_id,
+        ]);
+        toastr()->success("تمت تعديل العنبر بنجاح");
+        return redirect()->route('ward.index');
     }
 
     /**
@@ -110,8 +138,11 @@ class WardController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request ,$id)
     {
-        //
+        // return $request;
+        Ward::destroy($id);
+        toastr()->success("تم حذف العنبر بنجاح");
+        return redirect()->route('ward.index');
     }
 }
