@@ -82,7 +82,7 @@
                                 </div>
                                 <div class="float-right text-right">
                                     <p class="card-text text-dark">العنابر</p>
-                                    <h4>656</h4>
+                                    <h4>{{ $wards }}</h4>
                                 </div>
                             </div>
                         </div>
@@ -99,7 +99,7 @@
                                 </div>
                                 <div class="float-right text-right">
                                     <p class="card-text text-dark">الأقسام</p>
-                                    <h4>$65656</h4>
+                                    <h4>{{ $sections }}</h4>
                                 </div>
                             </div>
                         </div>
@@ -116,7 +116,7 @@
                                 </div>
                                 <div class="float-right text-right">
                                     <p class="card-text text-dark">الأطباء</p>
-                                    <h4>62,500</h4>
+                                    <h4>{{ $doctors }}</h4>
                                 </div>
                             </div>
                         </div>

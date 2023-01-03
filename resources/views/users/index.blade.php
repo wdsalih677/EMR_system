@@ -117,6 +117,12 @@
                                         <label for="Name" class="mr-sm-2">البريد الإلكتروني
                                             :</label>
                                         <input id="name" type="email" name="Class_name" class="form-control">
+                                        <label for="Name" class="mr-sm-2">كلمة السر
+                                            :</label>
+                                        <input id="name" type="password" name="Class_name" class="form-control">
+                                        <label for="Name" class="mr-sm-2">تأكيد كلمة السر
+                                            :</label>
+                                        <input id="name" type="password" name="Class_name" class="form-control">
                                         <label for="Name" class="mr-sm-2">حالة المستخدم
                                             :</label>
                                         <input id="name" type="text" name="Class_name" class="form-control">
@@ -164,6 +170,12 @@
                                     <label for="Name" class="mr-sm-2">البريد الإلكتروني
                                         :</label>
                                     <input id="name" type="email" name="Class_name" class="form-control">
+                                    <label for="Name" class="mr-sm-2">كلمة السر
+                                        :</label>
+                                    <input id="name" type="password" name="Class_name" class="form-control">
+                                    <label for="Name" class="mr-sm-2">تأكيد كلمة السر
+                                        :</label>
+                                    <input id="name" type="password" name="Class_name" class="form-control">
                                     <label for="Name" class="mr-sm-2">حالة المستخدم
                                         :</label>
                                     <input id="name" type="text" name="Class_name" class="form-control">
