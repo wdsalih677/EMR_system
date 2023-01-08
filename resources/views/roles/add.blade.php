@@ -36,12 +36,13 @@
                 <center>
                     <h5 class="card-title">إضافة صلاحيه</h5>
                 </center>
-                <form>
+                <form action="{{ route('roles.store') }}" method="POST">
+                    @csrf
                 <div class="row">
                     <div class="col-md-6 mb-30">
                         <div class="mb-3">
                             <label class="form-label" for="exampleInputEmail1">إسم الصلاحيه :</label>
-                            <input type="text" class="form-control" aria-describedby="emailHelp" placeholder="ادخل اسم الصلاحيه">
+                            <input type="text" class="form-control" name="role_name" aria-describedby="emailHelp" placeholder="ادخل اسم الصلاحيه">
                           </div>
                     </div>
                 </div>
@@ -49,77 +50,10 @@
                     <div class="col-md-6 mb-30">
                         <div class="controls mb-2">
                             <label class="checkbox" for="closeButton">
-                              <input id="closeButton" type="checkbox" value="checked">إدارة الأطباء
-                              <br>
-                              <input id="closeButton" type="checkbox" value="checked">قائمة الأطباء
-                            </label>
-                          </div>
-                          <div class="controls mb-2">
-                            <label class="checkbox" for="closeButton">
-                              <input id="closeButton" type="checkbox" value="checked">إدارة الأقسام
-                              <br>
-                              <input id="closeButton" type="checkbox" value="checked">قائمة الأقسام
-                            </label>
-                          </div>
-                          <div class="controls mb-2">
-                            <label class="checkbox" for="closeButton">
-                              <input id="closeButton" type="checkbox" value="checked">إدارة العنابر
-                              <br>
-                              <input id="closeButton" type="checkbox" value="checked">قائمة العنابر
-                            </label>
-                          </div>
-                          <div class="controls mb-2">
-                            <label class="checkbox" for="closeButton">
-                              <input id="closeButton" type="checkbox" value="checked">إدارة المستخدمين
-                              <br>
-                              <input id="closeButton" type="checkbox" value="checked">قائمة المستخدمين
-                              <br>
-                              <input id="closeButton" type="checkbox" value="checked">صلاحيات المستخدمين
-                            </label>
-                          </div>
-                          <div class="controls mb-2">
-                            <label class="checkbox" for="closeButton">
-                              <input id="closeButton" type="checkbox" value="checked">الإستقبال
-                              <br>
-                              <input id="closeButton" type="checkbox" value="checked">بيانات المريض الأوليه
-                            </label>
-                          </div>
-                    </div>
-                    <div class="col-md-6 mb-30">
-                        <div class="controls mb-2">
-                            <label class="checkbox" for="closeButton">
-                              <input id="closeButton" type="checkbox" value="checked">إدارة المرضى
-                              <br>
-                              <input id="closeButton" type="checkbox" value="checked">قائمة المرضى
-                              <br>
-                              <input id="closeButton" type="checkbox" value="checked">بيانات المريض النهائيه
-                            </label>
-                          </div>
-                          <div class="controls mb-2">
-                            <label class="checkbox" for="closeButton">
-                              <input id="closeButton" type="checkbox" value="checked">العمليات
-                              <br>
-                              <input id="closeButton" type="checkbox" value="checked">قائمة العمليات
-                            </label>
-                          </div>
-                          <div class="controls mb-2">
-                            <label class="checkbox" for="closeButton">
-                              <input id="closeButton" type="checkbox" value="checked">الفحوصات
-                              <br>
-                              <input id="closeButton" type="checkbox" value="checked">قائمة الفحوصات
-                            </label>
-                          </div>
-                          <div class="controls mb-2">
-                            <label class="checkbox" for="closeButton">
-                              <input id="closeButton" type="checkbox" value="checked">إدارة السجل الطبي و التقارير
-                              <br>
-                              <input id="closeButton" type="checkbox" value="checked">السجل الطبي
-                              <br>
-                              <input id="closeButton" type="checkbox" value="checked">التقارير
-                              <br>
-                              <input id="closeButton" type="checkbox" value="checked">تقارير المرضى
-                              <br>
-                              <input id="closeButton" type="checkbox" value="checked">تقارير ماليه
+                            @foreach ($premissions as $premission)
+                            <input id="closeButton" type="checkbox" name="dr_manage"  value="{{ $premission }}">{{ $premission->name }}
+                            <br>
+                            @endforeach
                             </label>
                           </div>
                     </div>

@@ -74,8 +74,8 @@
                     </td>
 
                     </tr>
-                            <!-- start_edit_modal_doctor -->
-        <div class="modal fade" id="edit{{ $section->id }}" tabindex="-1" role="dialog"
+<!-- start_edit_modal_doctor -->
+    <div class="modal fade" id="edit{{ $section->id }}" tabindex="-1" role="dialog"
         aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -126,7 +126,7 @@
             </div>
         </div>
     </div>
-    <!-- end_edit_modal_doctor -->
+<!-- end_edit_modal_doctor -->
     <!-- delete_modal_doctor -->
     <div class="modal fade" id="delete{{ $section->id }}" tabindex="-1" role="dialog"
         aria-labelledby="exampleModalLabel" aria-hidden="true">

@@ -29,7 +29,7 @@ class HomeController extends Controller
     {
         $sections = Section::get()->count();
         $wards = Ward::get()->count();
-        $users = User::get();
+        $users = User::get()->count();
         $doctors = Doctor::get()->count();
         return view('dashboard',compact('users','doctors','wards','sections'));
     }

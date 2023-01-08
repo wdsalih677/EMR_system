@@ -22,7 +22,7 @@ use App\Http\Controllers\ReportController;
 use App\Http\Controllers\OperationReportController;
 use App\Http\Controllers\DiseasesReportController;
 use App\Http\Controllers\NnCommunicableReportController;
-use App\Http\Controllers\TestController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -41,6 +41,7 @@ Route::get('/',function(){
 
 Auth::routes();
 
+// Role
 Route::group(['middleware' => ['auth']], function() {
 
     Route::resource('roles', RoleController::class);
