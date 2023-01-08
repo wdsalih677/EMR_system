@@ -94,7 +94,7 @@
                                     </div>
                                     <div class="modal-body">
                                         <!-- edit_form -->
-                                        <form action="{{ route('roles.update','id') }}" method="POST">
+                                        <form action="{{ route('roles.update','role') }}" method="POST">
                                             {{ method_field('patch') }}
                                             <div class="row">
                                                 <div class="col-md-6 mb-30">
@@ -102,6 +102,7 @@
                                                         <label class="form-label" for="exampleInputEmail1">إسم الصلاحيه :</label>
                                                         <input type="hidden" name="id" value="{{ $role->id }}">
                                                         <input type="text" class="form-control" aria-describedby="emailHelp" value="{{ $role->name }}">
+
                                                     </div>
                                                 </div>
                                             </div>
@@ -110,7 +111,7 @@
                                                     <div class="controls mb-2">
                                                         <label class="checkbox" for="closeButton">
                                                         @foreach ($premissions as $premission)
-                                                        <input id="closeButton" type="checkbox" name="name"  value="{{ $premission }}">{{ $premission->name }}
+                                                        <input id="closeButton" type="checkbox" name="name"  value="{{ $premission->id }}">{{ $premission->name }}
                                                         <br>
                                                         @endforeach
                                                         </label>

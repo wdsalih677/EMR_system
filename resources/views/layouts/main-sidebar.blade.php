@@ -84,7 +84,7 @@
                             <div class="clearfix"></div>
                         </a>
                         <ul id="table" class="collapse" data-parent="#sidebarnav">
-                            <li> <a href="{{ route('reception.create') }}">بيانات المريض الأوليه</a> </li>
+                            <li> <a href="{{ route('reception.index') }}">بيانات المريض الأوليه</a> </li>
                         </ul>
                     </li>
                     <li class="mt-10 mb-10 text-muted pl-4 font-medium menu-title">الطبيب</li>
