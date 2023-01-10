@@ -94,7 +94,8 @@ class ReceptionController extends Controller
      */
     public function show($id)
     {
-        //
+        $tickets = Ticket::get();
+        return view('reception.show',compact('tickets'));
     }
 
     /**

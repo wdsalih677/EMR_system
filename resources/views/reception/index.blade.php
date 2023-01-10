@@ -67,6 +67,11 @@
                             title="حذف"><i
                             class="fa fa-trash"></i>
                         </button>
+                        <a href="{{ route('reception.show',$ticket->id) }}"
+                            class="btn btn-success btn-sm"
+                            title="طباعه"><i
+                            class="fa fa-print"></i>
+                        </a>
                     </td>
 
                     </tr>
