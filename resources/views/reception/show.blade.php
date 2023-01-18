@@ -30,7 +30,7 @@
                 <center>
                     <button type="button"
                     class="btn btn-success btn-lg"
-                    title="طباعه" id="ASD"><i
+                    title="طباعه" onclick="printpage()"><i
                     class="fa fa-print"> طباعه</i>
                     </button>
                    </center>
@@ -45,8 +45,8 @@
 @toastr_js
 @toastr_render
 <script>
-    $('#ASD').on('click', function(){
-        $('#div').printElement();
-    })
+    function printpage() {
+            window.print();
+        }
 </script>
 @endsection

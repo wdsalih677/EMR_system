@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Ticket;
 use Illuminate\Http\Request;
 
 class PatientController extends Controller
@@ -80,5 +81,26 @@ class PatientController extends Controller
     public function destroy($id)
     {
         //
+    }
+    public function search(){
+        $values = $_GET['value'];
+        $tickets = Ticket::where('ticket_num','like','%'.$values.'%')->get();
+        $output = '';
+        foreach($tickets as $ticket){
+            $output = '
+            <div class="mb-3">
+                <input type="hidden" name="id" value="'.$ticket->id.'">
+                <label class="form-label" for="exampleInputEmail1">اسم :</label>
+                <label class="form-control" value="'.$ticket->name.'" style="height: 49px;">
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="exampleInputEmail1">العمر :</label>
+                <label class="form-control" value="'.$ticket->age.'" style="height: 49px;">
+            </div>
+            ';
+        }
+        return $data = array(
+            'row_result'=>$output,
+        );
     }
 }

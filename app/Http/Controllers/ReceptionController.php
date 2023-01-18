@@ -27,7 +27,7 @@ class ReceptionController extends Controller
      */
     public function create()
     {
-        
+
     }
 
     /**
@@ -40,7 +40,7 @@ class ReceptionController extends Controller
     {
         $role =  [
             'name'   => 'required|unique:tickets|min:2|max:100',
-            'identity_num' => 'required|unique:tickets|numeric|digits_between:14,16',
+            'identity_num' => 'required|unique:tickets|numeric|digits_between:10,16',
             'address'=>'required',
             'gender'=>'required',
             'age'=>'required|numeric|digits_between:0,150',
@@ -52,7 +52,7 @@ class ReceptionController extends Controller
             'name.min'=>'يجب أن لا يقل اسم المريض عن حرفين',
 
             'identity_num.required'=>'يجب إدخال الرقم الوطني',
-            'identity_num.digits_between'=>'يجب أن لا يتجاوز الرقم الوطني 16 رقم ولا يقل عن 14 أرقام',
+            'identity_num.digits_between'=>'يجب أن لا يتجاوز الرقم الوطني 16 رقم ولا يقل عن 10 أرقام',
             'identity_num.unique'=>'الرقم الوطني مكرر',
             'identity_num.numeric'=>'يجب إدخال ارقام',
 
@@ -120,7 +120,7 @@ class ReceptionController extends Controller
     {
         $role =  [
             'name' => 'required|min:2|max:100',
-            'identity_num' => 'required|numeric|digits_between:14,16',
+            'identity_num' => 'required|numeric|digits_between:10,16',
             'address'=>'required',
             'gender'=>'required',
             'age'=>'required|numeric|digits_between:0,150',
@@ -131,7 +131,7 @@ class ReceptionController extends Controller
             'name.min'=>'يجب أن لا يقل اسم المريض عن حرفين',
 
             'identity_num.required'=>'يجب إدخال الرقم الوطني',
-            'identity_num.digits_between'=>'يجب أن لا يتجاوز الرقم الوطني 16 رقم ولا يقل عن 14 أرقام',
+            'identity_num.digits_between'=>'يجب أن لا يتجاوز الرقم الوطني 16 رقم ولا يقل عن 10 أرقام',
             'identity_num.numeric'=>'يجب إدخال ارقام',
 
             'address.required'=>'يجب إدخال العنوان',

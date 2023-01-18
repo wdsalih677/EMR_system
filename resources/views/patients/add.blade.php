@@ -39,13 +39,14 @@
             <form>
                 <div class="mb-3">
                     <label class="form-label" for="exampleInputEmail1">رقم الذكره :</label>
-                    <input id="name" type="number" name="Class_name" class="form-control" style="width: 49%;">
+                    <input id="search" type="number" name="Class_name" class="form-control" style="width: 49%;">
                 </div>
                 <div class="row">
                     <div class="col-md-6 mb-30">
                         <div class="mb-3">
+                            <input type="hidden" name="id" value="">
                             <label class="form-label" for="exampleInputEmail1">اسم :</label>
-                            <label class="form-control" value="" style="height: 49px;">
+                            <label class="form-control" id="result" value="" style="height: 49px;">
                         </div>
                         <div class="mb-3">
                             <label class="form-label" for="exampleFormControlTextarea1">الأعراض | Symptoms :</label>
@@ -59,8 +60,8 @@
                     <div class="col-md-6 mb-30">
                         <div class="mb-3">
                             <label class="form-label" for="exampleInputEmail1">العمر :</label>
-                            <label class="form-control" value="" style="height: 49px;">
-                          </div>
+                            <label class="form-control" id="result"  value="" style="height: 49px;">
+                        </div>
                         <div class="mb-3">
                             <label class="form-label" for="exampleFormControlTextarea1">الفحوصات | Examinations :</label>
                             <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" style="height: 194px;"></textarea>
@@ -80,4 +81,42 @@
 @section('js')
 @toastr_js
 @toastr_render
+<script>
+    $(document).ready(function(){
+        $("#search").keyup(function(){
+            var searchText = $(this).val();
+        if(searchText != ''){
+                $.ajax({
+                    url:'/search',
+                    method:'GET',
+                    data:{query:searchText},  //query is the name of the variable that will be sent to the server. searchText is the value of that variable.
+                    success:function(response){ //response is the data that will be returned from the server.
+                    $("#result").html(response); //This will display the response in the div with id result.
+                }
+
+                });
+
+    } else { //if there is no text in the search box, clear any results that may have been displayed previously.
+
+      $("#result").html('');
+
+    }
+</script>
+{{-- <script>
+    $(document).on('keyup','#search',function(){
+        var value = $(this).val();
+        console.log(value);
+        if( value != ''){
+            $.ajax({
+                type: "GET",
+                url: "/search",
+                data: {value},
+                dataType: 'json',
+                success: function (data) {
+                    console.log(data);
+                }
+            });
+        }
+    });
+</script> --}}
 @endsection

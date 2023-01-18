@@ -62,6 +62,8 @@ Route::resource('reception', ReceptionController::class);
 
 Route::resource('patient', PatientController::class);
 
+Route::get('/search', [PatientController::class ,'search'])->name('search_teckit');
+
 Route::resource('intensive_care', IntensiveCareController::class);
 
 Route::resource('operation', OperationController::class);
