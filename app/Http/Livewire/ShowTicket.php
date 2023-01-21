@@ -8,7 +8,7 @@ use Livewire\Component;
 class ShowTicket extends Component
 {
     public $searchTicket;
-    public $tickets,$name,$age;
+    public $tickets,$name,$age,$teckit_id;
     public function render()
     {
         return view('livewire.show-ticket');
@@ -19,11 +19,12 @@ class ShowTicket extends Component
         $tik = Ticket::where('ticket_num',$this->searchTicket)->first();
         if($tik)
         {
+            $this->teckit_id = $tik->id;
             $this->name = $tik->name;
             $this->age = $tik->age;
         }else{
-            $this->name = "لا توجد تذكره بهذا الرقم";
-            $this->age = "لا توجد تذكره بهذا الرقم";
+            $this->name = "لا يوجد اسم بهذه التذكره";
+            $this->age = "لا يوجد عمر بهذه التذكره";
         }
     }
 }

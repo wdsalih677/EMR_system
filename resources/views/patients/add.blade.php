@@ -37,24 +37,25 @@
             <center>
                 <h5 class="card-title">بيانات المريض</h5>
             </center>
-            <form>
+            <form action="{{ route('patient.store') }}" method="POST">
+                @csrf
                 @livewire('show-ticket')
                 <hr>
                 <div class="row">
                     <div class="col-md-6 mb-30">
                         <div class="mb-3">
                             <label class="form-label" for="exampleInputEmail1">التشخيص المبدئي | Provisional Diagnosis :</label>
-                            <input id="name" type="text" name="Class_name" class="form-control">
+                            <input id="name" type="text" name="provisional_diagnosis" class="form-control" required placeholder="يجب إدخال التشخيص المبدئي">
                         </div>
                         <div class="mb-3">
                             <label class="form-label" for="exampleFormControlTextarea1">الأعراض | Symptoms :</label>
-                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                            <textarea class="form-control" name="symptoms" id="exampleFormControlTextarea1" rows="3" required placeholder="يجب تحديد الأعراض"></textarea>
                         </div>
                     </div>
                     <div class="col-md-6 mb-30">
                         <div class="mb-3">
                             <label class="form-label" for="exampleFormControlTextarea1">الفحوصات | Examinations :</label>
-                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" style="height: 194px;"></textarea>
+                            <textarea class="form-control" name="examinations" id="exampleFormControlTextarea1" rows="3" style="height: 194px;" placeholder="يجب تحديد الفحوصات"></textarea>
                         </div>
                     </div>
                 </div>

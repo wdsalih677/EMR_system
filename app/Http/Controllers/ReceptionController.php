@@ -45,6 +45,9 @@ class ReceptionController extends Controller
             'gender'=>'required',
             'age'=>'required|numeric|digits_between:0,150',
             'age_type'=>'required',
+            'job'=>'required',
+            'date_entry'=>'required',
+            'phone_num'=>'required'
         ];
         $messages =[
             'name.required'=>'يجب إدخال اسم المريض',
@@ -64,6 +67,10 @@ class ReceptionController extends Controller
             'age.digits_between'=>'يجب أن لا يكون العمر عدد سالب يكون رقم الهاتف 9 ارقام فقط',
             'age.numeric'=>'يجب إدخال ارقام',
             'age_type.required'=>'يجب تحديد نوع العمر',
+
+            'job.required'=>'يجب إدخال المهنه',
+            'date_entry.required'=>'يجب تحديد تاريخ الدخول',
+            'phone_num.required'=>'يجب إدخال رقم الهاتف بدون صفر البدايه',
         ];
         //validate
         $validator = Validator::make($request->all(),$role,$messages);
@@ -94,8 +101,8 @@ class ReceptionController extends Controller
      */
     public function show($id)
     {
-        $tickets = Ticket::get();
-        return view('reception.show',compact('tickets'));
+        // $tickets = Ticket::get();
+        // return view('reception.show',compact('tickets'));
     }
 
     /**
@@ -119,19 +126,24 @@ class ReceptionController extends Controller
     public function update(Request $request, $id)
     {
         $role =  [
-            'name' => 'required|min:2|max:100',
-            'identity_num' => 'required|numeric|digits_between:10,16',
+            'name'   => 'required|unique:tickets|min:2|max:100',
+            'identity_num' => 'required|unique:tickets|numeric|digits_between:10,16',
             'address'=>'required',
             'gender'=>'required',
             'age'=>'required|numeric|digits_between:0,150',
             'age_type'=>'required',
+            'job'=>'required',
+            'date_entry'=>'required',
+            'phone_num'=>'required'
         ];
         $messages =[
             'name.required'=>'يجب إدخال اسم المريض',
+            'name.unique'=>'إسم المريض مكرر',
             'name.min'=>'يجب أن لا يقل اسم المريض عن حرفين',
 
             'identity_num.required'=>'يجب إدخال الرقم الوطني',
             'identity_num.digits_between'=>'يجب أن لا يتجاوز الرقم الوطني 16 رقم ولا يقل عن 10 أرقام',
+            'identity_num.unique'=>'الرقم الوطني مكرر',
             'identity_num.numeric'=>'يجب إدخال ارقام',
 
             'address.required'=>'يجب إدخال العنوان',
@@ -142,6 +154,10 @@ class ReceptionController extends Controller
             'age.digits_between'=>'يجب أن لا يكون العمر عدد سالب يكون رقم الهاتف 9 ارقام فقط',
             'age.numeric'=>'يجب إدخال ارقام',
             'age_type.required'=>'يجب تحديد نوع العمر',
+
+            'job.required'=>'يجب إدخال المهنه',
+            'date_entry.required'=>'يجب تحديد تاريخ الدخول',
+            'phone_num.required'=>'يجب إدخال رقم الهاتف بدون صفر البدايه',
         ];
         //validate
         $validator = Validator::make($request->all(),$role,$messages);

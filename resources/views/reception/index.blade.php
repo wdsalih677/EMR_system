@@ -38,7 +38,7 @@
                 إنشاء تذكره
             </button>
             <br><br>
-            <table id="datatable" class="table-bordered border table table-striped dataTable p-0">
+            <table id="datatable" class="table-bordered border table table-striped dataTable p-0" style="text-align: center;">
               <thead>
                 <tr>
                   <th>#</th>
@@ -67,17 +67,23 @@
                             title="حذف"><i
                             class="fa fa-trash"></i>
                         </button>
-                        <a href="{{ route('reception.show',$ticket->id) }}"
+                        <button type="button"
+                            class="btn btn-success btn-sm"
+                            data-toggle="modal"
+                            data-target="#print{{ $ticket->id }}"
+                            title="طباعه"><i
+                            class="fa fa-print"></i>
+                        </button>
+                        {{-- <a href="{{ route('reception.show',$ticket->id) }}"
                             class="btn btn-success btn-sm"
                             title="طباعه"><i
                             class="fa fa-print"></i>
-                        </a>
+                        </a> --}}
                     </td>
 
                     </tr>
                             <!-- start_edit_modal_doctor -->
-        <div class="modal fade" id="edit{{ $ticket->id }}" tabindex="-1" role="dialog"
-        aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="edit{{ $ticket->id }}" tabindex="-1" role="dialog"aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document" >
             <div class="modal-content">
                 <div class="modal-header">
@@ -97,7 +103,7 @@
                         {{ method_field('patch') }}
                         <div class="row">
                             <div class="col-md-6 mb-30">
-                                <div class="mb-3"> 
+                                <div class="mb-3">
                                     <input type="hidden" name="id" value="{{ $ticket->id }}">
                                     <label class="form-label" for="exampleInputEmail1">اسم:</label>
                                     <input type="text" class="form-control" name="name" value="{{ $ticket->name }}" aria-describedby="emailHelp" autocomplete="off">
@@ -137,7 +143,9 @@
                                 </div>
                                 <div class="mb-3">
                                     <label class="form-label" for="exampleInputEmail1">تاريخ الدخول  :</label>
-                                    <input type="datetime-local" class="form-control" name="date_entry" value="{{ $ticket->date_entry }}">
+                                    <div class="input-group" data-date="23/11/2018" data-date-format="mm/dd/yyyy">
+                                        <input type="text" class="form-control range-to" name="date_entry"  data-date-format="mm/dd/yyyy" value="{{ $ticket->date_entry }}" required placeholder="تحديد تاريخ دخول المريض">
+                                    </div>
                                 </div>
                                 <div class="mb-3">
                                     <label class="form-label" for="exampleInputEmail1"> رقم الهاتف  :</label>
@@ -192,6 +200,48 @@
         </div>
     </div>
     <!-- end_delete_modal_doctor -->
+        <!-- print_modal_doctor -->
+        <div class="modal fade" id="print{{ $ticket->id }}" tabindex="-1" role="dialog"
+            aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 style="font-family: 'Cairo', sans-serif;" class="modal-title"
+                            id="exampleModalLabel">
+                            طباعه التذكرة
+                        </h5>
+                        <button type="button" class="close" data-dismiss="modal"
+                            aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body" id="GFG">
+                        <center>
+                            <h5 class="card-title">مستشفى عطبرة التعليمي</h5>
+                        </center>
+                            <br><br><br><br><br>
+                            <div class="row" id="printableArea">
+                                <div class="col-12 text-center">
+                                    <h4 class="form-label ">الإسم :  {{ $ticket->name }}</h4>
+                                    <br>
+                                </div>
+                                <div class="col-12 text-center">
+                                    <h4 class="form-label">التذكره :  {{ $ticket->ticket_num }}</h4>
+                                </div>
+                            </div>
+                            <br><br><br>
+                            <center>
+                                <button type="button"
+                                class="btn btn-success btn-lg"
+                                title="طباعه"><i
+                                class="fa fa-print" value="click" onclick="printDiv('printableArea')"> طباعه</i>
+                                </button>
+                               </center>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end_print_modal_doctor -->
                 @endforeach
               </tbody>
               <tfoot>
@@ -228,19 +278,19 @@
                                     <div class="col-md-6 mb-30">
                                         <div class="mb-3">
                                             <label class="form-label" for="exampleInputEmail1">اسم:</label>
-                                            <input type="text" class="form-control" name="name" aria-describedby="emailHelp" autocomplete="off">
+                                            <input type="text" class="form-control" name="name" aria-describedby="emailHelp" autocomplete="off" required placeholder="يجب إدخال اسم المريض رباعي">
                                         </div>
                                         <div class="mb-3">
                                               <label class="form-label" for="exampleInputEmail1">الرقم الوطني :</label>
-                                              <input type="number" class="form-control" name="identity_num" aria-describedby="emailHelp" autocomplete="off">
+                                              <input type="number" class="form-control" name="identity_num" aria-describedby="emailHelp" autocomplete="off" required placeholder="أدخل الرقم الوطني">
                                         </div>
                                         <div class="mb-3">
                                               <label class="form-label" for="exampleInputEmail1">العنوان:</label>
-                                              <input type="text" class="form-control" name="address" aria-describedby="emailHelp" autocomplete="off">
+                                              <input type="text" class="form-control" name="address" aria-describedby="emailHelp" autocomplete="off" required placeholder="أدخل عنوان المريض">
                                         </div>
                                         <div class="mb-3">
                                             <label class="form-label" for="exampleInputEmail1">الجنس:</label>
-                                            <select name="gender" class="form-control">
+                                            <select name="gender" class="form-control"  required>
                                                 <option selected disabled>--اختر الجنس--</option>
                                                 <option value="1">ذكر</option>
                                                 <option value="0">أنثى</option>
@@ -250,11 +300,11 @@
                                     <div class="col-md-6 mb-30">
                                         <div class="mb-3">
                                             <label class="form-label" for="exampleInputEmail1">العمر :</label>
-                                            <input type="number" class="form-control" name="age" aria-describedby="emailHelp" autocomplete="off">
+                                            <input type="number" class="form-control" name="age" aria-describedby="emailHelp" autocomplete="off" required placeholder="أدخل عمر المريض">
                                         </div>
                                         <div class="mb-3">
                                             <label class="form-label" for="exampleInputEmail1">نوع العمر :</label>
-                                            <select name="age_type" class="form-control">
+                                            <select name="age_type" class="form-control" required>
                                                 <option selected disabled>--سنه - شهر  يوم--</option>
                                                 <option value="1">سنه</option>
                                                 <option value="2">شهر</option>
@@ -263,15 +313,17 @@
                                         </div>
                                         <div class="mb-3">
                                             <label class="form-label" for="exampleInputEmail1">المهنه :</label>
-                                            <input type="text" class="form-control" name="job" aria-describedby="emailHelp" autocomplete="off">
+                                            <input type="text" class="form-control" name="job" aria-describedby="emailHelp" autocomplete="off" required placeholder="أدخل مهنة المريض">
                                         </div>
                                         <div class="mb-3">
                                             <label class="form-label" for="exampleInputEmail1">تاريخ الدخول  :</label>
-                                            <input type="datetime-local" class="form-control" name="date_entry" aria-describedby="emailHelp" autocomplete="off">
+                                            <div class="input-group" data-date="23/11/2018" data-date-format="mm/dd/yyyy">
+                                                <input type="text" class="form-control range-to" name="date_entry"  data-date-format="mm/dd/yyyy" required placeholder="تحديد تاريخ دخول المريض">
+                                            </div>
                                         </div>
                                         <div class="mb-3">
                                             <label class="form-label" for="exampleInputEmail1"> رقم الهاتف  :</label>
-                                            <input type="number" class="form-control" name="phone_num" aria-describedby="emailHelp" autocomplete="off">
+                                            <input type="number" class="form-control" name="phone_num" aria-describedby="emailHelp" autocomplete="off" required placeholder="أدخل رقم هاتف المريض بدون صفر البدابه">
                                         </div>
                                     </div>
                                 </div>
@@ -294,4 +346,47 @@
 @section('js')
 @toastr_js
 @toastr_render
+<script>
+function printDiv(printableArea) {
+     var printContents = document.getElementById(printableArea).innerHTML;
+     var originalContents = document.body.innerHTML;
+
+     document.body.innerHTML = printContents;
+
+     window.print();
+
+     document.body.innerHTML = originalContents;
+}
+</script>
+<script>
+$(document).ready(function ()
+{
+    $('input[name="date_entry"]').on('change', function ()
+        {
+            var today = new Date();
+            var dd = String(today.getDate()).padStart(2, '0');
+            var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+            var yyyy = today.getFullYear();
+            today = mm + '/' + dd + '/' + yyyy;
+            var from = $('input[name="date_entry"]').val();
+            if(Date.parse(from) < Date.parse(today))
+            {
+                alert("لا يمكن لتاريخ الدخول ان يكون اقل او اكبر من تاريخ اليوم");
+                $('input[name="date_entry"]').css({"color":"#555","border":"1px solid red","box-shadow": "red 2px 2px 16px"});
+                $('button[type="submit"]').attr("disabled", true);
+                $('button[type="submit"]').css({"cursor": "no-drop"});
+                $('input[name="end_at"]').val('');
+            }
+            else
+            {
+                $('input[name="date_entry"]').css({"color":"#555","border":"1px solid green","box-shadow": "green 2px 2px 16px"});
+                $('button[type="submit"]').attr("disabled", false);
+                $('button[type="submit"]').css({"cursor": "pointer"});
+                $('button[type="submit"]').css({"display": "inline"});
+            }
+        }
+    );
+}
+);
+</script>
 @endsection

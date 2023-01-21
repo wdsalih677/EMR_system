@@ -23,7 +23,7 @@ class CreateTicketsTable extends Migration
 			$table->integer('age');
             $table->integer('age_type');
 			$table->string('job', 255);
-			$table->datetime('date_entry');
+			$table->text('date_entry');
 			$table->integer('phone_num')->unique();
             $table->timestamps();
         });

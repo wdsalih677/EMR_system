@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Pre_diagnosis;
 use App\Models\Ticket;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class PatientController extends Controller
 {
@@ -35,7 +37,29 @@ class PatientController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $role = [
+            'provisional_diagnosis' => 'required',
+            'symptoms'              =>'required',
+            'examinations'          =>'required',
+        ];
+        $messages = [
+            'provisional_diagnosis.required'=>'يجب إدخال التشخيص المبدئي',
+            'symptoms.required'             =>'يجب إدخال الأعراض',
+            'examinations.required'         =>'يجب إدخال الفحوصات المطلوبه',
+        ];
+        $validator = Validator::make($request->all(),$role,$messages);
+        if($validator  -> fails()){
+            return redirect()->back()->withErrors( $validator)->withInput($request->all());
+        }
+        Pre_diagnosis::create([
+            'ticket_id'=>$request->teckit_id,
+            'provisional_diagnosis'=>$request->provisional_diagnosis,
+            'symptoms'=>$request->symptoms,
+            'examinations'=>$request->examinations,
+        ]);
+        toastr()->success("تم إضافة المريض بنجاح");
+        toastr()->warning("المريض تحت الفحص");
+        return redirect()->route('patient.index');
     }
 
     /**
@@ -81,26 +105,5 @@ class PatientController extends Controller
     public function destroy($id)
     {
         //
-    }
-    public function search(){
-        $values = $_GET['value'];
-        $tickets = Ticket::where('ticket_num','like','%'.$values.'%')->get();
-        $output = '';
-        foreach($tickets as $ticket){
-            $output = '
-            <div class="mb-3">
-                <input type="hidden" name="id" value="'.$ticket->id.'">
-                <label class="form-label" for="exampleInputEmail1">اسم :</label>
-                <label class="form-control" value="'.$ticket->name.'" style="height: 49px;">
-            </div>
-            <div class="mb-3">
-                <label class="form-label" for="exampleInputEmail1">العمر :</label>
-                <label class="form-control" value="'.$ticket->age.'" style="height: 49px;">
-            </div>
-            ';
-        }
-        return $data = array(
-            'row_result'=>$output,
-        );
     }
 }
