@@ -16,6 +16,7 @@ class PatientController extends Controller
      */
     public function index()
     {
+        // $tickets =
         return view('patients.index');
     }
 

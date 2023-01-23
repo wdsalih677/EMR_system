@@ -27,7 +27,7 @@ class ReceptionController extends Controller
      */
     public function create()
     {
-
+        return view('reception.add');
     }
 
     /**
@@ -113,7 +113,9 @@ class ReceptionController extends Controller
      */
     public function edit($id)
     {
-        //
+        $ticket = Ticket::findOrFail($id);
+        return view('reception.edit',compact('ticket'));
+
     }
 
     /**
@@ -126,8 +128,8 @@ class ReceptionController extends Controller
     public function update(Request $request, $id)
     {
         $role =  [
-            'name'   => 'required|unique:tickets|min:2|max:100',
-            'identity_num' => 'required|unique:tickets|numeric|digits_between:10,16',
+            'name'   => 'required|min:2|max:100',
+            'identity_num' => 'required|numeric|digits_between:10,16',
             'address'=>'required',
             'gender'=>'required',
             'age'=>'required|numeric|digits_between:0,150',
