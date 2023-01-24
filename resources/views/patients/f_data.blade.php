@@ -36,24 +36,39 @@
             <center>
                 <h5 class="card-title">بيانات المريض النهائيه</h5>
             </center>
-            <form>
+            <form action="{{ route('final_data.store') }}" method="POST">
+                @csrf
+                {{-- <div>
+                    <div class="mb-3">
+                        <input type="hidden" wire-model="id" name="teckit_id" value="">
+                        <label class="form-label" for="exampleInputEmail1">رقم الذكره :</label>
+                        <input id="search" type="text" wire:model="searchTicket" wire:keyup="getdata" class="form-control" style="width: 49%;" required autocomplete="off" placeholder="أدخل رقم التزكره">
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-30">
+                            <div class="mb-3">
+                                <label class="form-label" for="exampleInputEmail1">اسم :</label>
+                                <input type="text"class="form-control" wire-model="name" required placeholder="يجب إدخال رقم التذكره لعرض الإسم">
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-30">
+                            <div class="mb-3">
+                                <label class="form-label" for="exampleInputEmail1">العمر :</label>
+                                <input type="text" class="form-control" wire-model="age"  required placeholder="يجب إدخال رقم التذكره لعرض العمر">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="exampleFormControlTextarea1">نتائج الفحوصات | Investigations Results</label>
+                        <label class="form-control" id="exampleFormControlTextarea1" rows="3" style="height: 194px;"></label>
+                    </div>
+                </div> --}}
+                <hr>
                 <div class="row">
                     <div class="col-md-6 mb-30">
                         <div class="mb-3">
-                            <label class="form-label" for="exampleInputEmail1">رقم الذكره :</label>
-                            <input id="name" type="number" name="Class_name" class="form-control">
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label" for="exampleInputEmail1">اسم :</label>
-                            <label class="form-control" value="">
-                        </div>
-                        <div class="mb-3">
                             <label class="form-label" for="exampleInputEmail1">التشخيص النهائي | Final Diagnosis :</label>
                             <input id="name" type="فثءف" name="Class_name" class="form-control" autocomplete="off">
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label" for="exampleFormControlTextarea1">العلاج و التغذيه | Treatment & Diet</label>
-                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                         </div>
                         <div class="mb-3">
                             <label class="form-label" for="exampleFormControlSelect1">العنبر :</label>
@@ -84,16 +99,12 @@
                             </select>
                         </div>
                         <div class="mb-3">
-                            <label class="form-label" for="exampleInputEmail1">العمر :</label>
-                            <label class="form-control" value="">
-                          </div>
-                        <div class="mb-3">
-                            <label class="form-label" for="exampleFormControlTextarea1">نتائج الفحوصات | Investigations Results</label>
-                            <label class="form-control" id="exampleFormControlTextarea1" rows="3" style="height: 194px;"></label>
-                        </div>
-                        <div class="mb-3">
                             <label class="form-label" for="exampleInputEmail1">تاريخ المقابله :</label>
                             <input id="name" type="date" name="Class_name" class="form-control">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="exampleFormControlTextarea1">العلاج و التغذيه | Treatment & Diet</label>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" style="height: 50px;"></textarea>
                         </div>
                     </div>
                 </div>

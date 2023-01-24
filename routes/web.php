@@ -22,7 +22,7 @@ use App\Http\Controllers\ReportController;
 use App\Http\Controllers\OperationReportController;
 use App\Http\Controllers\DiseasesReportController;
 use App\Http\Controllers\NnCommunicableReportController;
-
+use App\Http\Controllers\PatientFinalDataController;
 
 /*
 |--------------------------------------------------------------------------
@@ -63,6 +63,8 @@ Route::resource('reception', ReceptionController::class);
 Route::resource('patient', PatientController::class);
 
 Route::get('/search', [PatientController::class ,'search'])->name('search_teckit');
+
+Route::resource('final_data', PatientFinalDataController::class);
 
 Route::resource('intensive_care', IntensiveCareController::class);
 

@@ -16,8 +16,9 @@ class PatientController extends Controller
      */
     public function index()
     {
-        // $tickets =
-        return view('patients.index');
+        $tiks = Ticket::get();
+        $patients = Pre_diagnosis::get();
+        return view('patients.index',compact('patients','tiks'));
     }
 
     /**
@@ -27,6 +28,7 @@ class PatientController extends Controller
      */
     public function create()
     {
+
         return view('patients.add');
     }
 
@@ -82,7 +84,8 @@ class PatientController extends Controller
      */
     public function edit($id)
     {
-        return view('patients.f_data');
+        $pre_diagnosis = Pre_diagnosis::findOrFail($id);
+        return view('patients.edit',compact('pre_diagnosis'));
     }
 
     /**
@@ -94,7 +97,28 @@ class PatientController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $role = [
+            'provisional_diagnosis' => 'required',
+            'symptoms'              =>'required',
+            'examinations'          =>'required',
+        ];
+        $messages = [
+            'provisional_diagnosis.required'=>'يجب إدخال التشخيص المبدئي',
+            'symptoms.required'             =>'يجب إدخال الأعراض',
+            'examinations.required'         =>'يجب إدخال الفحوصات المطلوبه',
+        ];
+        $validator = Validator::make($request->all(),$role,$messages);
+        if($validator  -> fails()){
+            return redirect()->back()->withErrors( $validator)->withInput($request->all());
+        }
+        $patients = Pre_diagnosis::findOrFail($request->id);
+        $patients->update([
+            'provisional_diagnosis'=>$request->provisional_diagnosis,
+            'symptoms'=>$request->symptoms,
+            'examinations'=>$request->examinations,
+        ]);
+        toastr()->success("تم تعديل المريض بنجاح");
+        return redirect()->route('patient.index');
     }
 
     /**

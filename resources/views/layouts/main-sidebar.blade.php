@@ -97,7 +97,7 @@
                         </a>
                         <ul id="custom-page" class="collapse" data-parent="#sidebarnav">
                             <li> <a href="{{ route('patient.index') }}">قائمة المرضى</a> </li>
-                            <li> <a href="{{ route('patient.edit','id') }}">بيانات المريض النهائية</a> </li>
+                            <li> <a href="{{ route('final_data.create') }}">بيانات المريض النهائية</a> </li>
                         </ul>
                     </li>
                     <!-- menu font icon-->
