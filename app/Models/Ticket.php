@@ -12,4 +12,8 @@ class Ticket extends Model
     public $timestamps = true;
     use HasFactory;
 
+    public function pre_diagnoses(){
+        return $this->belongsTo(Pre_diagnosis::class,'id', 'ticket_id');
+    }
+
 }

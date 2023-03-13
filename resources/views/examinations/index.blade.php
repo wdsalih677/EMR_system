@@ -44,19 +44,24 @@
                   <th>#</th>
                   <th>رقم التذكره</th>
                   <th>الإسم</th>
-                  <th>التشخيص المبدئي</th>
                   <th>نتيجة الفحص</th>
+                  <th>حالة الفحص</th>
                   <th>العمليات</th>
                 </tr>
               </thead>
               <tbody>
-                {{-- @foreach ($ as $) --}}
+                @foreach ($examinations as $examination)
                     <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td>{{ $examination->id }}</td>
+                    <td>{{ $examination->tickets->ticket_num }}</td>
+                    <td>{{ $examination->tickets->name }}</td>
+                    <td>{{ $examination->test_results }}</td>
+                    <td>
+                        @if ($examination->test_status == 1)
+                            <label class='badge badge-pill badge-success'>موجبه</label>
+                        @else
+                            <label class='btn btn-danger'>سالبه</label>
+                        @endif
                     <td>
                         <button type="button"
                             class="btn btn-info btn-sm"
@@ -74,7 +79,7 @@
                     </td>
 
                     </tr>
-                {{-- @endforeach --}}
+                @endforeach
               </tbody>
               <tfoot>
               <tr>

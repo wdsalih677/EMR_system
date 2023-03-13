@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Examination;
+use App\Models\Pre_diagnosis;
+use App\Models\Ticket;
 use Illuminate\Http\Request;
 
 class ExaminationsController extends Controller
@@ -13,7 +16,10 @@ class ExaminationsController extends Controller
      */
     public function index()
     {
-        return view('examinations.index');
+        $examinations = Examination::get();
+        $pre_diagnoses = Pre_diagnosis::get();
+        $tiks = Ticket::get();
+        return view('examinations.index',compact('tiks','pre_diagnoses','examinations'));
     }
 
     /**
@@ -34,7 +40,14 @@ class ExaminationsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // return $request;
+        Examination::create([
+            'ticket_id'=>$request->teckit_id,
+            'test_status'=>$request->test_status,
+            'test_results'=>$request->test_results,
+        ]);
+        toastr()->success("تم إضافة الفحص بنجاح");
+        return redirect()->route('examination.index');
     }
 
     /**
@@ -45,7 +58,7 @@ class ExaminationsController extends Controller
      */
     public function show($id)
     {
-        
+
     }
 
     /**

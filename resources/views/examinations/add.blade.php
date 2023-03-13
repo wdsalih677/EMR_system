@@ -1,6 +1,7 @@
 @extends('layouts.master')
 @section('css')
     @toastr_css
+    @livewireStyles
 @section('title')
 بيانات الفحص
 @stop
@@ -36,43 +37,34 @@
             <center>
                 <h5 class="card-title">بيانات الفحص</h5>
             </center>
-            <form>
-                <div class="mb-3">
-                    <label class="form-label" for="exampleInputEmail1">رقم الذكره :</label>
-                    <input id="name" type="number" name="Class_name" class="form-control" style="width: 49%;">
-                </div>
+            <form action="{{ route('examination.store') }}" method="POST">
+                @csrf
+                @livewire('show-exam')
+                <hr>
                 <div class="row">
-                    <div class="col-md-6 mb-30">
+                    <div class="col">
                         <div class="mb-3">
-                            <label class="form-label" for="exampleInputEmail1">اسم :</label>
-                            <label class="form-control" value="" style="height: 49px;">
+                            <label class="form-label" for="exampleInputEmail1">حالة النتيجه :</label>
+                            <select name="test_status" class="form-control"  required style="height: 50px;">
+                                <option value="1" selected>موجبه</option>
+                                <option value="2">سالبه</option>
+                            </select>
                         </div>
-                        <div class="mb-3">
-                            <label class="form-label" for="exampleInputEmail1">التشخيص المبدئي | Provisional Diagnosis :</label>
-                            <label class="form-control" value="" style="height: 49px;">
-                        </div>
+                    </div>
+                    <div class="col">
                         <div class="mb-3">
                             <label class="form-label" for="exampleFormControlTextarea1">تائج الفحوصات | Investigations Results :
                             </label>
-                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" style="height: 194px;"></textarea>
-                        </div>
-                    </div>
-                    <div class="col-md-6 mb-30">
-                        <div class="mb-3">
-                            <label class="form-label" for="exampleInputEmail1">العمر :</label>
-                            <label class="form-control" value="" style="height: 49px;">
-                          </div>
-                          <br><br><br>
-                        <div class="mb-3">
-                            <label class="form-label" for="exampleFormControlTextarea1" style="margin-top: 13px;">الفحوصات | Examinations :</label>
-                            <label class="form-control" id="exampleFormControlTextarea1" rows="3" style="height: 194px;">
+                            <textarea class="form-control" name="test_results"  rows="3" style="height: 194px;"></textarea>
                         </div>
                     </div>
                 </div>
+
+
                 <center>
                     <button type="submit" class="btn btn-success">إرسال</button>
                 </center>
-              </form>
+            </form>
         </div>
       </div>
     </div>
@@ -82,4 +74,5 @@
 @section('js')
 @toastr_js
 @toastr_render
+@livewireScripts
 @endsection

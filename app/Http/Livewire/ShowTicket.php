@@ -13,7 +13,6 @@ class ShowTicket extends Component
     {
         return view('livewire.show-ticket');
     }
-
     public function getdata()
     {
         $tik = Ticket::where('ticket_num',$this->searchTicket)->first();

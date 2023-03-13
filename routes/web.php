@@ -50,37 +50,37 @@ Route::group(['middleware' => ['auth']], function() {
 
 });
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');//الصفحه الرئيسيه
 
-Route::resource('doctor', DoctorController::class);
+Route::resource('doctor', DoctorController::class);//الأطباء
 
-Route::resource('section', SectionController::class);
+Route::resource('section', SectionController::class);//الاقسام
 
-Route::resource('ward', WardController::class);
+Route::resource('ward', WardController::class);//العنابر
 
-Route::resource('reception', ReceptionController::class);
+Route::resource('reception', ReceptionController::class);//الإستقبال
 
-Route::resource('patient', PatientController::class);
+Route::resource('patient', PatientController::class);//ادارة المرضى
 
-Route::get('/search', [PatientController::class ,'search'])->name('search_teckit');
+Route::get('/search', [PatientController::class , 'search'])->name('search_teckit');//مجهول
 
-Route::resource('final_data', PatientFinalDataController::class);
+Route::resource('final_data', PatientFinalDataController::class);//بيانات المريض النهائيه
 
 Route::resource('intensive_care', IntensiveCareController::class);
 
-Route::resource('operation', OperationController::class);
+Route::resource('operation', OperationController::class);//العمليات
 
-Route::resource('examination', ExaminationsController::class);
+Route::resource('examination', ExaminationsController::class);//الفحوصات
 
-Route::resource('patient_follow_up', PatientFollowUpController::class);
+Route::resource('patient_follow_up', PatientFollowUpController::class);//متابعة المريض
 
-Route::resource('medical_record' ,MedicalRecordController::class);
+Route::resource('medical_record' ,MedicalRecordController::class);//السجل الطبي
 
-Route::resource('report', ReportController::class);
+Route::resource('report', ReportController::class);//التقارير
 
-Route::resource('operation_report', OperationReportController::class);
+Route::resource('operation_report', OperationReportController::class);//تقارير العمليات
 
-Route::resource('diseases_report', DiseasesReportController::class);
+Route::resource('diseases_report', DiseasesReportController::class);//تقارير الامراض
 
 Route::resource('Communicable' ,CommunicableReportController::class);
 
