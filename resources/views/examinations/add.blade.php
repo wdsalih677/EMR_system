@@ -46,7 +46,7 @@
                         <div class="mb-3">
                             <label class="form-label" for="exampleInputEmail1">حالة النتيجه :</label>
                             <select name="test_status" class="form-control"  required style="height: 50px;">
-                                <option value="1" selected>موجبه</option>
+                                <option value="1">موجبه</option>
                                 <option value="2">سالبه</option>
                             </select>
                         </div>
@@ -59,8 +59,6 @@
                         </div>
                     </div>
                 </div>
-
-
                 <center>
                     <button type="submit" class="btn btn-success">إرسال</button>
                 </center>

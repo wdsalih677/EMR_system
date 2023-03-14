@@ -69,7 +69,8 @@ class ExaminationsController extends Controller
      */
     public function edit($id)
     {
-        //
+        // $examination = Examination::findOrFail($id);
+        // return view('examinations.edit',compact('examination'));
     }
 
     /**
@@ -81,7 +82,14 @@ class ExaminationsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // return $request;
+        $examination = Examination::findOrFail($request->id);
+        $examination->update([
+            'test_status'  => $request->test_status,
+            'test_results' => $request->test_results,
+        ]);
+        toastr()->success("تم تعديل الفحص بنجاح");
+        return redirect()->route('examination.index');
     }
 
     /**
