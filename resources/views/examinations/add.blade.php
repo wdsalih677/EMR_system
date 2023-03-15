@@ -55,7 +55,7 @@
                         <div class="mb-3">
                             <label class="form-label" for="exampleFormControlTextarea1">تائج الفحوصات | Investigations Results :
                             </label>
-                            <textarea class="form-control" name="test_results"  rows="3" style="height: 194px;"></textarea>
+                            <textarea class="form-control" name="test_results" required rows="3" style="height: 194px;"></textarea>
                         </div>
                     </div>
                 </div>

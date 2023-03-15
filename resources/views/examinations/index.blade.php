@@ -136,7 +136,7 @@
                                 <div class="modal-header">
                                     <h5 style="font-family: 'Cairo', sans-serif;" class="modal-title"
                                         id="exampleModalLabel">
-                                        تعديل الفحص
+                                        حذف الفحص
                                     </h5>
                                     <button type="button" class="close" data-dismiss="modal"
                                         aria-label="Close">
@@ -146,19 +146,19 @@
                                 <div class="modal-body">
                                     <!-- edit_form -->
                                     <form action="{{ route('examination.destroy',$examination->id) }}" method="POST">
-                                        {{ method_field('patch') }}
+                                        {{ method_field('Delete') }}
                                         @csrf
                                         <input type="hidden" name="id" value="{{ $examination->id }}">
                                         <h5 style="font-family: 'Cairo', sans-serif;" class="modal-title">إسم الريض : {{ $examination->tickets->name }}</h5>
                                         <br>
                                         <div class="mb-3">
                                             <label class="form-label" for="exampleInputEmail1">حالة النتيجه :</label>
-                                            <input type="text" class="form-control" name="test_status" value="{{ $examination->test_status == 1 ? 'موجبه' : 'سالبه' }}" disabled>
+                                            <input type="text" class="form-control" name="test_status" value="{{ $examination->test_status == 1 ? 'موجبه' : 'سالبه' }}" disabled required>
                                         </div>
                                         <div class="mb-3">
                                             <label class="form-label" for="exampleFormControlTextarea1">تائج الفحوصات | Investigations Results :
                                             </label>
-                                            <textarea class="form-control" name="test_results"  rows="3" style="height: 194px;" disabled>{{ $examination->test_results }}</textarea>
+                                            <textarea class="form-control" name="test_results" required rows="3" style="height: 194px;" disabled>{{ $examination->test_results }}</textarea>
                                         </div>
 
                                 </div>

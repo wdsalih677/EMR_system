@@ -6,6 +6,7 @@ use App\Models\Examination;
 use App\Models\Pre_diagnosis;
 use App\Models\Ticket;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class ExaminationsController extends Controller
 {
@@ -40,6 +41,23 @@ class ExaminationsController extends Controller
      */
     public function store(Request $request)
     {
+
+        $role=[
+            'teckit_num'=>'required',
+            'test_status'=>'required',
+            'test_results'=>'required',
+        ];
+
+        $messages=[
+            'teckit_num.required'=>'يجب إدخال رقم التذكره',
+            'test_status.required'=>'يجب إختيار حالة الفحص',
+            'test_results.required'=>'يجب إدخال نتائج الفحص',
+        ];
+
+        $validator = Validator::make($request->all(),$role,$messages);
+        if($validator  -> fails()){
+            return redirect()->back()->withErrors( $validator)->withInput($request->all());
+        }
         // return $request;
         Examination::create([
             'ticket_id'=>$request->teckit_id,
@@ -82,6 +100,20 @@ class ExaminationsController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $role=[
+            'test_status'=>'required',
+            'test_results'=>'required',
+        ];
+
+        $messages=[
+            'test_status.required'=>'يجب إختيار حالة الفحص',
+            'test_results.required'=>'يجب إدخال نتائج الفحص',
+        ];
+
+        $validator = Validator::make($request->all(),$role,$messages);
+        if($validator  -> fails()){
+            return redirect()->back()->withErrors( $validator)->withInput($request->all());
+        }
         // return $request;
         $examination = Examination::findOrFail($request->id);
         $examination->update([
@@ -98,8 +130,10 @@ class ExaminationsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy( $id)
     {
-        //
+        Examination::destroy($id);
+        toastr()->success("تم حذف الفحص بنجاح");
+        return redirect()->route('examination.index');
     }
 }
