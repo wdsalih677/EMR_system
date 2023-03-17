@@ -15,5 +15,11 @@ class Ticket extends Model
     public function pre_diagnoses(){
         return $this->belongsTo(Pre_diagnosis::class,'id', 'ticket_id');
     }
+    public function examinations(){
+        return $this->belongsTo(Examination::class,'id', 'ticket_id');
+    }
+    public function patientsfinaldata(){
+        return $this->belongsTo(PatientFinalData::class,'id', 'ticket_id');
+    }
 
 }

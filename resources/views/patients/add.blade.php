@@ -55,7 +55,7 @@
                     <div class="col-md-6 mb-30">
                         <div class="mb-3">
                             <label class="form-label" for="exampleFormControlTextarea1">الفحوصات | Examinations :</label>
-                            <textarea class="form-control" name="examinations" id="exampleFormControlTextarea1" rows="3" style="height: 194px;" placeholder="يجب تحديد الفحوصات"></textarea>
+                            <textarea class="form-control" name="examinations" required id="exampleFormControlTextarea1" rows="3" style="height: 194px;" placeholder="يجب تحديد الفحوصات"></textarea>
                         </div>
                     </div>
                 </div>

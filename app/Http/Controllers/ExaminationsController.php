@@ -43,12 +43,14 @@ class ExaminationsController extends Controller
     {
 
         $role=[
+            'teckit_id'   => 'unique:examinations,ticket_id,'.$request->id,
             'teckit_num'=>'required',
             'test_status'=>'required',
             'test_results'=>'required',
         ];
 
         $messages=[
+            'teckit_id.unique'=>'المريض أجري فحص من قبل',
             'teckit_num.required'=>'يجب إدخال رقم التذكره',
             'test_status.required'=>'يجب إختيار حالة الفحص',
             'test_results.required'=>'يجب إدخال نتائج الفحص',
@@ -101,11 +103,13 @@ class ExaminationsController extends Controller
     public function update(Request $request, $id)
     {
         $role=[
+            'teckit_id'   => 'unique:examinations,ticket_id,'.$id,
             'test_status'=>'required',
             'test_results'=>'required',
         ];
 
         $messages=[
+            'teckit_id.unique'=>'المريض أجري فحص من قبل',
             'test_status.required'=>'يجب إختيار حالة الفحص',
             'test_results.required'=>'يجب إدخال نتائج الفحص',
         ];

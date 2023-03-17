@@ -41,7 +41,7 @@ class WardController extends Controller
     {
         $role =  [
             'name'   => 'required|unique:wards|min:5|max:100',
-            'ward_type' => 'required|min:5|max:100',
+            'ward_type' => 'required',
             'section_id'=>'required',
         ];
         $messages =[
@@ -50,8 +50,6 @@ class WardController extends Controller
             'name.min'=>'يجب أن لا يقل اسم العنبر عن 5 احرف',
 
             'ward_type.required'=>'يجب إدخال نوع العنابر',
-            'ward_type.min'=>'يجب أن لا يقل نوع العنبر عن خمس أحرف',
-            'ward_type.min'=>'يجب أن لا يزيد نوع العنبر عن 100 أحرف',
 
             'section_id.required'=>'يجب إختيار القسم ',
         ];

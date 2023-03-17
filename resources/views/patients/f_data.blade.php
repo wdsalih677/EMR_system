@@ -1,6 +1,7 @@
 @extends('layouts.master')
 @section('css')
     @toastr_css
+    @livewireStyles
 @section('title')
 بيانات المريض النهائيه
 @stop
@@ -38,73 +39,51 @@
             </center>
             <form action="{{ route('final_data.store') }}" method="POST">
                 @csrf
-                {{-- <div>
-                    <div class="mb-3">
-                        <input type="hidden" wire-model="id" name="teckit_id" value="">
-                        <label class="form-label" for="exampleInputEmail1">رقم الذكره :</label>
-                        <input id="search" type="text" wire:model="searchTicket" wire:keyup="getdata" class="form-control" style="width: 49%;" required autocomplete="off" placeholder="أدخل رقم التزكره">
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6 mb-30">
-                            <div class="mb-3">
-                                <label class="form-label" for="exampleInputEmail1">اسم :</label>
-                                <input type="text"class="form-control" wire-model="name" required placeholder="يجب إدخال رقم التذكره لعرض الإسم">
-                            </div>
-                        </div>
-                        <div class="col-md-6 mb-30">
-                            <div class="mb-3">
-                                <label class="form-label" for="exampleInputEmail1">العمر :</label>
-                                <input type="text" class="form-control" wire-model="age"  required placeholder="يجب إدخال رقم التذكره لعرض العمر">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label" for="exampleFormControlTextarea1">نتائج الفحوصات | Investigations Results</label>
-                        <label class="form-control" id="exampleFormControlTextarea1" rows="3" style="height: 194px;"></label>
-                    </div>
-                </div> --}}
+                @livewire('final-diagnosis')
                 <hr>
                 <div class="row">
                     <div class="col-md-6 mb-30">
                         <div class="mb-3">
                             <label class="form-label" for="exampleInputEmail1">التشخيص النهائي | Final Diagnosis :</label>
-                            <input id="name" type="فثءف" name="Class_name" class="form-control" autocomplete="off">
+                            <input id="name" type="فثءف" name="final_diagnosis" class="form-control" autocomplete="off">
                         </div>
                         <div class="mb-3">
                             <label class="form-label" for="exampleFormControlSelect1">العنبر :</label>
-                            <select class="form-control" id="exampleFormControlSelect1" style="height: 50px;">
-                                <option>لا يوجد</option>
-                                <option>رجال</option>
-                                <option>نساء</option>
-                                <option>أطفال</option>
+                            <select class="form-control" name="ward_id" id="exampleFormControlSelect1" style="height: 50px;">
+                                <option value="">لا يوجد</option>
+                                @foreach ($wards as $ward)
+                                    <option value="{{ $ward->id }}">{{ $ward->name }}</option>
+                                @endforeach
                             </select>
                           </div>
                           <div class="mb-3">
                             <label class="form-label" for="exampleFormControlSelect1">القسم :</label>
-                            <select class="form-control" id="exampleFormControlSelect1" style="height: 50px;">
-                                <option>لا يوجد</option>
-                                <option>باطنيه</option>
-                                <option>جلديه</option>
-                                <option>أطفال</option>
+                            <select class="form-control" name="section_id" id="exampleFormControlSelect1" style="height: 50px;">
+                                <option value="">لا يوجد</option>
+                                @foreach ($sections as $section)
+                                    <option value="{{ $section->id }}">{{ $section->name }}</option>
+                                @endforeach
                             </select>
                           </div>
                     </div>
                     <div class="col-md-6 mb-30">
                         <div class="mb-3">
                             <label class="form-label" for="exampleFormControlSelect1">نوع الإقامه :</label>
-                            <select class="form-control" id="exampleFormControlSelect1" style="height: 50px;">
-                                <option>لا يوجد</option>
-                                <option>إقامه طويله</option>
-                                <option>إقامه قصيره</option>
+                            <select class="form-control" name="residence_type" id="exampleFormControlSelect1" style="height: 50px;">
+                                <option value="1">لا يوجد</option>
+                                <option value="2">إقامه طويله</option>
+                                <option value="3">إقامه قصيره</option>
                             </select>
                         </div>
                         <div class="mb-3">
                             <label class="form-label" for="exampleInputEmail1">تاريخ المقابله :</label>
-                            <input id="name" type="date" name="Class_name" class="form-control">
+                            <div class="input-group" data-date="23/11/2018" data-date-format="mm/dd/yyyy">
+                                <input type="text" name="follow_up_date" class="form-control range-to"   data-date-format="mm/dd/yyyy" >
+                            </div>
                         </div>
                         <div class="mb-3">
                             <label class="form-label" for="exampleFormControlTextarea1">العلاج و التغذيه | Treatment & Diet</label>
-                            <textarea class="form-control" id="exampleFormControlTextarea1" style="height: 50px;"></textarea>
+                            <textarea class="form-control" name="treatment_diet" id="exampleFormControlTextarea1" style="height: 50px;"></textarea>
                         </div>
                     </div>
                 </div>
@@ -119,6 +98,7 @@
 {{-- end content --}}
 @endsection
 @section('js')
-@toastr_js
-@toastr_render
+    @toastr_js
+    @toastr_render
+    @livewireScripts
 @endsection

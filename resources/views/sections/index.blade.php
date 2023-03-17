@@ -109,7 +109,7 @@
                                 <div class="box">
                                     <select class="fancyselect" name="doctor_id" required>
                                         @foreach ($sections as $section)
-                                            <option value="{{ $section->doctors->id }}" {{ $section->doctor_id == $section->doctors->id ? 'selected' : '' }}>{{ $section->doctors->name }}</option>
+                                            <option value="{{ $section->id }}" {{ $section->id == $section->doctors->id ? 'selected' : '' }}>{{ $section->doctors->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>

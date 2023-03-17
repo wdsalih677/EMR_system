@@ -14,4 +14,5 @@ class Section extends Model
     public function doctors(){
         return $this->belongsTo(Doctor::class, 'doctor_id');
     }
+    
 }

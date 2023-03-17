@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Pre_diagnosis;
 use App\Models\Ticket;
+use App\Models\Section;
+use App\Models\Ward;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -18,7 +20,9 @@ class PatientController extends Controller
     {
         $tiks = Ticket::get();
         $patients = Pre_diagnosis::get();
-        return view('patients.index',compact('patients','tiks'));
+        $sections = Section::get();
+        $wards    = Ward::get();
+        return view('patients.index',compact('patients','tiks','sections','wards'));
     }
 
     /**
