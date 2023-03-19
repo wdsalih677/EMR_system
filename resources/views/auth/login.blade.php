@@ -8,7 +8,8 @@
     <meta name="description" content="Webmin - Bootstrap 4 & Angular 5 Admin Dashboard Template" />
     <meta name="author" content="potenzaglobalsolutions.com" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <title>تسجيل دخول - مستشفى عطبره التعليمي</title>
+    <link rel="shortcut icon" href="{{ URL::asset('assets/images/photo/logo_emr.png') }}" type="image/x-icon" />
+    <title >تسجيل دخول - مستشفى عطبره التعليمي</title>
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="images/favicon.ico" />
@@ -19,6 +20,15 @@
 
     <!-- css -->
     <link href="{{ URL::asset('assets/css/rtl.css') }}" rel="stylesheet">
+
+    <style>
+        body{
+            background-repeat: no-repeat;
+            background-size: 100%;
+            background-image: url({{URL::asset('assets/images/photo/cnKsyKhA2BltiURCmPh_Aolkegpucqk_.jpg')}});
+
+        }
+    </style>
 
 </head>
 
@@ -40,18 +50,19 @@
  login-->
 
         <section class="height-100vh d-flex align-items-center page-section-ptb login"
-            style="background-image: url(assets/images/login-bg.jpg);">
+            style="background-image: {{ URL::asset('assets/images/photo/background_emr.jpg') }}">
             <div class="container">
                 <div class="row justify-content-center no-gutters vertical-align">
                     <div class="col-lg-4 col-md-6 login-fancy-bg bg"
-                        style="background-image: url(images/login-inner-bg.jpg);">
+                        style="background-image: {{ URL::asset('assets/images/photo/background_emr.jpg') }}">
                         <div class="login-fancy">
-                            <h2 class="text-white mb-20">Hello world!</h2>
-                            <p class="mb-20 text-white">Create tailor-cut websites with the exclusive multi-purpose
-                                responsive template along with powerful features.</p>
+                            <h2 class="text-white mb-20 text-center">E M R</h2>
+                            <p class="mb-20 text-white">
+                                <img class="text-white mb-20" src="{{ URL::asset('assets/images/photo/logo_emr.png') }}"
+                                style="width: 268px; height: 261px;
+                                margin-right: 20px;" alt=""></p>
                             <ul class="list-unstyled  pos-bot pb-30">
-                                <li class="list-inline-item"><a class="text-white" href="#"> Terms of Use</a> </li>
-                                <li class="list-inline-item"><a class="text-white" href="#"> Privacy Policy</a></li>
+                                <li class="list-inline-item"><a class="text-white" href="https://eaeu.edu.sd">El-Sheikh Abdallah Elbadri University</a></li>
                             </ul>
                         </div>
                     </div>
