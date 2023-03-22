@@ -47,7 +47,7 @@
                             <label class="form-label" for="exampleInputEmail1">التشخيص النهائي | Final Diagnosis :</label>
                             <input id="name" type="فثءف" name="final_diagnosis" class="form-control" autocomplete="off">
                         </div>
-                        <div class="mb-3">
+                        {{-- <div class="mb-3">
                             <label class="form-label" for="exampleFormControlSelect1">العنبر :</label>
                             <select class="form-control" name="ward_id" id="exampleFormControlSelect1" style="height: 50px;">
                                 <option value="">لا يوجد</option>
@@ -55,8 +55,8 @@
                                     <option value="{{ $ward->id }}">{{ $ward->name }}</option>
                                 @endforeach
                             </select>
-                          </div>
-                          <div class="mb-3">
+                        </div> --}}
+                        <div class="mb-3">
                             <label class="form-label" for="exampleFormControlSelect1">القسم :</label>
                             <select class="form-control" name="section_id" id="exampleFormControlSelect1" style="height: 50px;">
                                 <option value="">لا يوجد</option>
@@ -64,7 +64,7 @@
                                     <option value="{{ $section->id }}">{{ $section->name }}</option>
                                 @endforeach
                             </select>
-                          </div>
+                        </div>
                     </div>
                     <div class="col-md-6 mb-30">
                         <div class="mb-3">
@@ -81,9 +81,11 @@
                                 <input type="text" name="follow_up_date" class="form-control range-to"   data-date-format="mm/dd/yyyy" >
                             </div>
                         </div>
+                    </div>
+                    <div class="col-md-12 mb-30">
                         <div class="mb-3">
                             <label class="form-label" for="exampleFormControlTextarea1">العلاج و التغذيه | Treatment & Diet</label>
-                            <textarea class="form-control" name="treatment_diet" id="exampleFormControlTextarea1" style="height: 50px;"></textarea>
+                            <textarea class="form-control" name="treatment_diet" id="exampleFormControlTextarea1" style="height: 200px;"></textarea>
                         </div>
                     </div>
                 </div>

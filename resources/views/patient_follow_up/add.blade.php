@@ -1,6 +1,7 @@
 @extends('layouts.master')
 @section('css')
     @toastr_css
+    @livewireStyles
 @section('title')
 بيانات المريض
 @stop
@@ -33,15 +34,15 @@
                     </ul>
                 </div>
             @endif
-            <center>
-                <h5 class="card-title">بيانات المريض</h5>
-            </center>
             <form>
-                <div class="mb-3">
+                @livewire('patient-follow-up')
+                {{-- بداية رقم التذكره --}}
+                {{-- <div class="mb-3">
                     <label class="form-label" for="exampleInputEmail1">رقم الذكره :</label>
                     <input id="name" type="number" name="Class_name" class="form-control" style="width: 49%;">
-                </div>
-                <div class="row">
+                </div> --}}
+                {{-- نهاية رقم التذكره --}}
+                {{-- <div class="row">
                     <div class="col-md-6 mb-30">
                         <div class="mb-3">
                             <label class="form-label" for="exampleInputEmail1">اسم :</label>
@@ -146,10 +147,10 @@
                             <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" style="height: 240px;"></textarea>
                         </div>
                     </div>
-                </div>
-                <center>
+                </div> --}}
+                {{-- <center>
                     <button type="submit" class="btn btn-success">إضافه</button>
-                </center>
+                </center> --}}
             </form>
         </div>
       </div>
@@ -160,4 +161,5 @@
 @section('js')
 @toastr_js
 @toastr_render
+@livewireScripts
 @endsection

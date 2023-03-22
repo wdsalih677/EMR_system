@@ -21,7 +21,7 @@ class ShowExam extends Component
      */
     public function getdata()
     {
-        $tik = Ticket::where('ticket_num',$this->searchTicket)->first();;
+        $tik = Ticket::where('ticket_num',$this->searchTicket)->first();
         if($tik)
         {
             $this->teckit_id = $tik->id;

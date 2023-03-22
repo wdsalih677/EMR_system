@@ -18,9 +18,6 @@ class CreatePatientsFinalDataTable extends Migration
             $table->bigInteger('ticket_id')->unsigned();
             $table->foreign('ticket_id')->references('id')->on('tickets')->onUpdate('cascade');
 
-			$table->bigInteger('ward_id')->unsigned()->nullable();
-            $table->foreign('ward_id')->references('id')->on('wards')->onUpdate('cascade');
-
 			$table->bigInteger('section_id')->unsigned()->nullable();
             $table->foreign('section_id')->references('id')->on('sections')->onUpdate('cascade');
 

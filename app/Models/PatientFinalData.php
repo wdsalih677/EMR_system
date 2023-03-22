@@ -19,7 +19,7 @@ class PatientFinalData extends Model
     public function sections(){
         return $this->belongsTo(Section::class ,'section_id');
     }
-    public function wards(){
-        return $this->belongsTo(Ward::class ,'ward_id');
-    }
+    // public function wards(){
+    //     return $this->belongsTo(Ward::class ,'ward_id');
+    // }
 }

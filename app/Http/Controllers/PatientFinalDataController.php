@@ -59,7 +59,7 @@ class PatientFinalDataController extends Controller
         PatientFinalData::create([
             'ticket_id'         => $request->ticket_id,
             'final_diagnosis'   => $request->final_diagnosis,
-            'ward_id'           => $request->ward_id,
+            // 'ward_id'           => $request->ward_id,
             'section_id'        => $request->section_id,
             'residence_type'    => $request->residence_type,
             'follow_up_date'    => $request->follow_up_date,
@@ -104,7 +104,7 @@ class PatientFinalDataController extends Controller
         $patientsFinalData = PatientFinalData::findOrFail($request->id);
         $patientsFinalData->update([
             'final_diagnosis'   => $request->final_diagnosis,
-            'ward_id'           => $request->ward_id,
+            // 'ward_id'           => $request->ward_id,
             'section_id'        => $request->section_id,
             'residence_type'    => $request->residence_type,
             'follow_up_date'    => $request->follow_up_date,
