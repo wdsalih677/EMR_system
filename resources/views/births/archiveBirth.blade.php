@@ -10,12 +10,12 @@
 {{-- start content --}}
 <div class="row">
     <div class="col-sm-6">
-        <h4 class="mb-0">وثيقة إخبار الولادة</h4>
+        <h4 class="mb-0">إرشيف المواليد</h4>
     </div>
     <div class="col-sm-6">
         <ol class="breadcrumb pt-0 pr-0 float-left float-sm-right ">
-            <li class="breadcrumb-item"><a href="#" class="default-color">أدارة المواليد و الوفيات </a></li>
-            <li class="breadcrumb-item active">وثيقة إخبار الولادة</li>
+            <li class="breadcrumb-item"><a href="#" class="default-color">إرشيف المواليد و الوفيات </a></li>
+            <li class="breadcrumb-item active">إرشيف المواليد</li>
         </ol>
     </div>
 </div>
@@ -34,9 +34,6 @@
                 </div>
             @endif
           <div class="table-responsive">
-            <a class="button x-small" href="{{ route('birth.create') }}">
-                إضافة وثيقة
-            </a>
             <br><br>
             <table id="datatable" class="table-bordered border table table-striped dataTable p-0 text-center">
               <thead>
@@ -68,10 +65,6 @@
                                     <button type="button" class="dropdown-item" data-toggle="modal" data-target="#delete{{ $birth->id }}"  title="حذف">
                                         <i class="text-danger fa fa-trash"></i>
                                         حذف
-                                    </button>
-                                    <button type="button" class="dropdown-item" data-toggle="modal" data-target="#archive{{ $birth->id }}"  title="حذف">
-                                        <i class="text-info fa fa-archive"></i>
-                                        أرشفه
                                     </button>
                                     <a class="dropdown-item" href="{{ route('birth.show',$birth->id) }}" >
                                         <i class="text-success fa fa-print"></i>
@@ -118,42 +111,6 @@
                         </div>
                     </div>
                     <!-- end_delete_modal_birth -->
-                    <!-- archive_modal_birth -->
-                    <div class="modal fade" id="archive{{ $birth->id }}" tabindex="-1" role="dialog"
-                        aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 style="font-family: 'Cairo', sans-serif;" class="modal-title"
-                                        id="exampleModalLabel">
-                                        أرشفة المولود
-                                    </h5>
-                                    <button type="button" class="close" data-dismiss="modal"
-                                        aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    <form action="{{ route('birth.destroy',$birth->id) }}" method="post">
-                                        {{ method_field('Delete') }}
-                                        @csrf
-                                        نقل إلى الإرشيف؟
-                                        <label id="Name" type="text" name="Name" class="form-control">{{ $birth->newBornName }}</label>
-
-                                        <input id="id" type="hidden" name="id" class="form-control" value="{{ $birth->id }}">
-                                        <input type="text" name="id_page" id="id_page" value="2">
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary"
-                                                data-dismiss="modal">إغلاق</button>
-                                            <button type="submit"
-                                                class="btn btn-danger">نقل</button>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- end_archive_modal_birth -->
                 @endforeach
               </tbody>
               <tfoot>

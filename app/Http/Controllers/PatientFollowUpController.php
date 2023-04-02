@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Ward;
 use Illuminate\Http\Request;
 
 class PatientFollowUpController extends Controller
@@ -23,7 +24,8 @@ class PatientFollowUpController extends Controller
      */
     public function create()
     {
-        return view('patient_follow_up.add');
+        $wards = Ward::get();
+        return view('patient_follow_up.add',compact('wards'));
     }
 
     /**

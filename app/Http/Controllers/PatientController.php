@@ -133,6 +133,9 @@ class PatientController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Ticket::destroy($id);
+        Pre_diagnosis::destroy($id);
+        toastr()->success("تم حذف المريض بنجاح");
+        return redirect()->route('patient.index');
     }
 }

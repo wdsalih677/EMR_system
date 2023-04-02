@@ -37,14 +37,16 @@
                     <div class="form-group">
                         <div class="mb-3">
                             <label class="form-label" for="exampleInputEmail1">العنبر:</label>
-                            <select name="gender" class="form-control"  required style="height: 50px;">
+                            <select name="ward_id" wire:model="ward_id" class="form-control"  required style="height: 50px;">
                                 <option selected disabled>--اختر العنبر--</option>
-                                <option value="1">صضصضص</option>
-                                <option value="0">صضصضصض</option>
+                                @foreach ( $wards as $time)
+                                    <option value="{{ $time->id }}">{{ $time->name }}</option>
+                                @endforeach
+
                             </select>
                         </div>
                         <label for="exampleFormControlTextarea1">الملاحظات</label>
-                        <textarea class="form-control" wire:model="Address_Father" id="exampleFormControlTextarea1" rows="4" style="height: 290px;"></textarea>
+                        <textarea class="form-control" wire:model="notes" name="notes" id="exampleFormControlTextarea1" rows="4" style="height: 290px;"></textarea>
                         @error('Address_Father')
                         <div class="alert alert-danger">{{ $message }}</div>
                         @enderror

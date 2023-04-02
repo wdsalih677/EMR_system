@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\archiveBirthController;
+use App\Http\Controllers\BirthArchiveController;
 use App\Http\Controllers\BirthController;
 use App\Http\Controllers\BirthDeathReportController;
 use App\Http\Controllers\CommunicableReportController;
@@ -86,9 +88,11 @@ Route::resource('Communicable' ,CommunicableReportController::class);
 
 Route::resource('nonCommunicable' ,NnCommunicableReportController::class);
 
-Route::resource('birth' ,BirthController::class);
+Route::resource('birth' ,BirthController::class);//المواليد
 
-Route::resource('death', DeathController::class);
+Route::resource('death', DeathController::class);// الوفيات
 
-Route::resource('birthDeathReport', BirthDeathReportController::class);
+Route::resource('birthDeathReport', BirthDeathReportController::class);//تقرير المواليد و الوفيات
+
+Route::resource('birthArchive', BirthArchiveController::class);//ارشيف المواليد
 

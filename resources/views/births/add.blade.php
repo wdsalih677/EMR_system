@@ -36,50 +36,46 @@
             <center>
                 <h5 class="card-title">وثيقة إخبار ولادة</h5>
             </center>
-            <form>
+            <form action="{{ route('birth.store') }}" method="POST">
+                @csrf
                 <h5>- بيانات المولود :</h5>
                 <br><br>
                 <div class="mb-3">
                     <label class="form-label" for="exampleInputEmail1">إسم المولود :</label>
-                    <input type="text" class="form-control" aria-describedby="emailHelp" autocomplete="off"  style="width: 49%;">
+                    <input type="text" class="form-control" name="newBornName" autocomplete="off"  style="width: 49%;">
                   </div>
                 <div class="row">
                     <div class="col-md-6 mb-30">
                           <div class="mb-3">
                               <label class="form-label" for="exampleInputEmail1">إسم الأم :</label>
-                              <input type="text" class="form-control" aria-describedby="emailHelp" autocomplete="off" placeholder="أدخل اسم الأم رباعي">
+                              <input type="text" class="form-control" name="nameMother"  autocomplete="off" placeholder="أدخل اسم الأم رباعي">
                             </div>
                             <div class="mb-3">
                               <label class="form-label" for="exampleInputEmail1">إسم الأب :</label>
-                              <input type="text" class="form-control" aria-describedby="emailHelp" autocomplete="off" placeholder="أدخل إسم الأب رباعي">
+                              <input type="text" class="form-control" name="namefather" autocomplete="off" placeholder="أدخل إسم الأب رباعي">
                             </div>
                             <div class="mb-3">
                                 <label class="form-label" for="exampleInputEmail1">مكان الإقامة :</label>
-                                <input type="text" class="form-control" aria-describedby="emailHelp" autocomplete="off">
+                                <input type="text" class="form-control" name="residencePlace" autocomplete="off">
                             </div>
                     </div>
                     <div class="col-md-6 mb-30">
                           <div class="mb-3">
                             <label class="form-label" for="exampleInputEmail1"> الرقم الوطني للأم :</label>
-                            <input type="number" class="form-control" aria-describedby="emailHelp" autocomplete="off">
+                            <input type="number" class="form-control" name="motherIdentity" autocomplete="off">
                           </div>
                           <div class="mb-3">
                             <label class="form-label" for="exampleInputEmail1"> الرقم الوطني للأب :</label>
-                            <input type="number" class="form-control" aria-describedby="emailHelp" autocomplete="off">
+                            <input type="number" class="form-control" name="fatherIdentity" autocomplete="off">
                           </div>
                           <div class="mb-3">
-                            <div class="control-group" id="toastTypeGroup">
-                              <div class="controls">
-                                <label class="d-block mb-2">الجنس :</label>
-                                <label class="radio mb-2">
-                                  <input type="radio" name="toasts" value="success" checked />زكر
-                                </label>
-                                <label class="radio mb-2">
-                                  <input type="radio" name="toasts" value="info" />أنثى
-                                </label>
-                              </div>
-                            </div>
-                          </div>
+                            <label class="form-label" for="exampleInputEmail1">الجنس:</label>
+                            <select name="gender" class="form-control"  required style="height: 50px;">
+                                <option selected disabled>--اختر الجنس--</option>
+                                <option value="1">ذكر</option>
+                                <option value="0">أنثى</option>
+                            </select>
+                        </div>
                     </div>
                 </div>
                 <h5>- واقعة الميلاد :</h5>
@@ -88,17 +84,17 @@
                     <div class="col-md-6 mb-30">
                           <div class="mb-3">
                               <label class="form-label" for="exampleInputEmail1">تاريخ الميلاد بالأحرف :</label>
-                              <input type="text" class="form-control" aria-describedby="emailHelp" autocomplete="off">
+                              <input type="text" class="form-control" name="birthDataChar" autocomplete="off">
                             </div>
                             <div class="mb-3">
                                 <div class="control-group" id="toastTypeGroup">
                                   <div class="controls">
                                     <label class="d-block mb-2">مكان الولادة :</label>
                                     <label class="radio mb-2">
-                                      <input type="radio" name="toasts" value="success" checked />داخل المؤسسه الصحيه
+                                      <input type="radio" name="birthPlace" value="1" checked />داخل المؤسسه الصحيه
                                     </label>
                                     <label class="radio mb-2">
-                                      <input type="radio" name="toasts" value="info" />خارج المؤسسه الصحيه
+                                      <input type="radio" name="birthPlace" value="0" />خارج المؤسسه الصحيه
                                     </label>
                                   </div>
                                 </div>
@@ -107,7 +103,9 @@
                     <div class="col-md-6 mb-30">
                         <div class="mb-3">
                             <label class="form-label" for="exampleInputEmail1">تاريخ الميلاد بالأرقام :</label>
-                            <input type="date" class="form-control" aria-describedby="emailHelp" autocomplete="off">
+                            <div class="input-group" data-date="23/11/2018" data-date-format="mm/dd/yyyy">
+                                <input type="text" class="form-control range-to" name="birthDataNum"  data-date-format="mm/dd/yyyy">
+                            </div>
                           </div>
                     </div>
                 </div>
@@ -117,13 +115,13 @@
                     <div class="col-md-6 mb-30">
                         <div class="mb-3">
                             <label class="form-label" for="exampleInputEmail1">الإسم :</label>
-                            <input type="text" class="form-control" aria-describedby="emailHelp" autocomplete="off">
+                            <input type="text" class="form-control" name="informerNmae" aria-describedby="emailHelp" autocomplete="off">
                         </div>
                     </div>
                     <div class="col-md-6 mb-30">
                         <div class="mb-3">
                             <label class="form-label" for="exampleInputEmail1">الرقم الوطني :</label>
-                            <input type="number" class="form-control" aria-describedby="emailHelp" autocomplete="off">
+                            <input type="number" class="form-control" name="informerIdentity" aria-describedby="emailHelp" autocomplete="off">
                           </div>
                     </div>
                 </div>
@@ -133,13 +131,13 @@
                     <div class="col-md-6 mb-30">
                         <div class="mb-3">
                             <label class="form-label" for="exampleInputEmail1">الإسم :</label>
-                            <input type="text" class="form-control" aria-describedby="emailHelp" autocomplete="off">
+                            <input type="text" class="form-control" name="documentEditorName" autocomplete="off">
                         </div>
                     </div>
                     <div class="col-md-6 mb-30">
                         <div class="mb-3">
                             <label class="form-label" for="exampleInputEmail1">الرقم الوطني :</label>
-                            <input type="number" class="form-control" aria-describedby="emailHelp" autocomplete="off">
+                            <input type="number" class="form-control" name="documentEditorIdentity" autocomplete="off">
                           </div>
                     </div>
                 </div>

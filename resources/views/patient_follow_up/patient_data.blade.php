@@ -9,21 +9,21 @@
                         <label for="title">رقم التذكرة</label>
                         <input type="text" name="teckit_num" wire:model="searchTicket" wire:keyup="getdata" class="form-control" >
                         <input type="hidden" wire-model="id" name="teckit_id" value="{{ $teckit_id }}">
-                        @error('Email')
+                        @error('searchTicket')
                         <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
                     </div>
                     <div class="col">
                         <label for="title">الإسم</label>
-                        <input type="text" wire-model="name" value="{{ $name }}" class="form-control" disabled>
-                        @error('Password')
+                        <input type="text" wire-model="name" name="name" value="{{ $name }}" class="form-control" disabled>
+                        @error('name')
                         <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
                     </div>
                     <div class="col">
                         <label for="title">العمر</label>
                         <input type="number" wire-model="age" value="{{ $age }}" class="form-control" disabled>
-                        @error('Password')
+                        @error('age')
                         <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
                     </div>
@@ -31,15 +31,15 @@
                 <div class="form-row">
                     <div class="col">
                         <label for="title">نوع الإقامه</label>
-                        <input type="text" wire:model="residence_type" value="{{ $residence_type }}" class="form-control" disabled>
-                        @error('Name_Father')
+                        <input type="text" wire:model="residence_type" value="{{ $residence_type  }}" class="form-control" disabled>
+                        @error('residence_type')
                         <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
                     </div>
                     <div class="col">
                         <label for="title">تاريخ الدخول</label>
                         <input type="text" wire:model="date_entry" value="{{ $date_entry }}" class="form-control" disabled>
-                        @error('Name_Father_en')
+                        @error('date_entry')
                         <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
                     </div>
@@ -48,14 +48,14 @@
                     <div class="col">
                         <label for="title">التشخيص النهائي</label>
                         <input type="text" wire:model="final_diagnosis" value="{{ $final_diagnosis }}"  class="form-control" disabled>
-                        @error('Name_Father')
+                        @error('final_diagnosis')
                         <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
                     </div>
                     <div class="col">
                         <label for="title">القسم</label>
                         <input type="text" wire:model="section_id" value="{{ $section_id }}" class="form-control" disabled>
-                        @error('Name_Father')
+                        @error('section_id')
                         <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
                     </div>
@@ -63,7 +63,7 @@
                 <div class="form-group">
                     <label for="exampleFormControlTextarea1">العلاج و التغذيه | Treatment & Diet :</label>
                     <textarea class="form-control" wire:model="treatment_diet" value="{{ $treatment_diet }}" disabled id="exampleFormControlTextarea1" rows="4" style="height: 290px;"></textarea>
-                    @error('Address_Father')
+                    @error('treatment_diet')
                     <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
                 </div>

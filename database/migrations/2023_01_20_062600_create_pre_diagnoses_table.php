@@ -16,7 +16,7 @@ class CreatePreDiagnosesTable extends Migration
         Schema::create('pre_diagnoses', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('ticket_id')->unsigned();
-            $table->foreign('ticket_id')->references('id')->on('tickets')->onUpdate('cascade');
+            $table->foreign('ticket_id')->references('id')->on('tickets')->onUpdate('cascade')->onDelete('cascade');
 			$table->string('provisional_diagnosis')->nullable(false);
 			$table->text('symptoms')->nullable(false);
 			$table->text('examinations')->nullable(false);

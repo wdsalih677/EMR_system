@@ -41,40 +41,40 @@
                 <br><br>
                 <div class="mb-3">
                     <label class="form-label" for="exampleInputEmail1">إسم المولود :</label>
-                    <label class="form-control" value="" style="height: 49px;width: 49%;">
-                </div>
+                    <input type="text" class="form-control" value="{{ $birth->newBornName }}" name="newBornName" autocomplete="off"  style="width: 49%;">
+                  </div>
                 <div class="row">
                     <div class="col-md-6 mb-30">
-                        <div class="mb-3">
+                          <div class="mb-3">
                               <label class="form-label" for="exampleInputEmail1">إسم الأم :</label>
-                              <label class="form-control" value="" style="height: 49px;">
-                        </div>
-                        <div class="mb-3">
+                              <input type="text" class="form-control" value="{{ $birth->nameMother }}" name="nameMother" autocomplete="off" placeholder="أدخل اسم الأم رباعي">
+                            </div>
+                            <div class="mb-3">
                               <label class="form-label" for="exampleInputEmail1">إسم الأب :</label>
-                              <label class="form-control" value="" style="height: 49px;">
-                        </div>
-                        <div class="mb-3">
+                              <input type="text" class="form-control" value="{{ $birth->namefather }}" name="namefather" autocomplete="off" placeholder="أدخل إسم الأب رباعي">
+                            </div>
+                            <div class="mb-3">
                                 <label class="form-label" for="exampleInputEmail1">مكان الإقامة :</label>
-                                <label class="form-control" value="" style="height: 49px;">
-                        </div>
+                                <input type="text" class="form-control" value="{{ $birth->residencePlace }}" name="residencePlace" autocomplete="off">
+                            </div>
                     </div>
                     <div class="col-md-6 mb-30">
                           <div class="mb-3">
                             <label class="form-label" for="exampleInputEmail1"> الرقم الوطني للأم :</label>
-                            <label class="form-control" value="" style="height: 49px;">
+                            <input type="number" class="form-control" value="{{ $birth->motherIdentity }}" name="motherIdentity" autocomplete="off">
                           </div>
                           <div class="mb-3">
                             <label class="form-label" for="exampleInputEmail1"> الرقم الوطني للأب :</label>
-                            <label class="form-control" value="" style="height: 49px;">
+                            <input type="number" class="form-control" value="{{ $birth->fatherIdentity }}" name="fatherIdentity" autocomplete="off">
                           </div>
                           <div class="mb-3">
-                            <div class="control-group" id="toastTypeGroup">
-                              <div class="controls">
-                                <label class="d-block mb-2">الجنس :</label>
-                                <label class="form-control" value="" style="height: 49px;">
-                              </div>
-                            </div>
-                          </div>
+                            <label class="form-label" for="exampleInputEmail1">الجنس:</label>
+                            <select name="gender" class="form-control"  required style="height: 50px;">
+                                <option disabled>--اختر الجنس--</option>
+                                <option value="1">ذكر</option>
+                                <option value="0" {{ $birth->gender == 0 ? 'selected' : '' }}>أنثى</option>
+                            </select>
+                        </div>
                     </div>
                 </div>
                 <h5>- واقعة الميلاد :</h5>
@@ -83,13 +83,18 @@
                     <div class="col-md-6 mb-30">
                           <div class="mb-3">
                               <label class="form-label" for="exampleInputEmail1">تاريخ الميلاد بالأحرف :</label>
-                              <label class="form-control" value="" style="height: 49px;">
+                              <input type="text" class="form-control" value="{{ $birth->birthDataChar }}" name="birthDataChar" autocomplete="off">
                             </div>
                             <div class="mb-3">
                                 <div class="control-group" id="toastTypeGroup">
                                   <div class="controls">
                                     <label class="d-block mb-2">مكان الولادة :</label>
-                                    <label class="form-control" value="" style="height: 49px;">
+                                    <label class="radio mb-2">
+                                      <input type="radio" name="birthPlace" value="1" {{ $birth->birthPlace == 1 ? 'checked' : '' }}/>داخل المؤسسه الصحيه
+                                    </label>
+                                    <label class="radio mb-2">
+                                      <input type="radio" name="birthPlace" value="2" {{ $birth->birthPlace == 2 ? 'checked' : '' }}/>خارج المؤسسه الصحيه
+                                    </label>
                                   </div>
                                 </div>
                               </div>
@@ -97,7 +102,9 @@
                     <div class="col-md-6 mb-30">
                         <div class="mb-3">
                             <label class="form-label" for="exampleInputEmail1">تاريخ الميلاد بالأرقام :</label>
-                            <label class="form-control" value="" style="height: 49px;">
+                            <div class="input-group" data-date="23/11/2018" data-date-format="mm/dd/yyyy">
+                                <input type="text" class="form-control range-to" value="{{ $birth->birthDataNum }}" name="birthDataNum"  data-date-format="mm/dd/yyyy">
+                            </div>
                           </div>
                     </div>
                 </div>
@@ -107,13 +114,13 @@
                     <div class="col-md-6 mb-30">
                         <div class="mb-3">
                             <label class="form-label" for="exampleInputEmail1">الإسم :</label>
-                            <label class="form-control" value="" style="height: 49px;">
+                            <input type="text" class="form-control" value="{{ $birth->informerNmae }}" name="informerNmae" autocomplete="off">
                         </div>
                     </div>
                     <div class="col-md-6 mb-30">
                         <div class="mb-3">
                             <label class="form-label" for="exampleInputEmail1">الرقم الوطني :</label>
-                            <label class="form-control" value="" style="height: 49px;">
+                            <input type="number" class="form-control" value="{{ $birth->informerIdentity }}" name="informerIdentity" autocomplete="off">
                           </div>
                     </div>
                 </div>
@@ -123,22 +130,20 @@
                     <div class="col-md-6 mb-30">
                         <div class="mb-3">
                             <label class="form-label" for="exampleInputEmail1">الإسم :</label>
-                            <label class="form-control" value="" style="height: 49px;">
+                            <input type="text" class="form-control" value="{{ $birth->documentEditorName }}" name="documentEditorName" autocomplete="off">
                         </div>
                     </div>
                     <div class="col-md-6 mb-30">
                         <div class="mb-3">
                             <label class="form-label" for="exampleInputEmail1">الرقم الوطني :</label>
-                            <label class="form-control" value="" style="height: 49px;">
-                          </div>
+                            <input type="number" class="form-control" value="{{ $birth->documentEditorIdentity }}" name="documentEditorIdentity" autocomplete="off">
+                        </div>
                     </div>
                 </div>
                 <center>
-                    <button type="submit" class="btn btn-success">
-                    طباعه  <i class="fa fa-print"></i>
-                    </button>
+                    <button type="submit" class="btn btn-info btn-block" onclick="printpage()"><i class=" fa fa-print"></i> طباعه</button>
                 </center>
-              </form>
+            </form>
         </div>
       </div>
     </div>
@@ -148,4 +153,9 @@
 @section('js')
 @toastr_js
 @toastr_render
+<script>
+    function printpage() {
+            window.print();
+        }
+</script>
 @endsection

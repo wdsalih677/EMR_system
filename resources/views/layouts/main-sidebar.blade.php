@@ -169,6 +169,15 @@
                                     <li> <a href="{{ route('death.index') }}">وثيقة اخبالا وفاة</a> </li>
                                 </ul>
                             </li>
+                            <li>
+                                <a href="javascript:void(0);" data-toggle="collapse" data-target="#archive"> أرشيف المواليد و الوفيات<div class="pull-right"><i class="ti-plus"></i></div>
+                                    <div class="clearfix"></div>
+                                </a>
+                                <ul id="archive" class="collapse">
+                                    <li> <a href="{{ route('birthArchive.index') }}">أرشيف المواليد</a> </li>
+                                    <li> <a href="#">أرشيف الوفيات</a> </li>
+                                </ul>
+                            </li>
                         </ul>
                     </li>
                 </ul>
