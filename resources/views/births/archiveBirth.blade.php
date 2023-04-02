@@ -2,7 +2,7 @@
 @section('css')
     @toastr_css
 @section('title')
-وثيقة إخبار الولادة
+إرشيف المواليد
 @stop
 @endsection
 @section('page-header')
