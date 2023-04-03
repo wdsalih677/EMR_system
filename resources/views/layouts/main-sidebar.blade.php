@@ -166,7 +166,7 @@
                                 </a>
                                 <ul id="errore" class="collapse">
                                     <li> <a href="{{ route('birth.index') }}">وثيقة إخبار ولادة</a> </li>
-                                    <li> <a href="{{ route('death.index') }}">وثيقة اخبالا وفاة</a> </li>
+                                    <li> <a href="{{ route('death.index') }}">وثيقة اخبار وفاة</a> </li>
                                 </ul>
                             </li>
                             <li>
@@ -175,7 +175,7 @@
                                 </a>
                                 <ul id="archive" class="collapse">
                                     <li> <a href="{{ route('birthArchive.index') }}">أرشيف المواليد</a> </li>
-                                    <li> <a href="#">أرشيف الوفيات</a> </li>
+                                    <li> <a href="{{ route('birthArchive.create') }}">أرشيف الوفيات</a> </li>
                                 </ul>
                             </li>
                         </ul>

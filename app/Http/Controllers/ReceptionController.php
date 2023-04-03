@@ -129,7 +129,7 @@ class ReceptionController extends Controller
     {
         $role =  [
             'name'   => 'required|min:2|max:100',
-            'identity_num' => 'required|numeric|digits_between:10,16',
+            'identity_num' => 'required|numeric|digits_between:10,16|unique:tickets,identity_num,'.$id,
             'address'=>'required',
             'gender'=>'required',
             'age'=>'required|numeric|digits_between:0,150',
@@ -140,7 +140,6 @@ class ReceptionController extends Controller
         ];
         $messages =[
             'name.required'=>'يجب إدخال اسم المريض',
-            'name.unique'=>'إسم المريض مكرر',
             'name.min'=>'يجب أن لا يقل اسم المريض عن حرفين',
 
             'identity_num.required'=>'يجب إدخال الرقم الوطني',
@@ -153,7 +152,7 @@ class ReceptionController extends Controller
             'gender.required'=>'يجب إدخال الجنس',
 
             'age.required'=>'يجب إدخال العمر ',
-            'age.digits_between'=>'يجب أن لا يكون العمر عدد سالب يكون رقم الهاتف 9 ارقام فقط',
+            'age.digits_between'=>'يجب أن لا يكون العمر عدد سالب و ان لا يقل عن 1',
             'age.numeric'=>'يجب إدخال ارقام',
             'age_type.required'=>'يجب تحديد نوع العمر',
 

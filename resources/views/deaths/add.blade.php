@@ -36,32 +36,34 @@
             <center>
                 <h5 class="card-title">وثيقة إخبار وفاة</h5>
             </center>
-            <form>
+            <form action="{{ route('death.store') }}" method="POST">
+                @csrf
                 <h5>- بيانات المتوفي :</h5>
                 <br><br>
                 <div class="mb-3">
                     <label class="form-label" for="exampleInputEmail1">إسم المتوفي :</label>
-                    <input type="text" class="form-control" aria-describedby="emailHelp" autocomplete="off"  style="width: 49%;">
+                    <input type="text" class="form-control" name="lateName" autocomplete="off"  style="width: 49%;" required>
+                    {{-- letaName == إسم المتوفي --}}
                   </div>
                 <div class="row">
                     <div class="col-md-6 mb-30">
                           <div class="mb-3">
                               <label class="form-label" for="exampleInputEmail1">الرقم الوطني :</label>
-                              <input type="number" class="form-control" aria-describedby="emailHelp" autocomplete="off">
+                              <input type="number" class="form-control" name="lateIdentity" autocomplete="off" required>
                             </div>
                             <div class="mb-3">
                               <label class="form-label" for="exampleInputEmail1">إسم الأب :</label>
-                              <input type="text" class="form-control" aria-describedby="emailHelp" autocomplete="off" placeholder="أدخل إسم الأب رباعي">
+                              <input type="text" class="form-control" name="fatherName" autocomplete="off" placeholder="أدخل إسم الأب رباعي" required>
                             </div>
                             <div class="mb-3">
                               <div class="control-group" id="toastTypeGroup">
                                 <div class="controls">
                                   <label class="d-block mb-2">الجنس :</label>
                                   <label class="radio mb-2">
-                                    <input type="radio" name="toasts" value="success" checked />زكر
+                                    <input type="radio" name="gender" value="1" checked />زكر
                                   </label>
                                   <label class="radio mb-2">
-                                    <input type="radio" name="toasts" value="info" />أنثى
+                                    <input type="radio" name="gender" value="0" />أنثى
                                   </label>
                                 </div>
                               </div>
@@ -69,12 +71,21 @@
                     </div>
                     <div class="col-md-6 mb-30">
                         <div class="mb-3">
-                          <label class="form-label" for="exampleInputEmail1">العمر :</label>
-                          <input type="number" class="form-control" aria-describedby="emailHelp" autocomplete="off">
+                          <label class="form-label" for="exampleInputEmail1">المهنة :</label>
+                          <input type="text" class="form-control" name="job" autocomplete="off" required>
                         </div>
                         <div class="mb-3">
-                          <label class="form-label" for="exampleInputEmail1">المهنة :</label>
-                          <input type="text" class="form-control" aria-describedby="emailHelp" autocomplete="off">
+                          <label class="form-label"  for="exampleInputEmail1">العمر :</label>
+                          <input type="number" class="form-control" name="age" autocomplete="off" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="exampleInputEmail1">نوع العمر :</label>
+                            <select name="age_type" class="form-control" required style="height: 50px;" required>
+                                <option selected disabled>--سنه - شهر  يوم--</option>
+                                <option value="1">سنه</option>
+                                <option value="2">شهر</option>
+                                <option value="3">يوم</option>
+                            </select>
                         </div>
                     </div>
                 </div>
@@ -84,17 +95,17 @@
                     <div class="col-md-6 mb-30">
                           <div class="mb-3">
                               <label class="form-label" for="exampleInputEmail1">تاريخ الوفاة بالأحرف :</label>
-                              <input type="text" class="form-control" aria-describedby="emailHelp" autocomplete="off">
+                              <input type="text" class="form-control" name="dateDeathChar" autocomplete="off" required>
                             </div>
                             <div class="mb-3">
                               <label class="form-label" for="exampleInputEmail1">مكان الوفاة :</label>
-                              <input type="text" class="form-control" aria-describedby="emailHelp" autocomplete="off">
+                              <input type="text" class="form-control" name="placeDeath" autocomplete="off" required>
                             </div>
                     </div>
                     <div class="col-md-6 mb-30">
                         <div class="mb-3">
                             <label class="form-label" for="exampleInputEmail1">تاريخ الوفاة بالأرقام و الزمن :</label>
-                            <input type="datetime-local" class="form-control" aria-describedby="emailHelp" autocomplete="off">
+                            <input type="datetime-local" class="form-control" name="dateDeathNum" autocomplete="off" required>
                           </div>
                     </div>
                 </div>
@@ -104,21 +115,21 @@
                     <div class="col-md-6 mb-30">
                         <div class="mb-3">
                             <label class="form-label" for="exampleInputEmail1">المرض أو الحالة المؤدية مبارشرة لأسباب الوفاة :</label>
-                            <input type="text" class="form-control" aria-describedby="emailHelp" autocomplete="off">
+                            <input type="text" class="form-control" name="caseOfDeath" autocomplete="off" required>
                         </div>
                         <div class="mb-3">
                           <label class="form-label" for="exampleInputEmail1">الأسباب الأخرى السابقه على الوفاة :</label>
-                          <input type="text" class="form-control" aria-describedby="emailHelp" autocomplete="off">
+                          <input type="text" class="form-control" name="otherCaseOfDeath" autocomplete="off" required>
                       </div>
                     </div>
                     <div class="col-md-6 mb-30">
                       <div class="mb-3">
                         <label class="form-label" for="exampleInputEmail1">الحالات المرضية إذا وجدة و التي أدت للسبب المذكور :</label>
-                        <input type="text" class="form-control" aria-describedby="emailHelp" autocomplete="off">
+                        <input type="text" class="form-control" name="pathologicalCase" autocomplete="off" required>
                       </div>
                       <div class="mb-3">
                         <label class="form-label" for="exampleInputEmail1">مضاعفات أخرى ساعدت على الوفاة و لكن لا علاقة لها بالمرض او الحالة المسببة :</label>
-                        <input type="text" class="form-control" aria-describedby="emailHelp" autocomplete="off">
+                        <input type="text" class="form-control" name="otherComplications" autocomplete="off" required>
                       </div>
                     </div>
                 </div>
@@ -128,13 +139,13 @@
                     <div class="col-md-6 mb-30">
                         <div class="mb-3">
                             <label class="form-label" for="exampleInputEmail1">الإسم :</label>
-                            <input type="text" class="form-control" aria-describedby="emailHelp" autocomplete="off">
+                            <input type="text" class="form-control" name="informerNmae" autocomplete="off" required>
                         </div>
                     </div>
                     <div class="col-md-6 mb-30">
                         <div class="mb-3">
                             <label class="form-label" for="exampleInputEmail1">الرقم الوطني :</label>
-                            <input type="number" class="form-control" aria-describedby="emailHelp" autocomplete="off">
+                            <input type="number" class="form-control" name="informerIdentity" autocomplete="off" required>
                           </div>
                     </div>
                 </div>
@@ -144,13 +155,13 @@
                     <div class="col-md-6 mb-30">
                         <div class="mb-3">
                             <label class="form-label" for="exampleInputEmail1">الإسم :</label>
-                            <input type="text" class="form-control" aria-describedby="emailHelp" autocomplete="off">
+                            <input type="text" class="form-control" name="documentEditorName" autocomplete="off" required>
                         </div>
                     </div>
                     <div class="col-md-6 mb-30">
                         <div class="mb-3">
                             <label class="form-label" for="exampleInputEmail1">الرقم الوطني :</label>
-                            <input type="number" class="form-control" aria-describedby="emailHelp" autocomplete="off">
+                            <input type="number" class="form-control" name="documentEditorIdentity" autocomplete="off" required>
                           </div>
                     </div>
                 </div>

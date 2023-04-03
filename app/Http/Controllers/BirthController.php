@@ -63,7 +63,7 @@ class BirthController extends Controller
 
             'informerIdentity.digits_between'=>'يجب أن لا يتجاوز الرقم الوطني للمبلغ 16 رقم ولا يقل عن 10 أرقام',
             'informerIdentity.numeric'=>'يجب إدخال ارقام',
-
+            
             'documentEditorIdentity.digits_between'=>'يجب أن لا يتجاوز الرقم الوطني لمحرر الوثيقه 16 رقم ولا يقل عن 10 أرقام',
             'documentEditorIdentity.numeric'=>'يجب إدخال ارقام',
 
@@ -210,20 +210,20 @@ class BirthController extends Controller
             'birthDataNum.required' => 'يجب إدخال الميلاد بالأرقام',
             'birthPlace.required' => 'يجب إدخال مكان الميلاد',
 
-            'newBornName.min' => 'يجب إدخال اسم المولود رباعي',
-            'newBornName.max' => 'يجب ان لا يتجاوز اسم المولود 100 حرف',
+            'newBornName.required' => 'يجب إدخال اسم المولود رباعي',
+            'newBornName.min' => 'يجب ان لا يقل اسم المولود 1 حرف',
 
-            'nameMother.min' => 'يجب ادخال اسم الأم رباعي',
-            'nameMother.max' => 'يجب ان لا يتجاوز اسم الأم ال 100 حرف',
+            'nameMother.required' => 'يجب ادخال اسم الأم رباعي',
+            'nameMother.min' => 'يجب ان لا يقل اسم الأم ال 1 حرف',
 
-            'namefather.min' => 'يجب ادخال اسم الأب رباعي',
-            'namefather.max' => 'يجب ان لا يتجاوز اسم الأب ال 100 حرف',
+            'namefather.required' => 'يجب ادخال اسم الأب رباعي',
+            'namefather.min' => 'يجب ان لا يقل اسم الأب ال 1 حرف',
 
-            'informerNmae.min' => 'يجب ادخال اسم المبلغ رباعي',
-            'informerNmae.max' => 'يجب ان لا يتجاوز اسم المبلغ ال 100 حرف',
+            'informerNmae.required' => 'يجب ادخال اسم المبلغ رباعي',
+            'informerNmae.min' => 'يجب ان لا يقل اسم المبلغ ال 1 حرف',
 
-            'documentEditorName.min' => 'يجب ادخال اسم محرر الوثيقه رباعي',
-            'documentEditorName.max' => 'يجب ان لا يتجاوز اسم محرر الوثيقه ال 100 حرف',
+            'documentEditorName.required' => 'يجب ادخال اسم محرر الوثيقه رباعي',
+            'documentEditorName.min' => 'يجب ان لا يقل اسم محرر الوثيقه ال 1 حرف',
 
         ];
         //validate
@@ -275,5 +275,5 @@ class BirthController extends Controller
             return redirect()->route('birth.index');
         }
     }
-    
+
 }

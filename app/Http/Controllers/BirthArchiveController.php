@@ -1,8 +1,13 @@
 <?php
-
+// **********************************************************************************************
+// **********************************************************************************************
+// *********************  Controoler to archive births & deaths   *******************************
+// **********************************************************************************************
+// **********************************************************************************************
 namespace App\Http\Controllers;
 
 use App\Models\Birth;
+use App\Models\Death;
 use Illuminate\Http\Request;
 
 class BirthArchiveController extends Controller
@@ -16,5 +21,9 @@ class BirthArchiveController extends Controller
     {
         $births = Birth::onlyTrashed()->get();
         return view('births.archiveBirth',compact('births'));
+    }
+    public function create(){
+        $deaths = Death::onlyTrashed()->get();
+        return view('deaths.archiveDeath',compact('deaths'));
     }
 }
