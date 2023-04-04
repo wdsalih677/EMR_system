@@ -11,6 +11,10 @@ use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware('role:Admin');
+    }
 /**
 * Display a listing of the resource.
 *
@@ -82,8 +86,8 @@ return view('users.show',compact('user'));
 */
 public function edit($id)
 {
-$user = User::find($id);
-$roles = Role::pluck('name','name')->all();
+$user = User::findOrFail($id);
+$roles = Role::all();
 $userRole = $user->roles->pluck('name','name')->all();
 return view('users.edit',compact('user','roles','userRole'));
 }
@@ -96,6 +100,7 @@ return view('users.edit',compact('user','roles','userRole'));
 */
 public function update(Request $request, $id)
 {
+    // dd($request);
     $role =  [
         'name'   => 'required|min:3|max:100',
         'email' => 'required|max:255',
@@ -115,14 +120,17 @@ public function update(Request $request, $id)
         return redirect()->back()->withErrors( $validator)->withInput($request->all());
     }
     //update
-    $users = User::findOrFail($request->id);
+    $users = User::findOrFail($id);
+
     $users->update([
         'name'=>$request->name,
         'email'=>$request->email,
-        'password'=>$request->password,
+        'password'=>Hash::make($request->password),
         'Status'=>$request->Status,
         'roles_name'=>$request->roles_name
     ]);
+    DB::table('model_has_roles')->where('model_id',$id)->delete();
+    $users->assignRole($request->input('roles_name'));
     toastr()->success("تم تعديل المستخدم بنجاح");
     return redirect()->route('users.index');
 // $this->validate($request, [
@@ -152,8 +160,7 @@ public function update(Request $request, $id)
 */
 public function destroy(Request $request)
 {
-    $doctors = User::findOrFail($request->id);
-    $doctors->delete();
+    User::findOrFail($request->id)->delete();
     toastr()->success("تم حذف المستخدم بنجاح");
     return redirect()->route('users.index');
 }

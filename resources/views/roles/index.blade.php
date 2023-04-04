@@ -52,12 +52,11 @@
                     <td>{{ $role->id }}</td>
                     <td>{{ $role->name }}</td>
                     <td>
-                        <button type="button"
+                        <a type="button"
                             class="btn btn-info btn-sm"
-                            data-toggle="modal"
-                            data-target="#edit{{ $role->id }}"
+                            href="{{ route('roles.edit',$role->id) }}"
                             title="تعديل"><i class="fa fa-edit"></i>
-                        </button>
+                        </a>
                         @if ($role->name == 'Admin')
                         <button style="display: none;" type="button"
                             class="btn btn-danger btn-sm"
@@ -79,7 +78,7 @@
 
                     </tr>
                     <!-- start_edit_modal_doctor -->
-                        <div class="modal fade" id="edit{{ $role->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        {{-- <div class="modal fade" id="edit{{ $role->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -94,8 +93,9 @@
                                     </div>
                                     <div class="modal-body">
                                         <!-- edit_form -->
-                                        <form action="{{ route('roles.update','role') }}" method="POST">
+                                        <form action="{{ route('roles.update',$role->id) }}" method="POST">
                                             {{ method_field('patch') }}
+                                            @csrf
                                             <div class="row">
                                                 <div class="col-md-6 mb-30">
                                                     <div class="mb-3">
@@ -111,7 +111,7 @@
                                                     <div class="controls mb-2">
                                                         <label class="checkbox" for="closeButton">
                                                         @foreach ($premissions as $premission)
-                                                        <input id="closeButton" type="checkbox" name="name"  value="{{ $premission->id }}">{{ $premission->name }}
+                                                        <input id="closeButton" type="checkbox" name="name"  value="{{ $premission->id }}" {{ in_array($value->id, $rolePermissions) ? 'checked' : '' }}>{{ $premission->name }}
                                                         <br>
                                                         @endforeach
                                                         </label>
@@ -125,7 +125,7 @@
 
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                     <!-- end_edit_modal_doctor -->
                     <!-- delete_modal_doctor -->
                         <div class="modal fade" id="delete{{ $role->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

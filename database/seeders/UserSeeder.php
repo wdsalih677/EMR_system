@@ -20,7 +20,7 @@ class UserSeeder extends Seeder
             'name' => 'Ahmed',
             'email' => 'admin@gmail.com',
             'password' => bcrypt('12345678'),
-            'roles_name' => "Admin",
+            'roles_name' => ["Admin"],
             'Status' => 'Active',
             ]);
         $role = Role::create(['name' => 'Admin']);

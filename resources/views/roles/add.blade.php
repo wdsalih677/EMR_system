@@ -51,7 +51,7 @@
                         <div class="controls mb-2">
                             <label class="checkbox" for="closeButton">
                             @foreach ($premissions as $premission)
-                            <input id="closeButton" type="checkbox" name="dr_manage"  value="{{ $premission }}">{{ $premission->name }}
+                            <input id="closeButton" type="checkbox" name="permission[]"  value="{{ $premission->id }}">{{ $premission->name }}
                             <br>
                             @endforeach
                             </label>

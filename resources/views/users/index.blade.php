@@ -64,19 +64,18 @@
                     </td>
                     <td>
                         @if (!empty($datas->getRoleNames()))
-                        @foreach ($datas->getRoleNames() as $v)
-                            <label >{{ $v }}</label>
-                        @endforeach
-                    @endif
+                            @foreach ($datas->getRoleNames() as $v)
+                                <label >{{ $v }}</label>
+                            @endforeach
+                        @endif
                     </td>
                     <td>
-                        <button type="button"
+                        <a type="button"
                         class="btn btn-info btn-sm"
-                        data-toggle="modal"
-                        data-target="#edit{{ $datas->id }}"
+                        href="{{ route('users.edit',$datas->id) }}"
                         title="تعديل"><i class="fa fa-edit"></i>
-                        </button>
-                        @if ($datas->roles_name == 1)
+                        </a>
+                        @if ($datas->roles_name == ['Admin'])
                         <button style="display:none" type="button"
                         class="btn btn-danger btn-sm"
                         data-toggle="modal"
@@ -95,69 +94,6 @@
                         @endif
                     </td>
                     </tr>
-    <!-- start_edit_modal_doctor -->
-        <div class="modal fade" id="edit{{ $datas->id }}" tabindex="-1" role="dialog"
-        aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 style="font-family: 'Cairo', sans-serif;" class="modal-title"
-                        id="exampleModalLabel">
-                        تعديل المستخدم
-                    </h5>
-                    <button type="button" class="close" data-dismiss="modal"
-                        aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <!-- edit_form -->
-                    <form action="{{ route('users.update','id') }}" method="POST">
-                        {{ method_field('patch') }}
-                        @csrf
-                        <input type="hidden" name="id" value="{{ $datas->id }}">
-                        <div class="row">
-                            <div class="col">
-                                <label for="Name" class="mr-sm-2">اسم المستخدم
-                                    :</label>
-                                <input id="name" name="name" value="{{ $datas->name }}" type="text"  class="form-control" required>
-                                <label for="Name" class="mr-sm-2">البريد الإلكتروني
-                                    :</label>
-                                <input id="name" name="email" value="{{ $datas->email }}" type="email"  class="form-control" required>
-                                <label for="Name" class="mr-sm-2">كلمة السر
-                                    :</label>
-                                <input id="name" name="password" type="password"  class="form-control" required>
-                            </div>
-                            <div class="col">
-                                <label for="Name"  class="mr-sm-2">حالة المستخدم
-                                    :</label>
-                                    <select name="Status" class="form-control" required>
-                                        <option value="{{ $datas->Status }}">{{ $datas->Status }}</option>
-                                        <option>Active</option>
-                                        <option>N’t Active</option>
-                                    </select>
-                                <label for="Name" class="mr-sm-2">نوع المستخدم
-                                    :</label>
-                                    <select class="form-control" name="roles_name" required>
-                                        @foreach ($roles as $role)
-                                            <option value="{{ $role->id }}">{{ $role->name }}</option>
-                                        @endforeach
-                                    </select>                                <label for="Name" class="mr-sm-2">تأكيد كلمة السر
-                                    :</label>
-                                <input id="name" type="password" name="confirm-password" class="form-control" required>
-                            </div>
-                        </div>
-                    </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary"
-                                data-dismiss="modal">اغلاق</button>
-                            <button type="submit" class="btn btn-success">تحديث</button>
-                        </div>
-                </form>
-            </div>
-        </div>
-    </div>
-    <!-- end_edit_modal_doctor -->
     <!-- delete_modal_doctor -->
     <div class="modal fade" id="delete{{ $datas->id }}" tabindex="-1" role="dialog"
         aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -250,7 +186,7 @@
                                                 </select>
                                             <label for="Name" class="mr-sm-2">نوع المستخدم
                                                 :</label>
-                                                <select class="form-control" name="roles_name" required>
+                                                <select class="form-control" name="roles_name[]" required>
                                                     @foreach ($roles as $role)
                                                         <option value="{{ $role->id }}">{{ $role->name }}</option>
                                                     @endforeach

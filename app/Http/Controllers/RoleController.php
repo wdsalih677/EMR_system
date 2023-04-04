@@ -18,7 +18,7 @@ class RoleController extends Controller
 function __construct()
 {
 
-// $this->middleware('permission:عرض صلاحية', ['only' => ['index']]);
+$this->middleware('permission:صلاحيات المستخدمين', ['only' => ['index']]);
 // $this->middleware('permission:اضافة صلاحية', ['only' => ['create','store']]);
 // $this->middleware('permission:تعديل صلاحية', ['only' => ['edit','update']]);
 // $this->middleware('permission:حذف صلاحية', ['only' => ['destroy']]);
@@ -60,9 +60,7 @@ public function store(Request $request)
 {
     // return $request;
    $roles = Role::create([ 'name'=>$request->role_name]);
-   $roles->syncPermissions([
-
-   ]);
+   $roles->syncPermissions($request->get('permission'));
     toastr()->success("تمت إضافة الصلاحيه بنجاح");
     return redirect()->route('roles.index');
 }
@@ -84,7 +82,11 @@ public function show($id)
 */
 public function edit($id)
 {
-
+        $role = Role::findOrFail($id);
+        $premissions = Permission::get();
+        $rolePermissions = DB::table("role_has_permissions")->where("role_has_permissions.role_id",$id)->pluck('role_has_permissions.permission_id','role_has_permissions.permission_id')
+        ->all();
+        return view('roles.edit',compact('role','premissions','rolePermissions'));
 
 }
 /**
@@ -95,13 +97,13 @@ public function edit($id)
 */
 public function update(Request $request, $id)
 {
-    return $request;
-    // $premissions = Permission::findOrFail($request->id);
-    // $premissions->update([
-    //     'name'=>$request->name,
-    // ]);
-    // toastr()->success("تم تعديل الصلاحيه بنجاح");
-    // return redirect()->route('users.index');
+    // return $request;
+    $role = Role::find($id);
+    $role->name = $request->input('role_name');
+    $role->save();
+    $role->syncPermissions($request->input('permission'));
+    toastr()->success("تم تعديل الصلاحيه بنجاح");
+    return redirect()->route('roles.index');
 }
 /**
 * Remove the specified resource from storage.
