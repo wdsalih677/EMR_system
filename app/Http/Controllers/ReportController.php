@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 
 class ReportController extends Controller
 {
+    function __construct(){
+        $this->middleware('permission:أورنيك 3', ['only' => ['index']]);
+    }
     /**
      * Display a listing of the resource.
      *

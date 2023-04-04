@@ -8,6 +8,10 @@ use Illuminate\Support\Facades\Validator;
 
 class DeathController extends Controller
 {
+    function __construct(){
+
+        $this->middleware('permission:وثيقة إخبار وفاة', ['only' => ['index']]);
+    }
     /**
      * Display a listing of the resource.
      *

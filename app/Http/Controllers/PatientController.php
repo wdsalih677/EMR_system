@@ -11,6 +11,9 @@ use Illuminate\Support\Facades\Validator;
 
 class PatientController extends Controller
 {
+    function __construct(){
+        $this->middleware('permission:قائمة المرضى', ['only' => ['index']]);
+    }
     /**
      * Display a listing of the resource.
      *

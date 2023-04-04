@@ -9,6 +9,9 @@ use Illuminate\Support\Facades\Validator;
 
 class WardController extends Controller
 {
+    function __construct(){
+        $this->middleware('permission:قائمة العنابر', ['only' => ['index']]);
+    }
     /**
      * Display a listing of the resource.
      *

@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 
 class PatientFollowUpController extends Controller
 {
+    function __construct(){
+        $this->middleware('permission:قائمة المتابعه', ['only' => ['index']]);
+    }
     /**
      * Display a listing of the resource.
      *

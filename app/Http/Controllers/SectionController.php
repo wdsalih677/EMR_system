@@ -9,6 +9,9 @@ use Illuminate\Support\Facades\Validator;
 
 class SectionController extends Controller
 {
+    function __construct(){
+        $this->middleware('permission:قائمة الأقسام', ['only' => ['index']]);
+    }
     /**
      * Display a listing of the resource.
      *

@@ -8,6 +8,10 @@ use Illuminate\Support\Facades\Validator;
 
 class BirthController extends Controller
 {
+    function __construct(){
+
+        $this->middleware('permission:وثيقة إخبار ولادة', ['only' => ['index']]);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -63,7 +67,7 @@ class BirthController extends Controller
 
             'informerIdentity.digits_between'=>'يجب أن لا يتجاوز الرقم الوطني للمبلغ 16 رقم ولا يقل عن 10 أرقام',
             'informerIdentity.numeric'=>'يجب إدخال ارقام',
-            
+
             'documentEditorIdentity.digits_between'=>'يجب أن لا يتجاوز الرقم الوطني لمحرر الوثيقه 16 رقم ولا يقل عن 10 أرقام',
             'documentEditorIdentity.numeric'=>'يجب إدخال ارقام',
 

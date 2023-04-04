@@ -10,6 +10,9 @@ use Illuminate\Support\Facades\Validator;
 
 class PatientFinalDataController extends Controller
 {
+    function __construct(){
+        $this->middleware('permission:بيانات المريض النهائيه', ['only' => ['index']]);
+    }
     /**
      * Display a listing of the resource.
      *

@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 
 class BirthDeathReportController extends Controller
 {
+    function __construct(){
+
+        $this->middleware('permission:المواليد و الوفيات', ['only' => ['index']]);
+    }
     /**
      * Display a listing of the resource.
      *

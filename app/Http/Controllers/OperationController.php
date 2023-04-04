@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 
 class OperationController extends Controller
 {
+    function __construct(){
+        $this->middleware('permission:قائمة العمليات', ['only' => ['index']]);
+    }
     /**
      * Display a listing of the resource.
      *

@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 
 class IntensiveCareController extends Controller
 {
+    function __construct(){
+
+        $this->middleware('permission:قائمة التنويم', ['only' => ['index']]);
+    }
     /**
      * Display a listing of the resource.
      *

@@ -12,6 +12,11 @@ use Illuminate\Http\Request;
 
 class BirthArchiveController extends Controller
 {
+    function __construct(){
+
+        $this->middleware('permission:إرشيف المواليد', ['only' => ['index']]);
+
+    }
     /**
      * Display a listing of the resource.
      *

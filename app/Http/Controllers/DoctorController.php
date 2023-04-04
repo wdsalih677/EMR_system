@@ -8,6 +8,11 @@ use Illuminate\Support\Facades\Validator;
 
 class DoctorController extends Controller
 {
+    function __construct(){
+
+        $this->middleware('permission:قائمة الأطباء', ['only' => ['index']]);
+    }
+
     public function index()
     {
         $doctors =Doctor::get();

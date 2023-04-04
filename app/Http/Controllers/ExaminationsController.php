@@ -10,6 +10,10 @@ use Illuminate\Support\Facades\Validator;
 
 class ExaminationsController extends Controller
 {
+    function __construct(){
+
+        $this->middleware('permission:قائمة الفحوصات', ['only' => ['index']]);
+    }
     /**
      * Display a listing of the resource.
      *

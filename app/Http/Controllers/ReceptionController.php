@@ -9,6 +9,9 @@ use Illuminate\Support\Facades\Validator;
 
 class ReceptionController extends Controller
 {
+    function __construct(){
+        $this->middleware('permission:بيانات المريض الأوليه', ['only' => ['index']]);
+    }
     /**
      * Display a listing of the resource.
      *

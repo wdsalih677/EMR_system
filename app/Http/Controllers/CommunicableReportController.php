@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 
 class CommunicableReportController extends Controller
 {
+    function __construct(){
+
+        $this->middleware('permission:الأمراض الساريه و الغير ساريه', ['only' => ['index']]);
+    }
     /**
      * Display a listing of the resource.
      *

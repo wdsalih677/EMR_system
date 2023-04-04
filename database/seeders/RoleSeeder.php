@@ -18,5 +18,7 @@ class RoleSeeder extends Seeder
         Role::create(['name' => 'Medical_laboratory']);//أخصائي المختبرات
         Role::create(['name' => 'Nurse']);//الممرض
         Role::create(['name' => 'Statisticians']);//الإحصاء
+        Role::create(['name' => 'surgeon']);//طبيب جراح
+        Role::create(['name' => 'Medical_Director']);//مدير طبي
     }
 }

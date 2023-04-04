@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 
 class MedicalRecordController extends Controller
 {
+    function __construct(){
+
+        $this->middleware('permission:السجلات الطبيه', ['only' => ['index']]);
+    }
     /**
      * Display a listing of the resource.
      *

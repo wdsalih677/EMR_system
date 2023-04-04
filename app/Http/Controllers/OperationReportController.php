@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 
 class OperationReportController extends Controller
 {
+
+    function __construct(){
+        $this->middleware('permission:الجراحه و التدخلات الطبيه', ['only' => ['index']]);
+    }
     /**
      * Display a listing of the resource.
      *
