@@ -1,6 +1,7 @@
 @extends('layouts.master')
 @section('css')
     @toastr_css
+    @livewireStyles
 @section('title')
 بيانات العمليه
 @stop
@@ -36,57 +37,47 @@
             <center>
                 <h5 class="card-title">بيانات العمليه</h5>
             </center>
-            <form>
-                <div class="mb-3">
-                    <label class="form-label" for="exampleInputEmail1">رقم الذكره :</label>
-                    <input id="name" type="number" name="Class_name" class="form-control" style="width: 49%;">
-                </div>
+            <form action="{{ route('operation.store') }}" method="POST" enctype="multipart/form-data" autocomplete="off">
+                @csrf
+                @livewire('opration')
                 <div class="row">
                     <div class="col-md-6 mb-30">
                         <div class="mb-3">
-                            <label class="form-label" for="exampleInputEmail1">اسم :</label>
-                            <label class="form-control" value="">
-                        </div>
-                        <div class="mb-3">
                             <label class="form-label" for="exampleInputEmail1">إسم العمليه | Operation name :</label>
-                            <input id="name" type="text" name="Class_name" class="form-control">
+                            <input type="text" name="operationName" class="form-control" required>
                         </div>
                         <div class="mb-3">
                             <label class="form-label" for="exampleInputEmail1">المساعد | Assistant :</label>
-                            <input id="name" type="text" name="Class_name" class="form-control">
+                            <input type="text" name="Assistant" class="form-control" required>
                         </div>
                         <div class="mb-3">
                             <label class="form-label" for="exampleInputEmail1">نوع التخدير | Ansesthesia :</label>
-                            <input id="name" type="فثءف" name="Class_name" class="form-control">
+                            <input type="فثءف" name="Ansesthesia" class="form-control" required>
                         </div>
                     </div>
                     <div class="col-md-6 mb-30">
                         <div class="mb-3">
-                            <label class="form-label" for="exampleInputEmail1">العمر :</label>
-                            <label class="form-control" value="">
-                          </div>
-                          <div class="mb-3">
                             <label class="form-label" for="exampleInputEmail1">الجراح | Surgion :</label>
-                            <input id="name" type="text" name="Class_name" class="form-control">
+                            <input type="text" name="Surgion" class="form-control" required>
                         </div>
                         <div class="mb-3">
                             <label class="form-label" for="exampleInputEmail1">المخدر | Anaesthetest :</label>
-                            <input id="name" type="text" name="Class_name" class="form-control">
+                            <input type="text" name="Anaesthetest" class="form-control" required>
                         </div>
                         <div class="mb-3">
                             <label class="form-label" for="exampleInputEmail1">التاريخ و الزمن</label>
-                            <input id="name" type="datetime-local" name="Class_name" class="form-control">
+                            <input type="datetime-local" name="dateTime" class="form-control" required>
                         </div>
                     </div>
                 </div>
                 <div class="mt-15">
                     <label class="form-label" for="exampleInputEmail1">الإقرار الطبي :</label>
-                    <input type="file" class="form-control" id="customFileLang" lang="ar">
-                  </div>
+                    <input type="file" class="form-control" name="medicalDeclaration" lang="ar" required>
+                </div>
                   <br>
                 <div class="mb-3">
                     <label class="form-label" for="exampleFormControlTextarea1">إجراءات العمليه | Operation Procedures :</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" ></textarea>
+                    <textarea class="form-control" name="OperationProcedures" rows="3" required></textarea>
                 </div>
                 <br>
                 <center>
@@ -102,4 +93,5 @@
 @section('js')
 @toastr_js
 @toastr_render
+@livewireScripts
 @endsection

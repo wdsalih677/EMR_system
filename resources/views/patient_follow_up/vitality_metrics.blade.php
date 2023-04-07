@@ -6,11 +6,11 @@
                 <div class="form-row">
                     <div class="col">
                         <label class="form-label" for="exampleInputEmail1">النبض | Pulse :</label>
-                        <input type="number" wire-model="Pulse" name="Pulse" class="form-control">
+                        <input type="number" wire:loading wire-model="Pulse" name="Pulse" class="form-control">
                     </div>
                     <div class="col">
                         <label class="form-label" for="exampleInputEmail1">الزمن :</label>
-                        <input  type="text" wire-model="Pulse_time" name="Pulse_time" class="form-control">
+                        <input  type="text" wire:loading wire-model="Pulse_time" name="Pulse_time" class="form-control">
                     </div>
                 </div>
                 <div class="form-row">
@@ -46,7 +46,7 @@
                 <div class="form-row">
                     <div class="col">
                         <label class="form-label" >البطن | ABD :</label>
-                            <input  type="number" name="ABD" class="form-control">
+                            <input  type="number" wire-model="ABD" name="ABD" class="form-control">
                     </div>
                     <div class="col">
                         <label class="form-label" >الزمن :</label>

@@ -36,57 +36,50 @@
             <center>
                 <h5 class="card-title">تعديل بيانات العمليه</h5>
             </center>
-            <form>
-                <div class="mb-3">
-                    <label class="form-label" for="exampleInputEmail1">رقم الذكره :</label>
-                    <input id="name" type="number" name="Class_name" class="form-control" style="width: 49%;">
-                </div>
+            <form action="{{ route('operation.update',$operation->id) }}" method="POST">
+                {{ method_field('patch') }}
+                @csrf
                 <div class="row">
                     <div class="col-md-6 mb-30">
                         <div class="mb-3">
-                            <label class="form-label" for="exampleInputEmail1">اسم :</label>
-                            <label class="form-control" value="">
+                            <label class="form-label" for="exampleInputEmail1">الإسم :</label>
+                            <input type="text" class="form-control" name="name"  value="{{ $operation->tickets->name }}"  disabled>
                         </div>
                         <div class="mb-3">
                             <label class="form-label" for="exampleInputEmail1">إسم العمليه | Operation name :</label>
-                            <input id="name" type="text" name="Class_name" class="form-control">
+                            <input  type="text" name="operationName" value="{{ $operation->operationName }}" class="form-control">
                         </div>
                         <div class="mb-3">
                             <label class="form-label" for="exampleInputEmail1">المساعد | Assistant :</label>
-                            <input id="name" type="text" name="Class_name" class="form-control">
+                            <input  type="text" name="Assistant" value="{{ $operation->Ansesthesia }}" class="form-control">
                         </div>
                         <div class="mb-3">
                             <label class="form-label" for="exampleInputEmail1">نوع التخدير | Ansesthesia :</label>
-                            <input id="name" type="فثءف" name="Class_name" class="form-control">
+                            <input  type="فثءف" name="Ansesthesia" value="{{ $operation->Ansesthesia }}" class="form-control">
                         </div>
                     </div>
                     <div class="col-md-6 mb-30">
                         <div class="mb-3">
                             <label class="form-label" for="exampleInputEmail1">العمر :</label>
-                            <label class="form-control" value="">
-                          </div>
-                          <div class="mb-3">
+                            <input type="text" class="form-control" name="age"  value="{{ $operation->tickets->age }}"  disabled>
+                        </div>
+                        <div class="mb-3">
                             <label class="form-label" for="exampleInputEmail1">الجراح | Surgion :</label>
-                            <input id="name" type="text" name="Class_name" class="form-control">
+                            <input  type="text" name="Surgion" value="{{ $operation->Surgion }}" class="form-control">
                         </div>
                         <div class="mb-3">
                             <label class="form-label" for="exampleInputEmail1">المخدر | Anaesthetest :</label>
-                            <input id="name" type="text" name="Class_name" class="form-control">
+                            <input  type="text" name="Anaesthetest" value="{{ $operation->Anaesthetest }}" class="form-control">
                         </div>
                         <div class="mb-3">
                             <label class="form-label" for="exampleInputEmail1">التاريخ و الزمن</label>
-                            <input id="name" type="datetime-local" name="Class_name" class="form-control">
+                            <input  type="datetime-local" name="dateTime" value="{{ $operation->dateTime }}" class="form-control">
                         </div>
                     </div>
                 </div>
-                <div class="mt-15">
-                    <label class="form-label" for="exampleInputEmail1">الإقرار الطبي :</label>
-                    <input type="file" class="form-control" id="customFileLang" lang="ar">
-                  </div>
-                  <br>
                 <div class="mb-3">
                     <label class="form-label" for="exampleFormControlTextarea1">إجراءات العمليه | Operation Procedures :</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" ></textarea>
+                    <textarea class="form-control" name="OperationProcedures" rows="3" >{{ $operation->OperationProcedures}}</textarea>
                 </div>
                 <br>
                 <center>

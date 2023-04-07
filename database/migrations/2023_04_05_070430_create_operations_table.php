@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePatientsFinalDataTable extends Migration
+class CreateOperationsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,19 +13,21 @@ class CreatePatientsFinalDataTable extends Migration
      */
     public function up()
     {
-        Schema::create('patients_final_data', function (Blueprint $table) {
+        Schema::create('operations', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('ticket_id')->unsigned();
             $table->foreign('ticket_id')->references('id')->on('tickets')->onUpdate('cascade')->onDelete('cascade');
-
-			$table->bigInteger('section_id')->unsigned()->nullable();
-            $table->foreign('section_id')->references('id')->on('sections')->onUpdate('cascade')->onDelete('cascade');
-
-			$table->string('final_diagnosis', 255);
-			$table->smallInteger('residence_type');
-			$table->text('follow_up_date')->nullable();
-			$table->text('treatment_diet');
+            $table->string('ticket_num')->unique();
+            $table->string('operationName');
+            $table->string('Assistant');
+            $table->string('Ansesthesia');
+            $table->string('Surgion');
+            $table->string('Anaesthetest');
+            $table->dateTime('dateTime');
+            $table->text('OperationProcedures');
+            $table->softDeletes();
             $table->timestamps();
+
         });
     }
 
@@ -36,6 +38,6 @@ class CreatePatientsFinalDataTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('patients_final_data');
+        Schema::dropIfExists('operations');
     }
 }

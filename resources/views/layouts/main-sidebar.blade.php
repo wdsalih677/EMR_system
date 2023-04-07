@@ -145,6 +145,9 @@
                             @can('قائمة العمليات')
                             <li> <a href="{{ route('operation.index') }}">قائمة العمليات</a> </li>
                             @endcan
+                            {{-- @can('إرشيف العمليات') --}}
+                            <li> <a href="{{ route('OperationAttachment.index') }}">إرشيف العمليات</a> </li>
+                            {{-- @endcan --}}
                             @can('قائمة التنويم')
                             <li> <a href="{{ route('intensive_care.index') }}">قائمة التنويم</a> </li>
                             @endcan

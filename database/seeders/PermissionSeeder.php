@@ -31,6 +31,7 @@ class PermissionSeeder extends Seeder
             'بيانات المريض النهائيه',
             'العمليات و التنويم',
             'قائمة العمليات',
+            'إرشيف العمليات',
             'قائمة التنويم',
             'الفحوصات',
             'قائمة الفحوصات',
@@ -49,7 +50,6 @@ class PermissionSeeder extends Seeder
             'إرشيف المواليد و الوفيات',
             'إرشيف المواليد',
             'إرشيف الوفيات',
-
         ];
         foreach ($permissions as $permission) {
             Permission::create(['name' => $permission]);

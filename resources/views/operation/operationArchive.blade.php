@@ -2,7 +2,7 @@
 @section('css')
     @toastr_css
 @section('title')
-قائمة العمليات
+إرشيف العمليات
 @stop
 @endsection
 @section('page-header')
@@ -10,16 +10,15 @@
 {{-- start content --}}
 <div class="row">
     <div class="col-sm-6">
-        <h4 class="mb-0">قائمة العمليات</h4>
+        <h4 class="mb-0">إرشيف العمليات</h4>
     </div>
     <div class="col-sm-6">
         <ol class="breadcrumb pt-0 pr-0 float-left float-sm-right ">
             <li class="breadcrumb-item"><a href="#" class="default-color">العمليات و التنويم</a></li>
-            <li class="breadcrumb-item active">قائمة العمليات</li>
+            <li class="breadcrumb-item active">إرشيف العمليات</li>
         </ol>
     </div>
 </div>
-
 <div class="row">
     <div class="col-xl-12 mb-30">
       <div class="card card-statistics h-100">
@@ -34,9 +33,6 @@
                 </div>
             @endif
           <div class="table-responsive">
-            <a href="{{ route('operation.create') }}" class="button x-small" >
-                إضافة عمليه
-            </a>
             <br><br>
             <table id="datatable" class="table-bordered border table table-striped dataTable p-0 text-center">
               <thead>
@@ -59,7 +55,7 @@
                     <td>{{ $operation->operationName }}</td>
                     <td>{{ $operation->Surgion }}</td>
                     <td>
-                        <a class="badge bg-success" href="{{ route('OperationAttachment.show',$operation->id) }}" style="color:white; width: 130px; height: 28px;">
+                        <a class="badge bg-success" href="{{ route('OperationAttachment.edit',$operation->id) }}" style="color:white; width: 130px; height: 28px;">
                             <label style="margin-top: 5px; font-size:15px;">
                                 الإقرار الطبي و المرفقات
                             </label>

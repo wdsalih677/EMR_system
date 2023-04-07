@@ -269,7 +269,7 @@ class BirthController extends Controller
         if($id_page==2){
 
             $birth->delete();
-            toastr()->success("تم أشرفة المولود بنجاح");
+            toastr()->success("تم أرشفة المولود بنجاح");
             return redirect()->route('birth.index');
 
         }else{

@@ -24,6 +24,7 @@ use App\Http\Controllers\ReportController;
 use App\Http\Controllers\OperationReportController;
 use App\Http\Controllers\DiseasesReportController;
 use App\Http\Controllers\NnCommunicableReportController;
+use App\Http\Controllers\OperationAttachmentController;
 use App\Http\Controllers\PatientFinalDataController;
 
 /*
@@ -95,4 +96,10 @@ Route::resource('death', DeathController::class);// الوفيات
 Route::resource('birthDeathReport', BirthDeathReportController::class);//تقرير المواليد و الوفيات
 
 Route::resource('birthArchive', BirthArchiveController::class);//ارشيف المواليد
+
+Route::resource('OperationAttachment' , OperationAttachmentController::class);//مرفقات العمليه
+
+Route::get('openFile/{teckit_number}/{file_name}',[OperationAttachmentController::class , 'openFile'])->name('openFile');//عرض الإقرار الطبي
+
+Route::get('downloadFile/{invoice_number}/{file_name}',[OperationAttachmentController::class , 'downloadFile']);//تحميل الإقرار الطبي
 
