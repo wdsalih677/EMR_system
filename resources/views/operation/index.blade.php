@@ -71,10 +71,6 @@
                                 class="btn ripple btn-info btn-sm" data-toggle="dropdown"
                                 type="button">العمليات<i class="fa fa-caret-down ml-1"></i></button>
                             <div class="dropdown-menu tx-13">
-                                    <a  class="dropdown-item" href="{{ route('operation.edit',$operation->id) }}" ><i
-                                        class="text-success fa fa-edit"></i>
-                                        تعديل بيانات العمليه
-                                    </a>
                                     <button class="dropdown-item" data-reg_id="" data-toggle="modal" data-target="#delete{{$operation->id}}" ><i
                                         class="text-danger fa fa-trash"></i>
                                         حذف

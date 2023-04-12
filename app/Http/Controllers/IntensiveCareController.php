@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Intensive;
+use App\Models\Ticket;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class IntensiveCareController extends Controller
 {
@@ -17,7 +20,9 @@ class IntensiveCareController extends Controller
      */
     public function index()
     {
-        return view('intensive_care.index');
+        $Intensives = Intensive::get();
+        // return $Intensives;
+        return view('intensive_care.index',compact('Intensives'));
     }
 
     /**
@@ -38,7 +43,26 @@ class IntensiveCareController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $role = [
+            'teckit_num'=>'required|unique:intensives',
+            'patient_status'=>'required',
+        ];
+        $messages = [
+            'teckit_num.required'=>'يجب إدخال رقم التذكره',
+            'teckit_num.unique'=>'رقم التذكره مكرر',
+            'patient_status.required'=>'يجب إدخال حالة المريض',
+        ];
+        $validator = Validator::make($request->all(),$role,$messages);
+        if($validator  -> fails()){
+            return redirect()->back()->withErrors( $validator)->withInput($request->all());
+        }
+        Intensive::create([
+            'ticket_id'=>$request->teckit_id,
+            'teckit_num'=>$request->teckit_num,
+            'patient_status'=>$request->patient_status
+        ]);
+        toastr()->success("تمت إضافة المريض بنجاح");
+        return redirect()->route('intensive_care.index');
     }
 
     /**
@@ -72,7 +96,22 @@ class IntensiveCareController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $role = [
+            'patient_status'=>'required',
+        ];
+        $messages = [
+            'patient_status.required'=>'يجب إدخال حالة المريض',
+        ];
+        $validator = Validator::make($request->all(),$role,$messages);
+        if($validator  -> fails()){
+            return redirect()->back()->withErrors( $validator)->withInput($request->all());
+        }
+        $intensive = Intensive::findOrFail($id);
+        $intensive->update([
+            'patient_status'=>$request->patient_status
+        ]);
+        toastr()->success("تمت تعديل المريض بنجاح");
+        return redirect()->route('intensive_care.index');
     }
 
     /**

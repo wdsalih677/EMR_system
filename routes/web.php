@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\archiveBirthController;
+use App\Http\Controllers\BiometricsController;
 use App\Http\Controllers\BirthArchiveController;
 use App\Http\Controllers\BirthController;
 use App\Http\Controllers\BirthDeathReportController;
@@ -103,3 +104,4 @@ Route::get('openFile/{teckit_number}/{file_name}',[OperationAttachmentController
 
 Route::get('downloadFile/{invoice_number}/{file_name}',[OperationAttachmentController::class , 'downloadFile']);//تحميل الإقرار الطبي
 
+Route::resource('biometrics', BiometricsController::class);//العلامات الحيويه

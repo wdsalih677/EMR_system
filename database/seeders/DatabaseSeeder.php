@@ -19,6 +19,13 @@ class DatabaseSeeder extends Seeder
             PermissionSeeder::class,
             RoleSeeder::class,
             UserSeeder::class,
+            SectionSeeder::class,
+            TicketSeeder::class,
+            Pre_diagnosisSeeder::class,
+            ExaminationSeeder::class,
+            PatientFinalDataSeeder::class
+
+
         ]);
     }
 }
