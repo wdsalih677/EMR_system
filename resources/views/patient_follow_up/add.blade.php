@@ -34,9 +34,32 @@
                         </ul>
                     </div>
                 @endif
-                <form action="">
+                <form action="{{ route('patient_follow_up.store') }}" method="POST">
                     @csrf
+
                     @livewire('patient-follow-up')
+                    <div class="form-group">
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="mb-3">
+                                        <label class="form-label" for="exampleInputEmail1"> <span style="color:red;">*</span> العنبر :</label>
+                                        <select name="ward_id" wire:model="ward_id" class="form-control"  required style="height: 50px;">
+                                            <option selected disabled>--اختر العنبر--</option>
+                                            @foreach ($wards as $ward)
+                                                <option value="{{ $ward->id }}">{{ $ward->name}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <label for="exampleFormControlTextarea1">الملاحظات</label>
+                            <textarea class="form-control" wire:model="notes" name="notes" id="exampleFormControlTextarea1" rows="4" style="height: 120px;"></textarea>
+                        </div>
+                        <center>
+                            <button type="submit" class="btn btn-success">إضافه</button>
+                        </center>
+                    </div>
                 </form>
             </div>
         </div>

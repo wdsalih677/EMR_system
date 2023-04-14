@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\PatientFollowUp;
 use App\Models\Ward;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class PatientFollowUpController extends Controller
 {
@@ -17,7 +19,9 @@ class PatientFollowUpController extends Controller
      */
     public function index()
     {
-        return view('patient_follow_up.index');
+        $followUp = PatientFollowUp::get();
+        $wards = Ward::get();
+        return view('patient_follow_up.index',compact('followUp','wards'));
     }
 
     /**
@@ -39,7 +43,17 @@ class PatientFollowUpController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // return $request;
+        PatientFollowUp::create([
+            'teckit_num'=>$request->teckit_num,
+            'ticket_id'=>$request->teckit_id,
+            'ward_id'=>$request->ward_id,
+            'residence_type'=>$request->residence_type,
+            'final_diagnosis'=>$request->final_diagnosis,
+            'notes'=>$request->notes
+        ]);
+        toastr()->success("تم إضافة المريض بنجاح");
+        return redirect()->route('patient_follow_up.index');
     }
 
     /**
@@ -73,7 +87,26 @@ class PatientFollowUpController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $role = [
+            'ward_id'=>'required',
+            'notes'=>'required',
+        ];
+        $messages = [
+            'ward_id.required' => 'يجب إختيار العنبر',
+            'notes.required' => 'يجب إدخال الملاحظات',
+
+        ];
+        $validator = Validator::make($request->all(),$role,$messages);
+        if($validator  -> fails()){
+            return redirect()->back()->withErrors( $validator)->withInput($request->all());
+        }
+        $patientsFollow = PatientFollowUp::findOrFail($id);
+        $patientsFollow->update([
+            'ward_id'=>$request->ward_id,
+            'notes'=>$request->notes
+        ]);
+        toastr()->success("تم تعديل المريض بنجاح");
+        return redirect()->route('patient_follow_up.index');
     }
 
     /**

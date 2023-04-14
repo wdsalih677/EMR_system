@@ -1,61 +1,79 @@
-<div>
-    {{-- Nothing in the world is as soft and yielding as water. --}}
-    @if (!empty($successMessage))
-    <div class="alert alert-success" id="success-alert">
-        <button type="button" class="close" data-dismiss="alert">x</button>
-        {{ $successMessage }}
-    </div>
-@endif
-
-        <div class="stepwizard">
-            <div class="stepwizard-row setup-panel">
-                <div class="stepwizard-step">
-                    <a href="#step-1" type="button"
-                       class="btn btn-circle {{ $currentStep != 1 ? 'btn-default' : 'btn-success' }}">1</a>
-                    <h5>بيانات المريض</h5>
-                </div>
-                <div class="stepwizard-step">
-                    <a href="#step-2" type="button"
-                       class="btn btn-circle {{ $currentStep != 2 ? 'btn-default' : 'btn-success' }}">2</a>
-                    <h5>المقاييس الحيويه</h5>
-                </div>
-                <div class="stepwizard-step">
-                    <a href="#step-3" type="button"
-                       class="btn btn-circle {{ $currentStep != 3 ? 'btn-default' : 'btn-success' }}"disabled="disabled">3</a>
-                    <h5>الملاحظات و العنبر</h5>
-                </div>
-            </div>
-        </div>
-
-@include('patient_follow_up.patient_data')
-@include('patient_follow_up.vitality_metrics')
-
-    @if ($currentStep != 3)
-    <div style="display: none" class="row setup-content" id="step-3">
+@if($currentStep != 1)
+    <div style="display: none" class="row setup-content" id="step-1">
         @endif
-                <div class="form-group">
-                    <div class="form-group">
-                        <div class="mb-3">
-                            <label class="form-label" for="exampleInputEmail1">العنبر:</label>
-                            <select name="ward_id" wire:model="ward_id" class="form-control"  required style="height: 50px;">
-                                <option selected disabled>--اختر العنبر--</option>
-                                @foreach ( $wards as $time)
-                                    <option value="{{ $time->id }}">{{ $time->name }}</option>
-                                @endforeach
-
-                            </select>
-                        </div>
-                        <label for="exampleFormControlTextarea1">الملاحظات</label>
-                        <textarea class="form-control" wire:model="notes" name="notes" id="exampleFormControlTextarea1" rows="4" style="height: 290px;"></textarea>
-                        @error('Address_Father')
+        <div class="col-xs-12">
+            <div class="col-md-12">
+                <br>
+                <div class="form-row">
+                    <div class="col">
+                        <label for="title">رقم التذكرة</label>
+                        <input type="text" name="teckit_num" wire:model="searchTicket" wire:keyup="getdata" class="form-control" >
+                        <input type="hidden" wire-model="id" name="teckit_id" value="{{ $teckit_id }}">
+                        @error('searchTicket')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
+                    </div>
+                    <div class="col">
+                        <label for="title">الإسم</label>
+                        <input type="text" wire-model="name" value="{{ $name }}" class="form-control" disabled>
+                        @error('name')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
+                    </div>
+                    <div class="col">
+                        <label for="title">العمر</label>
+                        <input type="number" wire-model="age" value="{{ $age }}" class="form-control" disabled>
+                        @error('age')
                         <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
                     </div>
                 </div>
-                <br>
-                <button class="btn btn-danger btn-sm nextBtn btn-lg pull-right" type="button"
-                        wire:click="back(2)" style="margin-left: 10px;">السابق</button>
-                <button class="btn btn-success btn-sm btn-lg pull-right" wire:click="submitForm"
-                        type="button">إضافه</button>
+                <div class="form-row">
+                    <div class="col">
+                        <label for="title">نوع الإقامه</label>
+                        <input type="text" wire:model="residence_type" name="residence_type" value="{{ $residence_type  }}" class="form-control" disabled>
+                        <input type="hidden" wire:model="residence_type" name="residence_type" value="{{ $residence_type  }}" class="form-control">
+                        @error('residence_type')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
+                    </div>
+                    <div class="col">
+                        <label for="title">تاريخ الدخول</label>
+                        <input type="text" wire:model="date_entry" value="{{ $date_entry }}" class="form-control" disabled>
+                        @error('date_entry')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col">
+                        <label for="title">التشخيص النهائي</label>
+                        <input type="text" wire:model="final_diagnosis" name="final_diagnosis" value="{{ $final_diagnosis }}"  class="form-control" disabled>
+                        <input type="hidden" wire:model="final_diagnosis" name="final_diagnosis" value="{{ $final_diagnosis }}"  class="form-control">
+                        @error('final_diagnosis')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
+                    </div>
+                    <div class="col">
+                        <label for="title">القسم</label>
+                        <input type="text" wire:model="section_id" value="{{ $section_id }}" class="form-control" disabled>
+                        @error('section_id')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlTextarea1">العلاج و التغذيه | Treatment & Diet :</label>
+                    <textarea class="form-control" wire:model="treatment_diet" value="{{ $treatment_diet }}" disabled id="exampleFormControlTextarea1" rows="4" style="height: 290px;"></textarea>
+                    @error('treatment_diet')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
+                </div>
+                    {{-- <button class="btn btn-success btn-sm nextBtn btn-lg pull-right" wire:click="firstStepSubmit"
+                            type="button">التالي
+                    </button> --}}
+            </div>
+        </div>
+    @if($currentStep != 1)
     </div>
-</div>
+    @endif

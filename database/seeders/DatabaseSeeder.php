@@ -23,8 +23,8 @@ class DatabaseSeeder extends Seeder
             TicketSeeder::class,
             Pre_diagnosisSeeder::class,
             ExaminationSeeder::class,
-            PatientFinalDataSeeder::class
-
+            PatientFinalDataSeeder::class,
+            WardSeeder::class,
 
         ]);
     }

@@ -40,8 +40,7 @@ class PatientFollowUp extends Component
 
     public function render()
     {
-        $wards = Ward::get();
-        return view('livewire.patient-follow-up',compact('wards'));
+        return view('livewire.patient-follow-up');
     }
 //end real time validation ticket
 
@@ -56,7 +55,7 @@ class PatientFollowUp extends Component
             $this->name = $tik->name;
             $this->age = $tik->age;
             $this->date_entry =$tik->date_entry;
-            $this->residence_type = $tik->patientsfinaldata->residence_type;
+            $this->residence_type = $tik->patientsfinaldata->residence_type ;
             $this->final_diagnosis =$tik->patientsfinaldata->final_diagnosis;
             $this->section_id =$tik->patientsfinaldata->section_id;
             $this->treatment_diet =$tik->patientsfinaldata->treatment_diet;
@@ -85,21 +84,5 @@ class PatientFollowUp extends Component
             'treatment_diet'=>'required',
         ]);
         $this->currentStep = 2;
-    }
-
-    //secondStepSubmit
-    public function secondStepSubmit()
-    {
-
-        $this->currentStep = 3;
-    }
-    public function back($step)
-    {
-        $this->currentStep = $step;
-    }
-
-    //function to store
-    public function submitForm(){
-        return "jhjhjjhj";
     }
 }

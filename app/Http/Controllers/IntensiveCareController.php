@@ -122,6 +122,8 @@ class IntensiveCareController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Intensive::destroy($id);
+        toastr()->success("تمت حذف المريض بنجاح");
+        return redirect()->route('intensive_care.index');
     }
 }

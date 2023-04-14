@@ -21,10 +21,7 @@ class Ticket extends Model
     public function patientsfinaldata(){
         return $this->belongsTo(PatientFinalData::class,'id', 'ticket_id');
     }
-    // public function ticketsbio(){
-    //     return $this->belongsTo(Biometric::class,'id', 'ticket_id');
-    // }
-    // public function ticketsinten(){
-    //     return $this->belongsTo(Ticket::class,'id', 'ticket_id');
-    // }
+    public function patientsFollowUps(){
+        return $this->belongsTo(PatientFollowUp::class,'id', 'ticket_id');
+    }
 }

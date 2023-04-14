@@ -243,15 +243,6 @@
                                                         <input id="name" type="فثءف" name="final_diagnosis" class="form-control" autocomplete="off" value="{{ $tik->patientsfinaldata->final_diagnosis }}">
                                                     </div>
                                                     <div class="mb-3">
-                                                        <label class="form-label" for="exampleFormControlSelect1">العنبر :</label>
-                                                        <select class="form-control" name="ward_id" id="exampleFormControlSelect1" style="height: 50px;">
-                                                            <option value="" {{ $tik->patientsfinaldata->ward_id == NULL ? 'selected' :'' }}>لا يوجد</option>
-                                                            @foreach ($wards as $ward)
-                                                                <option value="{{ $ward->id }}" {{ $tik->patientsfinaldata->ward_id == $ward->id ? 'selected' :'' }}>{{ $ward->name }}</option>
-                                                            @endforeach
-                                                        </select>
-                                                    </div>
-                                                    <div class="mb-3">
                                                         <label class="form-label" for="exampleFormControlSelect1">القسم :</label>
                                                         <select class="form-control" name="section_id" id="exampleFormControlSelect1" style="height: 50px;">
                                                             <option value="" {{ $tik->patientsfinaldata->section_id == NULL ? 'selected' :'' }}>لا يوجد</option>
@@ -276,11 +267,11 @@
                                                             <input type="text" name="follow_up_date" class="form-control range-to"   data-date-format="mm/dd/yyyy" value="{{ $tik->patientsfinaldata->follow_up_date == NULL ? 'لا يوجد تاريخ مقابله' : $tik->patientsfinaldata->follow_up_date }}">
                                                         </div>
                                                     </div>
-                                                    <div class="mb-3">
-                                                        <label class="form-label" for="exampleFormControlTextarea1">العلاج و التغذيه | Treatment & Diet</label>
-                                                        <textarea class="form-control" name="treatment_diet" id="exampleFormControlTextarea1" style="height: 50px;">{{ $tik->patientsfinaldata->treatment_diet }}</textarea>
-                                                    </div>
                                                 </div>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label class="form-label" for="exampleFormControlTextarea1">العلاج و التغذيه | Treatment & Diet</label>
+                                                <textarea class="form-control" name="treatment_diet" id="exampleFormControlTextarea1" style="height: 100px;">{{ $tik->patientsfinaldata->treatment_diet }}</textarea>
                                             </div>
                                     </div>
                                             <div class="modal-footer">
