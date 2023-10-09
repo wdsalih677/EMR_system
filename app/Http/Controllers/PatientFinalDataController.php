@@ -6,6 +6,7 @@ use App\Models\PatientFinalData;
 use App\Models\Section;
 use App\Models\Ward;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 
 class PatientFinalDataController extends Controller
@@ -20,7 +21,31 @@ class PatientFinalDataController extends Controller
      */
     public function index()
     {
-        //
+            // $input = $request->all();
+
+            // if (!empty($input['final_diagnosis'])) {
+
+            //     $data = DB::table('diagnoses')->select(["id", "diagnoses"])
+            //         ->where("diagnoses", "LIKE", "%{$input['final_diagnosis']}%")
+            //         ->get();
+            // } else {
+
+            //     $data = DB::table('diagnoses')->select(["id", "diagnoses"])
+            //         ->get();
+            // }
+
+            // $diagnoses = [];
+
+            // if (count($data) > 0) {
+
+            //     foreach ($data as $i) {
+            //         $diagnoses[] = array(
+            //             "id" => $i->id,
+            //             "text" => $i->diagnoses,
+            //         );
+            //     }
+            // }
+            // return response()->json($diagnoses);
     }
 
     /**
@@ -28,10 +53,12 @@ class PatientFinalDataController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
         $sections = Section::get();
         $wards    = Ward::get();
+
+
         return view('patients.f_data',compact('sections','wards'));
     }
 

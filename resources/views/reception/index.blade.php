@@ -54,29 +54,24 @@
                     <td>{{ $ticket->name }}</td>
                     <td>{{ $ticket->ticket_num }}</td>
                     <td>
-                        <a class="btn btn-info btn-sm" href="{{ route('reception.edit',$ticket->id) }}" style="color: white">
-                            <i class="fa fa-edit"></i>
-                        </a>
-                        <button type="button"
-                            class="btn btn-danger btn-sm"
-                            data-toggle="modal"
-                            data-target="#delete{{ $ticket->id }}"
-                            title="حذف">
-                            <i class="fa fa-trash"></i>
-
-                        </button>
-                        <button type="button"
-                            class="btn btn-success btn-sm"
-                            data-toggle="modal"
-                            data-target="#print{{ $ticket->id }}"
-                            title="طباعه"><i
-                            class="fa fa-print"></i>
-                        </button>
-                        {{-- <a href="{{ route('reception.show',$ticket->id) }}"
-                            class="btn btn-success btn-sm"
-                            title="طباعه"><i
-                            class="fa fa-print"></i>
-                        </a> --}}
+                        <div class="dropdown">
+                            <button aria-expanded="false" aria-haspopup="true"
+                                class="btn ripple btn-info btn-sm" data-toggle="dropdown"
+                                type="button">العمليات<i class="fa fa-caret-down ml-1"></i></button>
+                            <div class="dropdown-menu tx-13">
+                                    <a class="dropdown-item" href="{{ route('reception.edit',$ticket->id) }}">
+                                        <i class="text-warning fa fa-edit"></i> تعديل
+                                    </a>
+                                    <button  class="dropdown-item" data-toggle="modal" data-target="#delete{{ $ticket->id }}" ><i
+                                        class="text-danger fa fa-trash"></i>
+                                        حذف
+                                    </button>
+                                    <button class="dropdown-item" data-reg_id="" data-toggle="modal" data-target="#print{{ $ticket->id }}" ><i
+                                        class="text-info fa fa-print"></i>
+                                        طباعه
+                                    </button>
+                            </div>
+                        </div>
                     </td>
 
                     </tr>

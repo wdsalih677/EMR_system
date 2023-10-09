@@ -25,7 +25,7 @@ class DatabaseSeeder extends Seeder
             ExaminationSeeder::class,
             PatientFinalDataSeeder::class,
             WardSeeder::class,
-
+            DiagnosisSeeder::class
         ]);
     }
 }

@@ -14,5 +14,7 @@ class Section extends Model
     public function doctors(){
         return $this->belongsTo(Doctor::class, 'doctor_id');
     }
-    
+    public function patientsfinaldata(){
+        return $this->belongsTo(PatientFinalData::class,'id', 'section_id');
+    }
 }

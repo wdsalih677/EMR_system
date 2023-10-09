@@ -5,7 +5,8 @@
  */
 
 require('./bootstrap');
-
+import $ from 'jquery';
+require('select2');
 window.Vue = require('vue').default;
 
 /**

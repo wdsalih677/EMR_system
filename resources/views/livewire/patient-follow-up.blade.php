@@ -7,7 +7,7 @@
                 <div class="form-row">
                     <div class="col">
                         <label for="title">رقم التذكرة</label>
-                        <input type="text" name="teckit_num" wire:model="searchTicket" wire:keyup="getdata" class="form-control" >
+                        <input type="text" name="teckit_num" wire:model="searchTicket" wire:keyup="getdata" class="form-control" autocomplete="off">
                         <input type="hidden" wire-model="id" name="teckit_id" value="{{ $teckit_id }}">
                         @error('searchTicket')
                         <div class="alert alert-danger">{{ $message }}</div>
@@ -31,8 +31,7 @@
                 <div class="form-row">
                     <div class="col">
                         <label for="title">نوع الإقامه</label>
-                        <input type="text" wire:model="residence_type" name="residence_type" value="{{ $residence_type  }}" class="form-control" disabled>
-                        <input type="hidden" wire:model="residence_type" name="residence_type" value="{{ $residence_type  }}" class="form-control">
+                        <input type="text" wire:model="residence_type" name="residence_type" value="{{ $residence_type }}" class="form-control" disabled>
                         @error('residence_type')
                         <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
@@ -77,3 +76,4 @@
     @if($currentStep != 1)
     </div>
     @endif
+

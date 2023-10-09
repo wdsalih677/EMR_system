@@ -45,17 +45,9 @@
                     <div class="col-md-6 mb-30">
                         <div class="mb-3">
                             <label class="form-label" for="exampleInputEmail1">التشخيص النهائي | Final Diagnosis :</label>
-                            <input id="name" type="فثءف" name="final_diagnosis" class="form-control" autocomplete="off">
+                            <input id="diagnoses_input" type="text"  name="final_diagnosis" class="form-control">
+                            {{-- <div id="diagnoses_container"></div> --}}
                         </div>
-                        {{-- <div class="mb-3">
-                            <label class="form-label" for="exampleFormControlSelect1">العنبر :</label>
-                            <select class="form-control" name="ward_id" id="exampleFormControlSelect1" style="height: 50px;">
-                                <option value="">لا يوجد</option>
-                                @foreach ($wards as $ward)
-                                    <option value="{{ $ward->id }}">{{ $ward->name }}</option>
-                                @endforeach
-                            </select>
-                        </div> --}}
                         <div class="mb-3">
                             <label class="form-label" for="exampleFormControlSelect1">القسم :</label>
                             <select class="form-control" name="section_id" id="exampleFormControlSelect1" style="height: 50px;">
@@ -103,4 +95,25 @@
     @toastr_js
     @toastr_render
     @livewireScripts
+
+    {{-- <script type="text/javascript">
+        $(document).ready(function(){
+            $('#diagnoses_input').on('input',function(){
+                var query = $(this).val();
+
+                $.ajax({
+                    url:'/final_data',
+                    data:{query: query},
+                    success:function(response){
+                        var diagnoses_list = $('<select class="form-control">');
+                        $.each(response,function(index,diagnoses){
+                            var diagnoses_item = $('<option>').text(diagnoses.diagnoses);
+                                diagnoses_list.append(diagnoses_item);
+                        });
+                        $('#diagnoses_container').html(diagnoses_list);
+                    }
+                });
+            });
+        });
+    </script> --}}
 @endsection

@@ -1,9 +1,14 @@
 <?php
 
 namespace App\Http\Livewire;
+
+use App\Models\Section;
 use App\Models\Ticket;
 use App\Models\Ward;
+use Exception;
 use Livewire\Component;
+use PhpParser\ErrorHandler\Throwing;
+use Throwable;
 
 class PatientFollowUp extends Component
 {
@@ -11,6 +16,7 @@ class PatientFollowUp extends Component
     public $searchTicket;
     public $tickets,$name,$age,$teckit_id ,$residence_type ,$date_entry ,$final_diagnosis ,$section_id ,$treatment_diet ,$notes ,$ward_id;
     public $Pulse,$Pulse_time  ,$RR,$RR_time   ,$BP,$BP_time  ,$Temp,$Temp_time  ,$ABD,$ABD_time   ,$V_Bleeding,$V_Bleeding_time  ,$U_O_P,$U_O_P_time;
+    public $createAccountError;
 
 
 //start real time validation ticket
@@ -48,27 +54,33 @@ class PatientFollowUp extends Component
     //get patient first data
     public function getdata()
     {
-        $tik = Ticket::where('ticket_num',$this->searchTicket)->first();
-        if($tik)
-        {
-            $this->teckit_id = $tik->id;
-            $this->name = $tik->name;
-            $this->age = $tik->age;
-            $this->date_entry =$tik->date_entry;
-            $this->residence_type = $tik->patientsfinaldata->residence_type ;
-            $this->final_diagnosis =$tik->patientsfinaldata->final_diagnosis;
-            $this->section_id =$tik->patientsfinaldata->section_id;
-            $this->treatment_diet =$tik->patientsfinaldata->treatment_diet;
-        }else{
-            $this->teckit_id ='';
-            $this->name = '';
-            $this->age = '';
-            $this->date_entry ='';
-            $this->residence_type = '';
-            $this->final_diagnosis ='';
-            $this->section_id ='';
-            $this->treatment_diet ='';
-        }
+        // try{
+            $tik = Ticket::where('ticket_num',$this->searchTicket)->first();
+            if($tik)
+            {
+                $this->teckit_id = $tik->id;
+                $this->name = $tik->name;
+                $this->age = $tik->age;
+                $this->date_entry =$tik->date_entry;
+                $this->residence_type = $tik->patientsfinaldata->residence_type == 2 ? "إقامه طويله" : "إقامه قصيره";
+                $this->final_diagnosis =$tik->patientsfinaldata->final_diagnosis;
+                $this->section_id =$tik->patientsfinaldata->sections->name;
+                $this->treatment_diet =$tik->patientsfinaldata->treatment_diet;
+            }else{
+                $this->teckit_id ='';
+                $this->name = '';
+                $this->age = '';
+                $this->date_entry ='';
+                $this->residence_type = '';
+                $this->final_diagnosis ='';
+                $this->section_id ='';
+                $this->treatment_diet ='';
+            }
+        // }
+        // catch(Throwable $e){
+        //     return false;
+        // }
+
     }
     //firstStepSubmit
     public function firstStepSubmit()

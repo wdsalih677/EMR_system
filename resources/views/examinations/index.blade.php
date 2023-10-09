@@ -63,21 +63,22 @@
                             <h4><span class="badge badge-danger">سالبه</span></h4>
                         @endif
                     <td>
-                        <button type="button"
-                            class="btn btn-info btn-sm"
-                            data-toggle="modal"
-                            data-target="#edit{{ $examination->id }}"
-                            title="تعديل"><i class="fa fa-edit"></i>
-                        </button>
-                        <button type="button"
-                            class="btn btn-danger btn-sm"
-                            data-toggle="modal"
-                            data-target="#delete{{ $examination->id }}"
-                            title="حذف"><i
-                            class="fa fa-trash"></i>
-                        </button>
+                        <div class="dropdown">
+                            <button aria-expanded="false" aria-haspopup="true"
+                                class="btn ripple btn-info btn-sm" data-toggle="dropdown"
+                                type="button">العمليات<i class="fa fa-caret-down ml-1"></i></button>
+                            <div class="dropdown-menu tx-13">
+                                <button class="dropdown-item" data-reg_id="" data-toggle="modal" data-target="#edit{{ $examination->id }}" ><i
+                                    class="text-warning fa fa-edit"></i>
+                                    تعديل
+                                </button>
+                                <button  class="dropdown-item" data-toggle="modal" data-target="#delete{{ $examination->id }}" ><i
+                                    class="text-danger fa fa-trash"></i>
+                                    حذف
+                                </button>
+                            </div>
+                        </div>
                     </td>
-
                     </tr>
                     <!-- start_edit_modal_examination-->
                     <div class="modal fade bd-example-modal-lg" id="edit{{ $examination->id }}" tabindex="-1" role="dialog"
