@@ -37,7 +37,7 @@ class PatientFinalDataController extends Controller
             // $diagnoses = [];
 
             // if (count($data) > 0) {
-
+            
             //     foreach ($data as $i) {
             //         $diagnoses[] = array(
             //             "id" => $i->id,

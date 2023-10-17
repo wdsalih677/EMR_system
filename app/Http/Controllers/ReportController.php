@@ -2,7 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\PatientFinalData;
+use App\Models\Section;
+use App\Models\Ticket;
+use Countable;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Testing\Constraints\CountInDatabase;
+use SebastianBergmann\LinesOfCode\Counter;
 
 class ReportController extends Controller
 {
@@ -14,9 +21,33 @@ class ReportController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-       return view('reports.index');
+        // if($request->from == '' && $request->to == ''){
+        //     $finalDiseas = PatientFinalData::sdistinct()->get(['final_diagnosis']);
+        //     return view('reports.index',compact('finalDiseas'));
+        // }else{
+
+        // }
+
+        $sections = Section::pluck('id');
+        $patents = PatientFinalData::whereIn('section_id', $sections)->distinct()->pluck('final_diagnosis');
+        $tickets = Ticket::where('age', '<', 1)->get();
+        $tickets14 = Ticket::whereBetween('age', [1,4])->get();
+        $tickets514 = Ticket::whereBetween('age', [5,14])->get();
+        $tickets1544 = Ticket::whereBetween('age', [15,44])->get();
+        $tickets4564 = Ticket::whereBetween('age', [45,64])->get();
+        $tickets65 = Ticket::where('age', '>', 65)->get();
+        $data = [
+            '1' => $tickets,
+            '1-4' => $tickets14,
+            '5-14' => $tickets514,
+            '15-44' => $tickets1544,
+            '45-64' => $tickets4564,
+            '65' => $tickets65,
+        ];
+
+        return view('reports.index', compact('patents', 'data'));
     }
 
     /**
@@ -37,7 +68,7 @@ class ReportController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
     }
 
     /**

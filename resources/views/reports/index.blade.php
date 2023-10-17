@@ -32,14 +32,14 @@
                     </ul>
                 </div>
             @endif
+            {{-- @if(isset($finalDiseas)) --}}
         <div class="table-responsive">
-            <form action="">
                 <div class="card-body datepicker-form">
                     <center><h4 class="card-title">الخدمات التشخيصية و التدخلات الطبيه و الإمداد - أورنيك 3</h4></center>
                     <h5> - المجموع الكلي لعدد المرضى الذكور = 7558</h5>
                     <h5> - المجموع الكلي لعدد المرضى الإناث = 7558</h5>
                     <br>
-                <form action="">
+                <form action="{{ route('report.index') }}">
                     <h5 class="card-title">حدد التاريخ :</h5>
                     <div class="input-group" data-date="23/11/2018" data-date-format="mm/dd/yyyy">
                         <span class="input-group-addon">من</span>
@@ -48,89 +48,80 @@
                         <input class="form-control range-to" type="text" name="to">
                     </div>
                     <br><br>
-                    <button type="button" class="button medium">
+                    <button type="submit" class="button medium">
                         بحث <i class="fa fa-search"></i>
                     </button>
                 </form>
                 </div>
-            </form>
             <br>
-            <table id="datatable" class="table-bordered border table table-striped dataTable p-0">
+            <div class="row">
+                @foreach ($patents as $pa)
+
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5>{{ $pa }}</h5>
+                            </div>
+                            <div class="card-body">
+                                @foreach ($data as $index=>$age)
+                                        الأعمار بين :  {{ $index == 65 ? '+'.$index : $index }}
+                                        عدد المرضى : {{ $age->count() }}
+                                        <br>
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
+
+                @endforeach
+            </div>
+
+            {{-- <table id="datatable" class="table-bordered border table table-striped dataTable p-0">
                 <thead>
                     <tr>
                         <th>#</th>
                         <th>الأمراض</th>
-                        <th>Diseases</th>
-                        <th colspan="2"><center>أقل من سنه</center></th>
-                        <th colspan="2"><center>04-01</center></th>
-                        <th colspan="2"><center>14-05</center></th>
-                        <th colspan="2"><center>44-15</center></th>
-                        <th colspan="2"><center>64-45</center></th>
-                        <th colspan="2"><center>65+</center></th>
-                        <th colspan="2"><center>الجمله</center></th>
-                        <th><center>الإصابات</center></th>
+                        <th>أقل من سنه</th>
+                        <th>04-01</th>
+                        <th>14-05</th>
+                        <th>44-15</th>
+                        <th>64-45</th>
+                        <th  >65+</th>
+                        <th>الجمله</th>
+                        <th>الإصابات</th>
                     </tr>
                 </thead>
                 <tbody>
+
                     <tr>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th>ذكر</th>
-                        <th>أنثى</th>
-                        <th>ذكر</th>
-                        <th>أنثى</th>
-                        <th>ذكر</th>
-                        <th>أنثى</th>
-                        <th>ذكر</th>
-                        <th>أنثى</th>
-                        <th>ذكر</th>
-                        <th>أنثى</th>
-                        <th>ذكر</th>
-                        <th>أنثى</th>
-                        <th>ذكر</th>
-                        <th>أنثى</th>
-                        <th></th>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
                     </tr>
-                    {{-- @foreach ($ as $) --}}
-                    <tr>
-                        <td>1</td>
-                        <td>ملاريا</td>
-                        <td>mlarya</td>
-                        <td>67</td>
-                        <td>98</td>
-                        <td>34</td>
-                        <td>90</td>
-                        <td>76</td>
-                        <td>45</td>
-                        <td>54</td>
-                        <td>56</td>
-                        <td>87</td>
-                        <td>98</td>
-                        <td>56</td>
-                        <td>45</td>
-                        <td>374</td>
-                        <td>432</td>
-                        <td>806</td>
-                    </tr>
-                {{-- @endforeach --}}
+
                 </tbody>
                 <tfoot>
                     <tr>
                         <th>#</th>
                         <th>الأمراض</th>
-                        <th>Diseases</th>
-                        <th colspan="2"><center>أقل من سنه</center></th>
-                        <th colspan="2"><center>04-01</center></th>
-                        <th colspan="2"><center>14-05</center></th>
-                        <th colspan="2"><center>44-15</center></th>
-                        <th colspan="2"><center>64-45</center></th>
-                        <th colspan="2"><center>65+</center></th>
-                        <th colspan="2"><center>الجمله</center></th>
-                        <th><center>الإصابات</center></th>
+                        <th>أقل من سنه</th>
+                        <th>04-01</th>
+                        <th>14-05</th>
+                        <th>44-15</th>
+                        <th>64-45</th>
+                        <th>65+</th>
+                        <th>الجمله</th>
+                        <th>الإصابات</th>
                     </tr>
                 </tfoot>
-            </table>
+            </table> --}}
+        {{-- @endif --}}
             <br><br><br>
             <center><h4 class="card-title">ملخص العيادة الخارجيه و حركة المرضى</h4></center>
             <center><h5>1:- العدد الكلي للمرضى المترددين على المؤسسة = 8912</h5></center>
