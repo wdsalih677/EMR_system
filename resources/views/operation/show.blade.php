@@ -44,39 +44,39 @@
                         </div>
                         <div class="mb-3">
                             <label class="form-label" for="exampleInputEmail1">إسم العمليه | Operation name :</label>
-                            <input  type="text" name="operationName" value="{{ $operation->operationName }}" class="form-control">
+                            <input  type="text"  name="operationName" value="{{ $operation->operationName }}" class="form-control" disabled>
                         </div>
                         <div class="mb-3">
                             <label class="form-label" for="exampleInputEmail1">المساعد | Assistant :</label>
-                            <input  type="text" name="Assistant" value="{{ $operation->Ansesthesia }}" class="form-control">
+                            <input  type="text"  name="Assistant" value="{{ $operation->Assistant }}" class="form-control" disabled>
                         </div>
                         <div class="mb-3">
                             <label class="form-label" for="exampleInputEmail1">نوع التخدير | Ansesthesia :</label>
-                            <input  type="فثءف" name="Ansesthesia" value="{{ $operation->Ansesthesia }}" class="form-control">
+                            <input  type="text"  name="Ansesthesia" value="{{ $operation->Ansesthesia }}" class="form-control" disabled>
                         </div>
                     </div>
                     <div class="col-md-6 mb-30">
                         <div class="mb-3">
                             <label class="form-label" for="exampleInputEmail1">العمر :</label>
-                            <input type="text" class="form-control" name="age"  value="{{ $operation->tickets->age }}"  disabled>
+                            <input type="text"  class="form-control" name="age"  value="{{ $operation->tickets->age }}"  disabled>
                         </div>
                         <div class="mb-3">
                             <label class="form-label" for="exampleInputEmail1">الجراح | Surgion :</label>
-                            <input  type="text" name="Surgion" value="{{ $operation->Surgion }}" class="form-control">
+                            <input  type="text"  name="Surgion" value="{{ $operation->Surgion }}" class="form-control" disabled>
                         </div>
                         <div class="mb-3">
                             <label class="form-label" for="exampleInputEmail1">المخدر | Anaesthetest :</label>
-                            <input  type="text" name="Anaesthetest" value="{{ $operation->Anaesthetest }}" class="form-control">
+                            <input  type="text"  name="Anaesthetest" value="{{ $operation->Anaesthetest }}" class="form-control" disabled>
                         </div>
                         <div class="mb-3">
                             <label class="form-label" for="exampleInputEmail1">التاريخ و الزمن</label>
-                            <input  type="datetime-local" name="dateTime" value="{{ $operation->dateTime }}" class="form-control">
+                            <input  type="datetime-local"  name="dateTime" value="{{ $operation->dateTime }}" class="form-control" disabled>
                         </div>
                     </div>
                 </div>
                 <div class="mb-3">
                     <label class="form-label" for="exampleFormControlTextarea1">إجراءات العمليه | Operation Procedures :</label>
-                    <textarea class="form-control" name="OperationProcedures" rows="3" >{{ $operation->OperationProcedures}}</textarea>
+                    <textarea class="form-control" name="OperationProcedures" rows="3" disabled>{{ $operation->OperationProcedures}}</textarea>
                 </div>
                 <br>
                 <center>

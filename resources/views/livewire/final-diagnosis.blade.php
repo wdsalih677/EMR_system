@@ -23,7 +23,6 @@
         <div class="mb-3">
             <label class="form-label" for="exampleFormControlTextarea1">نتائج الفحوصات | Investigations Results</label>
             <textarea class="form-control" id="exampleFormControlTextarea1"  rows="3" style="height: 222px;"   wire-model="test_results" placeholder="يجب إدخال رقم التذكره لعرض نتائج الفحوصات" disabled required>{{ $test_results }}</textarea>
-
         </div>
     </div>
 </div>

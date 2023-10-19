@@ -55,38 +55,26 @@
                 </div>
             </form>
             <br>
-            <table id="datatable" class="table-bordered border table table-striped dataTable p-0">
-                <thead>
-                  <tr>
-                    <th>#</th>
-                    <th>اسم العمليه</th>
-                    <th>عدد الذكور</th>
-                    <th>عدد الإناث</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {{-- @foreach ($ as $) --}}
-                      <tr>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      </tr>
-                  {{-- @endforeach --}}
-                </tbody>
-                <tfoot>
-                <tr>
-                    <th>#</th>
-                    <th>اسم العمليه</th>
-                    <th>عدد الذكور</th>
-                    <th>عدد الإناث</th>
-                </tr>
-                </tfoot>
-              </table>
+            <div class="row">
+                @foreach ($operationName as $op)
+
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5>{{ $op }}</h5>
+                            </div>
+                            <div class="card-body">
+                                @foreach ($operations as $index)
+                                        عدد العمليات : {{$index->id->count()}}
+                                        <br>
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
+
+                @endforeach
+            </div>
             <br><br><br>
-            <center><h4 class="card-title">ملخص العمليات الجراحيه و التدخلات الطبيه</h4></center>
-            <center><h5>1:- العدد الكلي للمرضى المتوفين = 8912</h5></center>
-            <center><h5>2:- أكثر (10) عمليات تكرارا = ولاده</h5></center>
             <br><br>
             <center>
                 <button type="button" class="button medium">

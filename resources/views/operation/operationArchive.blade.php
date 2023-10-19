@@ -75,10 +75,6 @@
                                         class="text-danger fa fa-trash"></i>
                                         حذف
                                     </button>
-                                    <button class="dropdown-item" data-reg_id="" data-toggle="modal" data-target="#archive{{ $operation->id }}" >
-                                        <i class="text-warning fa fa-archive"></i>
-                                        إرشيف
-                                    </button>
                                     <a class="dropdown-item" href="{{ route('operation.show',$operation->id) }}" >
                                         <i class="text-info fa fa-print"></i>
                                         طباعه

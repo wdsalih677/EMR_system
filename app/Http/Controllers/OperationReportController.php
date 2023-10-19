@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Operation;
+use App\Models\Ticket;
 use Illuminate\Http\Request;
 
 class OperationReportController extends Controller
@@ -17,7 +19,10 @@ class OperationReportController extends Controller
      */
     public function index()
     {
-        return view('reports.operations.index');
+        // $tick = Ticket::pluck('id');
+        // $operationName = Operation::whereIn('ticket_id', $tick)->distinct()->pluck('operationName');
+        // $operations = Operation::get();
+        // return view('reports.operations.index',compact('operationName','operations'));
     }
 
     /**

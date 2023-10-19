@@ -60,23 +60,25 @@
                     <td></td>
                     <td></td>
                     <td>
-                        <a
-                            href="{{ route('medical_record.edit','id') }}"
-                            class="btn btn-info btn-sm"
-                            title="تعديل"><i class="fa fa-edit"></i>
-                        </a>
-                        <a
-                            href="{{ route('medical_record.show','id') }}"
-                            class="btn btn-success btn-sm"
-                            title="عرض التفاصيل"><i class="fa fa-eye"></i>
-                        </a>
-                        <button type="button"
-                            class="btn btn-danger btn-sm"
-                            data-toggle="modal"
-                            data-target="#delete"
-                            title="حذف"><i
-                            class="fa fa-trash"></i>
-                        </button>
+                        <div class="dropdown">
+                            <button aria-expanded="false" aria-haspopup="true"
+                                class="btn ripple btn-info btn-sm" data-toggle="dropdown"
+                                type="button">العمليات<i class="fa fa-caret-down ml-1"></i></button>
+                            <div class="dropdown-menu tx-13">
+                                <a  class="dropdown-item" href="{{ route('medical_record.edit','id') }}" ><i
+                                    class="text-success fa fa-edit"></i>
+                                    تعديل بيانات العمليه
+                                </a>
+                                <a class="dropdown-item" href="{{ route('medical_record.show','id') }}" >
+                                    <i class="text-info fa fa-print"></i>
+                                    طباعه
+                                </a>
+                                <button class="dropdown-item" data-reg_id="" data-toggle="modal" data-target="#delete}" ><i
+                                    class="text-danger fa fa-trash"></i>
+                                    حذف
+                                </button>
+                            </div>
+                        </div>
                     </td>
 
                     </tr>

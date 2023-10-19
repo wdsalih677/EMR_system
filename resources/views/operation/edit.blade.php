@@ -51,11 +51,11 @@
                         </div>
                         <div class="mb-3">
                             <label class="form-label" for="exampleInputEmail1">المساعد | Assistant :</label>
-                            <input  type="text" name="Assistant" value="{{ $operation->Ansesthesia }}" class="form-control">
+                            <input  type="text" name="Assistant" value="{{ $operation->Assistant }}" class="form-control">
                         </div>
                         <div class="mb-3">
                             <label class="form-label" for="exampleInputEmail1">نوع التخدير | Ansesthesia :</label>
-                            <input  type="فثءف" name="Ansesthesia" value="{{ $operation->Ansesthesia }}" class="form-control">
+                            <input  type="text" name="Ansesthesia" value="{{ $operation->Ansesthesia }}" class="form-control">
                         </div>
                     </div>
                     <div class="col-md-6 mb-30">

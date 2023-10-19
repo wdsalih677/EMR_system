@@ -23,13 +23,7 @@ class ReportController extends Controller
      */
     public function index(Request $request)
     {
-        // if($request->from == '' && $request->to == ''){
-        //     $finalDiseas = PatientFinalData::sdistinct()->get(['final_diagnosis']);
-        //     return view('reports.index',compact('finalDiseas'));
-        // }else{
-
-        // }
-
+        
         $sections = Section::pluck('id');
         $patents = PatientFinalData::whereIn('section_id', $sections)->distinct()->pluck('final_diagnosis');
         $tickets = Ticket::where('age', '<', 1)->get();

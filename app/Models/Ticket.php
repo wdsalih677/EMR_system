@@ -24,4 +24,7 @@ class Ticket extends Model
     public function patientsFollowUps(){
         return $this->belongsTo(PatientFollowUp::class,'id', 'ticket_id');
     }
+    public function oprations(){
+        return $this->belongsTo(Operation::class,'id', 'ticket_id');
+    }
 }

@@ -130,7 +130,7 @@ class OperationController extends Controller
     public function update(Request $request, $id)
     {
         $role = [
-            'ticket_num'=> 'required',
+           
             'operationName'=> 'required',
             'Assistant'=> 'required',
             'Ansesthesia'=> 'required',
@@ -140,7 +140,7 @@ class OperationController extends Controller
             'OperationProcedures'=> 'required',
         ];
         $messages = [
-            'ticket_num.required' => ' يجب إدخال رقم التذكره',
+            
             'operationName.required' => ' يجب إدخال إسم العمليه',
             'Assistant.required' => ' يجب إدخال اسم المساعد',
             'Ansesthesia.required' => ' يجب تحديد نوع التخدير',

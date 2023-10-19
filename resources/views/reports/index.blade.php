@@ -36,10 +36,8 @@
         <div class="table-responsive">
                 <div class="card-body datepicker-form">
                     <center><h4 class="card-title">الخدمات التشخيصية و التدخلات الطبيه و الإمداد - أورنيك 3</h4></center>
-                    <h5> - المجموع الكلي لعدد المرضى الذكور = 7558</h5>
-                    <h5> - المجموع الكلي لعدد المرضى الإناث = 7558</h5>
                     <br>
-                <form action="{{ route('report.index') }}">
+                {{-- <form action="{{ route('report.index') }}">
                     <h5 class="card-title">حدد التاريخ :</h5>
                     <div class="input-group" data-date="23/11/2018" data-date-format="mm/dd/yyyy">
                         <span class="input-group-addon">من</span>
@@ -51,7 +49,7 @@
                     <button type="submit" class="button medium">
                         بحث <i class="fa fa-search"></i>
                     </button>
-                </form>
+                </form> --}}
                 </div>
             <br>
             <div class="row">
@@ -74,61 +72,9 @@
 
                 @endforeach
             </div>
-
-            {{-- <table id="datatable" class="table-bordered border table table-striped dataTable p-0">
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>الأمراض</th>
-                        <th>أقل من سنه</th>
-                        <th>04-01</th>
-                        <th>14-05</th>
-                        <th>44-15</th>
-                        <th>64-45</th>
-                        <th  >65+</th>
-                        <th>الجمله</th>
-                        <th>الإصابات</th>
-                    </tr>
-                </thead>
-                <tbody>
-
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-
-                </tbody>
-                <tfoot>
-                    <tr>
-                        <th>#</th>
-                        <th>الأمراض</th>
-                        <th>أقل من سنه</th>
-                        <th>04-01</th>
-                        <th>14-05</th>
-                        <th>44-15</th>
-                        <th>64-45</th>
-                        <th>65+</th>
-                        <th>الجمله</th>
-                        <th>الإصابات</th>
-                    </tr>
-                </tfoot>
-            </table> --}}
-        {{-- @endif --}}
             <br><br><br>
-            <center><h4 class="card-title">ملخص العيادة الخارجيه و حركة المرضى</h4></center>
-            <center><h5>1:- العدد الكلي للمرضى المترددين على المؤسسة = 8912</h5></center>
-            <center><h5>2:- عدد الأطفال أقل من (5) سنوات المترددين على العيادة = 887</h5></center>
-            <br><br>
             <center>
-                <button type="button" class="button medium">
+                <button type="button" class="button medium" title="طباعة" onclick="printpage()">
                     طباعه <i class="fa fa-print"></i>
                 </button>
             </center>
@@ -142,4 +88,9 @@
 @section('js')
 @toastr_js
 @toastr_render
+<script>
+    function printpage() {
+            window.print();
+        }
+</script>
 @endsection

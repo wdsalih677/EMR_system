@@ -71,18 +71,18 @@
                                 class="btn ripple btn-info btn-sm" data-toggle="dropdown"
                                 type="button">العمليات<i class="fa fa-caret-down ml-1"></i></button>
                             <div class="dropdown-menu tx-13">
-                                    <button class="dropdown-item" data-reg_id="" data-toggle="modal" data-target="#delete{{$operation->id}}" ><i
-                                        class="text-danger fa fa-trash"></i>
-                                        حذف
-                                    </button>
-                                    <button class="dropdown-item" data-reg_id="" data-toggle="modal" data-target="#archive{{ $operation->id }}" >
-                                        <i class="text-warning fa fa-archive"></i>
-                                        إرشيف
-                                    </button>
-                                    <a class="dropdown-item" href="{{ route('operation.show',$operation->id) }}" >
-                                        <i class="text-info fa fa-print"></i>
-                                        طباعه
-                                    </a>
+                                <a  class="dropdown-item" href="{{ route('operation.edit',$operation->id) }}" ><i
+                                    class="text-success fa fa-edit"></i>
+                                    تعديل بيانات العمليه
+                                </a>
+                                <a class="dropdown-item" href="{{ route('operation.show',$operation->id) }}" >
+                                    <i class="text-info fa fa-print"></i>
+                                    طباعه
+                                </a>
+                                <button class="dropdown-item" data-reg_id="" data-toggle="modal" data-target="#delete{{$operation->id}}" ><i
+                                    class="text-danger fa fa-trash"></i>
+                                    حذف
+                                </button>
                             </div>
                         </div>
                     </td>

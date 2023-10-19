@@ -146,7 +146,7 @@
                             <li> <a href="{{ route('operation.index') }}">قائمة العمليات</a> </li>
                             @endcan
                             {{-- @can('إرشيف العمليات') --}}
-                            <li> <a href="{{ route('OperationAttachment.index') }}">إرشيف العمليات</a> </li>
+                            {{-- <li> <a href="{{ route('OperationAttachment.index') }}">إرشيف العمليات</a> </li> --}}
                             {{-- @endcan --}}
                             @can('قائمة التنويم')
                             <li> <a href="{{ route('intensive_care.index') }}">قائمة التنويم</a> </li>
@@ -214,15 +214,15 @@
                                     @endcan
                                     @can('الجراحه و التدخلات الطبيه')
 
-                                    <li> <a href="{{ route('operation_report.index') }}">الجراحه و التدخلات الطبيه</a> </li>
+                                    {{-- <li> <a href="{{ route('operation_report.index') }}">الجراحه و التدخلات الطبيه</a> </li> --}}
                                     @endcan
                                     @can('الأمراض الساريه و الغير ساريه')
 
-                                    <li> <a href="{{ route('diseases_report.index') }}">الأمراض الساريه و الغير ساريه</a> </li>
+                                    {{-- <li> <a href="{{ route('diseases_report.index') }}">الأمراض الساريه و الغير ساريه</a> </li> --}}
                                     @endcan
                                     @can('المواليد و الوفيات')
 
-                                    <li> <a href="{{ route('birthDeathReport.index') }}">المواليد و الوفيات</a> </li>
+                                    {{-- <li> <a href="{{ route('birthDeathReport.index') }}">المواليد و الوفيات</a> </li> --}}
                                     @endcan
                                 </ul>
                             </li>

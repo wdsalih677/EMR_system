@@ -1,6 +1,7 @@
 @extends('layouts.master')
 @section('css')
     @toastr_css
+    @livewireStyles
 @section('title')
 بيانات المريض
 @stop
@@ -37,32 +38,21 @@
                 <h5 class="card-title">بيانات المريض</h5>
             </center>
             <form>
-                <div class="mb-3">
-                    <label class="form-label" for="exampleInputEmail1">رقم الذكره :</label>
-                    <input id="name" type="number" name="Class_name" class="form-control" style="width: 49%;">
-                </div>
+                @livewire('medical-record')
                 <div class="row">
                     <div class="col-md-6 mb-30">
                         <div class="mb-3">
-                            <label class="form-label" for="exampleInputEmail1">اسم :</label>
-                            <label class="form-control" value="" style="height: 49px;">
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label" for="exampleFormControlTextarea1">الأعراض | Symptoms :</label>
-                            <label class="form-control" style="height: 194px;"></label>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label" for="exampleFormControlTextarea1">العلاج و التغذيه | Treatment & Diet</label>
-                            <label class="form-control" style="height: 194px;"></label>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label" for="exampleInputEmail1">التشخيص المبدئي | Provisional Diagnosis :</label>
-                            <label class="form-control" value="" style="height: 49px;">
+                            <label class="form-label" for="exampleInputEmail1">* تاريخ الخروج :</label>
+                            <div class="input-group" data-date="23/11/2018" data-date-format="mm/dd/yyyy">
+                                <input type="text" class="form-control range-to" name="date_exit"  data-date-format="mm/dd/yyyy" required placeholder="يجب تحديد تاريخ الخروج">
+                            </div>
                         </div>
                         <div class="mb-3">
                             <label class="form-label" for="exampleInputEmail1">تاريخ المقابله :</label>
-                            <label class="form-control" value="" style="height: 49px;">
+                            <input type="date" class="form-control" value="" style="height: 49px;">
                         </div>
+                    </div>
+                    <div class="col-md-6 mb-30">
                         <div class="mb-3">
                             <label class="form-label" for="exampleFormControlSelect1">* حالة المريض عند الخروج :</label>
                             <select class="form-control" id="exampleFormControlSelect1" style="height: 50px;">
@@ -72,206 +62,9 @@
                                 <option>وفاة</option>
                                 <option>تحويل</option>
                             </select>
-                          </div>
-                    </div>
-                    <div class="col-md-6 mb-30">
-                        <div class="mb-3">
-                            <label class="form-label" for="exampleInputEmail1">العمر :</label>
-                            <label class="form-control" value="" style="height: 49px;">
-                          </div>
-                        <div class="mb-3">
-                            <label class="form-label" for="exampleFormControlTextarea1">الفحوصات | Examinations :</label>
-                            <label class="form-control" style="height: 194px;"></label>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label" for="exampleFormControlTextarea1">نتائج الفحوصات | Investigations Results</label>
-                            <label class="form-control" id="exampleFormControlTextarea1" rows="3" style="height: 194px;"></label>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label" for="exampleInputEmail1">التشخيص النهائي | Final Diagnosis :</label>
-                            <label class="form-control" style="height: 49px;"></label>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label" for="exampleInputEmail1">* تاريخ الخروج :</label>
-                            <input id="name" type="date" name="Class_name" class="form-control">
                         </div>
                     </div>
                 </div>
-                <h4 class="card-title"></h4>
-                <br><br><br>
-                <center>
-                    <h5 class="card-title">بيانات العمليه</h5>
-                </center>
-                <div class="row">
-                    <div class="col-md-6 mb-30">
-                        <div class="mb-3">
-                            <label class="form-label" for="exampleInputEmail1">اسم :</label>
-                            <label class="form-control" value="" style="height: 49px;">
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label" for="exampleInputEmail1">إسم العمليه | Operation name :</label>
-                            <label class="form-control" value="" style="height: 49px;">
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label" for="exampleInputEmail1">المساعد | Assistant :</label>
-                            <label class="form-control" value="" style="height: 49px;">
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label" for="exampleInputEmail1">نوع التخدير | Ansesthesia :</label>
-                            <label class="form-control" value="" style="height: 49px;">
-                        </div>
-                    </div>
-                    <div class="col-md-6 mb-30">
-                        <div class="mb-3">
-                            <label class="form-label" for="exampleInputEmail1">العمر :</label>
-                            <label class="form-control" value="" style="height: 49px;">
-                          </div>
-                          <div class="mb-3">
-                            <label class="form-label" for="exampleInputEmail1">الجراح | Surgion :</label>
-                            <label class="form-control" value="" style="height: 49px;">
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label" for="exampleInputEmail1">المخدر | Anaesthetest :</label>
-                            <label class="form-control" value="" style="height: 49px;">
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label" for="exampleInputEmail1">التاريخ و الزمن</label>
-                            <label class="form-control" value="" style="height: 49px;">
-                        </div>
-                    </div>
-                </div>
-                <div class="mb-3">
-                    <label class="form-label" for="exampleFormControlTextarea1">إجراءات العمليه | Operation Procedures :</label>
-                    <label class="form-control" id="exampleFormControlTextarea1" rows="3" style="height: 200px;"></label>
-                </div>
-                <h4 class="card-title"></h4>
-                <br><br>
-                <center>
-                    <h5 class="card-title">بيانات التنوبم</h5>
-                </center>
-                <div class="row">
-                    <div class="col-md-6 mb-30">
-                            <label for="Name" class="mr-sm-2"> التشخيص :
-                            </label>
-                            <label class="form-control" value="" style="height: 49px;">
-                    </div>
-                    <div class="col-md-6 mb-30">
-                        <label for="Name_en"class="mr-sm-2">حالة المريض :</label>
-                        <label class="form-control" value="" style="height: 49px;">
-                    </div>
-                </div>
-                <h4 class="card-title"></h4>
-                <br><br>
-                <center>
-                    <h5 class="card-title">بيانات المتابعه</h5>
-                </center>
-                <div class="row">
-                    <div class="col-md-6 mb-30">
-                        <div class="mb-3">
-                            <label class="form-label" for="exampleInputEmail1">اسم :</label>
-                            <label class="form-control" value="" style="height: 49px;">
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label" for="exampleInputEmail1">نوع الإقامه :</label>
-                            <label class="form-control" value="" style="height: 49px;">
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label" for="exampleInputEmail1">العنبر</label>
-                            <label class="form-control" value="" style="height: 49px;">
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label" for="exampleInputEmail1">التاريخ و الزمن</label>
-                            <label class="form-control" value="" style="height: 49px;">
-                        </div>
-                        <br>
-                        <div class="mb-3">
-                            <h5 class="card-title">المقاييس الحيويه</h5>
-                            <div class="row">
-                                <div class="col-md-6 mb-30">
-                                    <div class="mb-3">
-                                        <label class="form-label" for="exampleInputEmail1">النبض | Pulse :</label>
-                                        <input id="number" type="number" name="Class_name" class="form-control">
-                                        <br>
-                                        <label class="form-label" for="exampleInputEmail1">الزمن :</label>
-                                        <input id="number" type="time" name="Class_name" class="form-control">
-                                    </div>
-                                </div>
-                                <div class="col-md-6 mb-30">
-                                    <div class="mb-3">
-                                        <label class="form-label" for="exampleInputEmail1">معدل التنفس | RR :</label>
-                                        <input id="name" type="number" name="Class_name" class="form-control">
-                                        <br>
-                                        <label class="form-label" for="exampleInputEmail1">الزمن :</label>
-                                        <input id="number" type="time" name="Class_name" class="form-control">
-                                    </div>
-                                </div>
-                                <div class="col-md-6 mb-30">
-                                    <div class="mb-3">
-                                        <label class="form-label" for="exampleInputEmail1">الضغط | BP :</label>
-                                        <input id="name" type="number" name="Class_name" class="form-control">
-                                        <br>
-                                        <label class="form-label" for="exampleInputEmail1">الزمن :</label>
-                                        <input id="number" type="time" name="Class_name" class="form-control">
-                                    </div>
-                                </div>
-                                <div class="col-md-6 mb-30">
-                                    <div class="mb-3">
-                                        <label class="form-label" for="exampleInputEmail1">درجة الحراره | Temp :</label>
-                                        <input id="name" type="number" name="Class_name" class="form-control">
-                                        <br>
-                                        <label class="form-label" for="exampleInputEmail1">الزمن :</label>
-                                        <input id="number" type="time" name="Class_name" class="form-control">
-                                    </div>
-                                </div>
-                                <div class="col-md-6 mb-30">
-                                    <div class="mb-3">
-                                        <label class="form-label" for="exampleInputEmail1">البطن | ABD :</label>
-                                        <input id="name" type="number" name="Class_name" class="form-control">
-                                        <br>
-                                        <label class="form-label" for="exampleInputEmail1">الزمن :</label>
-                                        <input id="number" type="time" name="Class_name" class="form-control">
-                                    </div>
-                                </div>
-                                <div class="col-md-6 mb-30">
-                                    <div class="mb-3">
-                                        <label class="form-label" for="exampleInputEmail1">النزيف المهبلي | V.Bleeding :</label>
-                                        <input id="name" type="number" name="Class_name" class="form-control">
-                                        <br>
-                                        <label class="form-label" for="exampleInputEmail1">الزمن :</label>
-                                        <input id="number" type="time" name="Class_name" class="form-control">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label" for="exampleInputEmail1">كمية البول الخارجه | U.O.P :</label>
-                                <input id="name" type="number" name="Class_name" class="form-control">
-                                <br>
-                                <label class="form-label" for="exampleInputEmail1">الزمن :</label>
-                                <input id="number" type="time" name="Class_name" class="form-control">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 mb-30">
-                        <div class="mb-3">
-                            <label class="form-label" for="exampleInputEmail1">العمر :</label>
-                            <label class="form-control" value="" style="height: 49px;">
-                          </div>
-                          <div class="mb-3">
-                            <label class="form-label" for="exampleInputEmail1">القسم :</label>
-                            <label class="form-control" value="" style="height: 49px;">
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label" for="exampleFormControlTextarea1">العلاج و التغذيه | Treatment & Diet :</label>
-                            <label class="form-control" value="" style="height: 240px;">
-                        </div>
-                        <h5 class="card-title">تفاصيل العلاج</h5>
-                        <div class="mb-3">
-                            <label class="form-label" for="exampleFormControlTextarea1">نوع و كمية العلاج :</label>
-                            <label class="form-control" value="" style="height: 240px;">
-                        </div>
-                    </div>
-                </div>
-                <h4 class="card-title"></h4>
                 <br><br>
                 <center>
                     <button type="submit" class="btn btn-success">إضافة</button>
@@ -286,4 +79,36 @@
 @section('js')
 @toastr_js
 @toastr_render
+@livewireScripts
+<script>
+    $(document).ready(function ()
+           {
+               $('input[name="date_exit"]').on('change', function ()
+                   {
+                       var today = new Date();
+                       var dd = String(today.getDate()).padStart(2, '0');
+                       var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+                       var yyyy = today.getFullYear();
+                       today = mm + '/' + dd + '/' + yyyy;
+                       var from = $('input[name="date_exit"]').val();
+                       if(Date.parse(from) < Date.parse(today) || Date.parse(from) > Date.parse(today))
+                       {
+                           alert("لا يمكن لتاريخ البداية ان يكون اقل او اكبر من تاريخ اليوم");
+                           $('input[name="date_exit"]').css({"color":"#555","border":"1px solid red","box-shadow": "red 2px 2px 16px"});
+                           $('button[type="submit"]').attr("disabled", true);
+                           $('button[type="submit"]').css({"cursor": "no-drop"});
+                           $('input[name="end_at"]').val('');
+                       }
+                       else
+                       {
+                           $('input[name="date_exit"]').css({"color":"#555","border":"1px solid green","box-shadow": "green 2px 2px 16px"});
+                           $('button[type="submit"]').attr("disabled", false);
+                           $('button[type="submit"]').css({"cursor": "pointer"});
+                           $('button[type="submit"]').css({"display": "inline"});
+                       }
+                   }
+               );
+           }
+       );
+   </script>
 @endsection
