@@ -199,8 +199,7 @@
                                         <label for="Name" class="mr-sm-2">اسم القسم
                                             :</label>
                                         <input id="name" type="text" name="name" class="form-control" required autocomplete="off"
-                                        <label for="Name" class="mr-sm-2">عدد العنابر
-                                            :</label>
+                                        <label for="Name" class="mr-sm-2">عدد العنابر:</label>
                                         <input id="name" type="number" name="ward_num" class="form-control" required>
                                     </div>
                                     <div class="col">

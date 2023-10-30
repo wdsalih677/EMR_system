@@ -116,6 +116,8 @@ class PatientFollowUpController extends Controller
      */
     public function destroy($id)
     {
-        //
+        PatientFollowUp::destroy($id);
+        toastr()->success("تم حذف المريض بنجاح");
+        return redirect()->route('patient_follow_up.index');
     }
 }
