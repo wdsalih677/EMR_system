@@ -83,11 +83,11 @@
                             </a>
                         @endcan
                         <ul id="chart" class="collapse" data-parent="#sidebarnav">
-                            @can('قائمة المستخدمين')
-                            <li> <a href="{{ route('users.index') }}">قائمة المستخدمين</a> </li>
-                            @endcan
                             @can('صلاحيات المستخدمين')
                             <li> <a href="{{ route('roles.index') }}">صلاحيات المستخدمين</a> </li>
+                            @endcan
+                            @can('قائمة المستخدمين')
+                            <li> <a href="{{ route('users.index') }}">قائمة المستخدمين</a> </li>
                             @endcan
                         </ul>
 
