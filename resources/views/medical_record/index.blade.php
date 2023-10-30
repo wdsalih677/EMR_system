@@ -51,29 +51,29 @@
                 </tr>
               </thead>
               <tbody>
-                {{-- @foreach ($ as $) --}}
+                @foreach ($medicalRecords as $medicalRecord)
                     <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td>{{$medicalRecord->id}}</td>
+                    <td>{{$medicalRecord->tickets->ticket_num}}</td>
+                    <td>{{$medicalRecord->tickets->identity_num}}</td>
+                    <td>{{$medicalRecord->tickets->name}}</td>
+                    <td>{{$medicalRecord->tickets->address}}</td>
+                    <td>{{$medicalRecord->tickets->phone_num}}</td>
                     <td>
                         <div class="dropdown">
                             <button aria-expanded="false" aria-haspopup="true"
                                 class="btn ripple btn-info btn-sm" data-toggle="dropdown"
                                 type="button">العمليات<i class="fa fa-caret-down ml-1"></i></button>
                             <div class="dropdown-menu tx-13">
-                                <a  class="dropdown-item" href="{{ route('medical_record.edit','id') }}" ><i
+                                <a  class="dropdown-item" href="{{ route('medical_record.edit',$medicalRecord->id) }}" ><i
                                     class="text-success fa fa-edit"></i>
-                                    تعديل بيانات العمليه
+                                    تعديل 
                                 </a>
-                                <a class="dropdown-item" href="{{ route('medical_record.show','id') }}" >
+                                {{-- <a class="dropdown-item" href="{{ route('medical_record.show','id') }}" >
                                     <i class="text-info fa fa-print"></i>
                                     طباعه
-                                </a>
-                                <button class="dropdown-item" data-reg_id="" data-toggle="modal" data-target="#delete}" ><i
+                                </a> --}}
+                                <button class="dropdown-item" data-reg_id="" data-toggle="modal" data-target="#delete{{$medicalRecord->id}}" ><i
                                     class="text-danger fa fa-trash"></i>
                                     حذف
                                 </button>
@@ -82,7 +82,40 @@
                     </td>
 
                     </tr>
-                {{-- @endforeach --}}
+                    <!-- delete_modal_record -->
+        <div class="modal fade" id="delete{{$medicalRecord->id}}" tabindex="-1" role="dialog"
+            aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 style="font-family: 'Cairo', sans-serif;" class="modal-title"
+                            id="exampleModalLabel">
+                            حذف السجل
+                        </h5>
+                        <button type="button" class="close" data-dismiss="modal"
+                            aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="{{route('medical_record.destroy',$medicalRecord->id)}}" method="post">
+                            {{ method_field('Delete') }}
+                            @csrf
+                            هل تريد الحذف؟
+                            <input id="id" type="hidden" name="id" class="form-control" value="{{$medicalRecord->id}}">
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary"
+                                    data-dismiss="modal">إغلاق</button>
+                                <button type="submit"
+                                    class="btn btn-danger">حذف</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end_delete_modal_record -->
+                @endforeach
               </tbody>
               <tfoot>
               <tr>
@@ -100,42 +133,7 @@
         </div>
       </div>
     </div>
-        <!-- delete_modal_doctor -->
-        <div class="modal fade" id="delete" tabindex="-1" role="dialog"
-            aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 style="font-family: 'Cairo', sans-serif;" class="modal-title"
-                            id="exampleModalLabel">
-                            حذف العمليه
-                        </h5>
-                        <button type="button" class="close" data-dismiss="modal"
-                            aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <form action="" method="post">
-                            {{ method_field('Delete') }}
-                            @csrf
-                            هل تريد الحذف؟
-                            <label id="Name" type="text" name="Name" class="form-control"></label>
-
-                            <input id="id" type="hidden" name="id" class="form-control"
-                                value="">
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary"
-                                    data-dismiss="modal">إغلاق</button>
-                                <button type="submit"
-                                    class="btn btn-danger">حذف</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- end_delete_modal_doctor -->
+        
   </div>
 {{-- end content --}}
 @endsection

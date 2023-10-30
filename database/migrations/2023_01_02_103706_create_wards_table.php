@@ -18,7 +18,7 @@ class CreateWardsTable extends Migration
             $table->string('name', 255);
 			$table->string('ward_type');
 			$table->bigInteger('section_id')->unsigned();
-            $table->foreign('section_id')->references('id')->on('sections')->onUpdate('cascade');
+            $table->foreign('section_id')->references('id')->on('sections')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }

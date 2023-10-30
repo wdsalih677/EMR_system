@@ -10,12 +10,12 @@
 {{-- start content --}}
 <div class="row">
     <div class="col-sm-6">
-        <h4 class="mb-0">تعديل صلاحيه</h4>
+        <h4 class="mb-0">تعديل مستخدم</h4>
     </div>
     <div class="col-sm-6">
         <ol class="breadcrumb pt-0 pr-0 float-left float-sm-right ">
             <li class="breadcrumb-item"><a href="#" class="default-color">ادارة المستخدمين</a></li>
-            <li class="breadcrumb-item active">تعديل صلاحيه جديده</li>
+            <li class="breadcrumb-item active">تعديل مستخدم </li>
         </ol>
     </div>
 </div>
@@ -34,7 +34,7 @@
                 </div>
             @endif
             <center>
-                <h5 class="card-title">تعديل صلاحيه</h5>
+                <h5 class="card-title">تعديل مستخدم</h5>
             </center>
 
             <!-- row -->

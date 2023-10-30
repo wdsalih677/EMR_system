@@ -8,13 +8,13 @@
         <div class="col-md-6 mb-30">
             <div class="mb-3">
                 <label class="form-label" for="exampleInputEmail1">اسم :</label>
-                <input type="text"class="form-control" wire-model="name" value="{{ $name }}" required placeholder="يجب إدخال رقم التذكره لعرض الإسم">
+                <input type="text"class="form-control" wire-model="name" value="{{ $name }}" required placeholder="يجب إدخال رقم التذكره لعرض الإسم" disabled>
             </div>
         </div>
         <div class="col-md-6 mb-30">
             <div class="mb-3">
                 <label class="form-label" for="exampleInputEmail1">العمر :</label>
-                <input type="text" class="form-control" wire-model="age" value="{{ $age }}" required placeholder="يجب إدخال رقم التذكره لعرض العمر">
+                <input type="text" class="form-control" wire-model="age" value="{{ $age }}" required placeholder="يجب إدخال رقم التذكره لعرض العمر" disabled>
             </div>
         </div>
     </div>

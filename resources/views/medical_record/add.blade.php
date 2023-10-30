@@ -37,7 +37,8 @@
             <center>
                 <h5 class="card-title">بيانات المريض</h5>
             </center>
-            <form>
+            <form action="{{route('medical_record.store')}}" method="POST">
+                @csrf
                 @livewire('medical-record')
                 <div class="row">
                     <div class="col-md-6 mb-30">
@@ -49,18 +50,18 @@
                         </div>
                         <div class="mb-3">
                             <label class="form-label" for="exampleInputEmail1">تاريخ المقابله :</label>
-                            <input type="date" class="form-control" value="" style="height: 49px;">
+                            <input type="date" class="form-control" name="date_interview"  data-date-format="mm/dd/yyyy" required >                      
                         </div>
                     </div>
                     <div class="col-md-6 mb-30">
                         <div class="mb-3">
                             <label class="form-label" for="exampleFormControlSelect1">* حالة المريض عند الخروج :</label>
-                            <select class="form-control" id="exampleFormControlSelect1" style="height: 50px;">
+                            <select class="form-control" id="exampleFormControlSelect1" name="status_exit">
                                 <option>...</option>
-                                <option>معاف</option>
-                                <option>هروب</option>
-                                <option>وفاة</option>
-                                <option>تحويل</option>
+                                <option value="معاف">معاف</option>
+                                <option value="هروب">هروب</option>
+                                <option value="وفاة">وفاة</option>
+                                <option value="تحويل">تحويل</option>
                             </select>
                         </div>
                     </div>

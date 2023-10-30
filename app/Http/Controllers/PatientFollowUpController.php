@@ -48,7 +48,6 @@ class PatientFollowUpController extends Controller
             'teckit_num'=>$request->teckit_num,
             'ticket_id'=>$request->teckit_id,
             'ward_id'=>$request->ward_id,
-            'residence_type'=>$request->residence_type,
             'final_diagnosis'=>$request->final_diagnosis,
             'notes'=>$request->notes
         ]);

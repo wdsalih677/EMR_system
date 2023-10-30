@@ -56,7 +56,7 @@
                     <td>{{ $section->doctors->name }}</td>
                     <td>{{ $section->ward_num }}</td>
                     <td>
-                        <center>
+                        
                             <button type="button"
                             class="btn btn-info btn-sm"
                             data-toggle="modal"
@@ -69,8 +69,7 @@
                             data-target="#delete{{ $section->id }}"
                             title="حذف"><i
                             class="fa fa-trash"></i>
-                        </button>
-                        </center>
+                        </button>    
                     </td>
 
                     </tr>
@@ -127,40 +126,42 @@
         </div>
     </div>
 <!-- end_edit_modal_doctor -->
-    <!-- delete_modal_doctor -->
-    <div class="modal fade" id="delete{{ $section->id }}" tabindex="-1" role="dialog"
-        aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 style="font-family: 'Cairo', sans-serif;" class="modal-title"
-                        id="exampleModalLabel">
-                        حذف القسم
-                    </h5>
-                    <button type="button" class="close" data-dismiss="modal"
-                        aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form action="{{ route('section.destroy',$section->id) }}" method="POST">
-                        {{ method_field('Delete') }}
-                        @csrf
-                        هل تريد الحذف؟
-                        <label id="Name" type="text" name="name" class="form-control">{{ $section->name }}</label>
-                        <input id="id" type="hidden" name="id" value="{{ $section->id }}" class="form-control">
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary"
-                                data-dismiss="modal">إغلاق</button>
-                            <button type="submit"
-                                class="btn btn-danger">حذف</button>
-                        </div>
-                    </form>
-                </div>
+
+<!-- delete_modal_doctor -->
+<div class="modal fade" id="delete{{ $section->id }}" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 style="font-family: 'Cairo', sans-serif;" class="modal-title"
+                    id="exampleModalLabel">
+                    حذف القسم
+                </h5>
+                <button type="button" class="close" data-dismiss="modal"
+                    aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
+            <div class="modal-body">
+                <form action="{{ route('section.destroy',$section->id) }}" method="POST">
+                    {{ method_field('Delete') }}
+                    @csrf
+                    هل تريد الحذف؟
+                    <label id="Name" type="text" name="Name" class="form-control">{{ $section->name }}</label>
+                    <input id="id" type="hidden" name="id"  value="{{ $section->id }}" class="form-control">
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary"
+                            data-dismiss="modal">إغلاق</button>
+                        <button type="submit"
+                            class="btn btn-danger">حذف</button>
+                    </div>
+                </form>
+            </div>
+
         </div>
     </div>
-    <!-- end_delete_modal_doctor -->
+</div>
+<!-- end_delete_modal_doctor -->
                 @endforeach
               </tbody>
               <tfoot>
@@ -197,7 +198,7 @@
                                     <div class="col">
                                         <label for="Name" class="mr-sm-2">اسم القسم
                                             :</label>
-                                        <input id="name" type="text" name="name" class="form-control" required>
+                                        <input id="name" type="text" name="name" class="form-control" required autocomplete="off"
                                         <label for="Name" class="mr-sm-2">عدد العنابر
                                             :</label>
                                         <input id="name" type="number" name="ward_num" class="form-control" required>

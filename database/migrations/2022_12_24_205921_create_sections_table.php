@@ -18,7 +18,7 @@ class CreateSectionsTable extends Migration
             $table->string('name', 255);
             $table->bigInteger('ward_num');
             $table->bigInteger('doctor_id')->unsigned();
-            // $table->foreign('doctor_id')->references('id')->on('doctors')->onUpdate('cascade');
+            // $table->foreign('doctor_id')->references('id')->on('doctors')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }

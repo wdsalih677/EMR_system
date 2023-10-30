@@ -10,12 +10,12 @@
 {{-- start content --}}
 <div class="row">
     <div class="col-sm-6">
-        <h4 class="mb-0">أضافة بيانات المريض</h4>
+        <h4 class="mb-0">عرض بيانات المريض</h4>
     </div>
     <div class="col-sm-6">
         <ol class="breadcrumb pt-0 pr-0 float-left float-sm-right ">
             <li class="breadcrumb-item"><a href="#" class="default-color">بيانات المريض</a></li>
-            <li class="breadcrumb-item active">بيانات المريض</li>
+            <li class="breadcrumb-item active">عرض بيانات المريض</li>
         </ol>
     </div>
 </div>

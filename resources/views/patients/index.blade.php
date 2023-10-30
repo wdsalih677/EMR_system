@@ -109,10 +109,10 @@
                                         حذف
                                     </button>
                                 @endif
-                                <button class="dropdown-item" data-reg_id="" data-toggle="modal" data-target="#addStudent" >
+                                {{-- <button class="dropdown-item" data-reg_id="" data-toggle="modal" data-target="#addStudent" >
                                     <i class="text-info fa fa-print"></i>
                                     طباعه
-                                </button>
+                                </button> --}}
                             </div>
                         </div>
                     </td>

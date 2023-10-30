@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePatientFollowUpTable extends Migration
+class CreateMedicalRecordTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,13 @@ class CreatePatientFollowUpTable extends Migration
      */
     public function up()
     {
-        Schema::create('patient_follow_ups', function (Blueprint $table) {
+        Schema::create('medical_records', function (Blueprint $table) {
             $table->id();
-            $table->string('teckit_num')->unique();
             $table->bigInteger('ticket_id')->unsigned();
             $table->foreign('ticket_id')->references('id')->on('tickets')->onUpdate('cascade')->onDelete('cascade');
-            $table->bigInteger('ward_id')->unsigned();
-            $table->foreign('ward_id')->references('id')->on('wards')->onUpdate('cascade')->onDelete('cascade');
-            $table->string('final_diagnosis', 255);
-			// $table->smallInteger('residence_type');
-            $table->text('notes');
+            $table->text('date_exit');
+            $table->date('date_interview');
+            $table->string('status_exit');
             $table->timestamps();
         });
     }
@@ -34,6 +31,6 @@ class CreatePatientFollowUpTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('patient_follow_up');
+        Schema::dropIfExists('medical_record');
     }
 }
