@@ -60,7 +60,7 @@ class MedicalRecordController extends Controller
             'status_exit'=>$request->status_exit,
         ]);
         toastr()->success("تم إضافة المريض بنجاح"); 
-        return view('medical_record.index');
+        return redirect()->route('medical_record.index');
     }
 
     /**

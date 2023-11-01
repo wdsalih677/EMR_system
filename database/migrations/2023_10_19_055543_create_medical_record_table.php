@@ -18,7 +18,7 @@ class CreateMedicalRecordTable extends Migration
             $table->bigInteger('ticket_id')->unsigned();
             $table->foreign('ticket_id')->references('id')->on('tickets')->onUpdate('cascade')->onDelete('cascade');
             $table->text('date_exit');
-            $table->date('date_interview');
+            $table->date('date_interview')->nullable();
             $table->string('status_exit');
             $table->timestamps();
         });
