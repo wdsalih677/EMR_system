@@ -69,10 +69,10 @@
                                         <i class="text-danger fa fa-trash"></i>
                                         حذف
                                     </button>
-                                    <button type="button" class="dropdown-item" data-toggle="modal" data-target="#archive{{ $birth->id }}"  title="أرشفه">
+                                    {{-- <button type="button" class="dropdown-item" data-toggle="modal" data-target="#archive{{ $birth->id }}"  title="أرشفه">
                                         <i class="text-info fa fa-archive"></i>
                                         أرشفه
-                                    </button>
+                                    </button> --}}
                                     <a class="dropdown-item" href="{{ route('birth.show',$birth->id) }}" >
                                         <i class="text-success fa fa-print"></i>
                                         طباعه

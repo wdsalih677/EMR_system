@@ -6,6 +6,7 @@ use App\Models\Doctor;
 use App\Models\Section;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class SectionController extends Controller
 {
@@ -69,7 +70,7 @@ class SectionController extends Controller
             'ward_num'=>$request->ward_num,
             'doctor_id'=>$request->doctor_id
         ]);
-        toastr()->success("تم إضافة القسم بنجاح");
+        toastr()->success( 'تم إضافه القسم بنجاح');
         return redirect()->route('section.index');
     }
 
@@ -132,7 +133,7 @@ class SectionController extends Controller
             'ward_num'=>$request->ward_num,
             'doctor_id'=>$request->doctor_id
         ]);
-        toastr()->success("تم تعديل القسم بنجاح");
+        toastr()->success( 'تم تعديل القسم بنجاح');
         return redirect()->route('section.index');
     }
 

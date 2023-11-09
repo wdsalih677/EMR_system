@@ -13,12 +13,12 @@ class RoleSeeder extends Seeder
      */
     public function run()
     {
-        Role::create(['name' => 'Recepion']);//موظف الإستقبال
-        Role::create(['name' => 'Doctor']);//الطبيب
-        Role::create(['name' => 'Medical_laboratory']);//أخصائي المختبرات
-        Role::create(['name' => 'Nurse']);//الممرض
-        Role::create(['name' => 'Statisticians']);//الإحصاء
-        Role::create(['name' => 'surgeon']);//طبيب جراح
-        Role::create(['name' => 'Medical_Director']);//مدير طبي
+        Role::create(['name' => 'الإستقبال']);//موظف الإستقبال
+        Role::create(['name' => 'طبيب']);//الطبيب
+        Role::create(['name' => 'طبيب مختبر']);//أخصائي المختبرات
+        Role::create(['name' => 'ممرض']);//الممرض
+        Role::create(['name' => 'مدير الإحصاء']);//الإحصاء
+        Role::create(['name' => 'طبيب جراح']);//طبيب جراح
+        Role::create(['name' => 'مدير طبي']);//مدير طبي
     }
 }

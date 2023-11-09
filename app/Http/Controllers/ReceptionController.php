@@ -50,7 +50,7 @@ class ReceptionController extends Controller
             'age_type'=>'required',
             'job'=>'required',
             'date_entry'=>'required',
-            'phone_num'=>'required'
+            'phone_num'=>'required|unique:tickets'
         ];
         $messages =[
             'name.required'=>'يجب إدخال اسم المريض',
@@ -74,6 +74,7 @@ class ReceptionController extends Controller
             'job.required'=>'يجب إدخال المهنه',
             'date_entry.required'=>'يجب تحديد تاريخ الدخول',
             'phone_num.required'=>'يجب إدخال رقم الهاتف بدون صفر البدايه',
+            'phone_num.unique'=>'رقم الهاتف مكرر',
         ];
         //validate
         $validator = Validator::make($request->all(),$role,$messages);

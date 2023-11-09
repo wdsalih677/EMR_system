@@ -329,7 +329,7 @@
                                     <div class="form-row">
                                         <div class="col">
                                             <input type="hidden" name="intensive_id" value="{{ $intensive->id }}">
-                                            <label class="form-label" for="exampleInputEmail1">النبض | Pulse :</label>
+                                            <label class="form-label" for="exampleInputEmail1">*النبض | Pulse :</label>
                                             <input type="number" name="Pulse" class="form-control">
                                         </div>
                                         <div class="col">
@@ -339,7 +339,7 @@
                                     </div>
                                     <div class="form-row">
                                         <div class="col">
-                                            <label class="form-label" for="exampleInputEmail1">معدل التنفس | RR :</label>
+                                            <label class="form-label" for="exampleInputEmail1">*معدل التنفس | RR :</label>
                                             <input  type="number" name="RR" class="form-control">
                                         </div>
                                         <div class="col">
@@ -359,7 +359,7 @@
                                     </div>
                                     <div class="form-row">
                                         <div class="col">
-                                            <label class="form-label" >درجة الحراره | Temp :</label>
+                                            <label class="form-label" >*درجة الحراره | Temp :</label>
                                             <input  type="number"  name="Temp" class="form-control">
                                         </div>
                                         <div class="col">
@@ -399,7 +399,7 @@
                                     </div>
                                     <div class="form-row">
                                         <div class="col">
-                                            <label class="form-label" >السكر | suger :</label>
+                                            <label class="form-label" >*السكر | suger :</label>
                                             <input  type="number"  name="suger" class="form-control">
                                         </div>
                                         <div class="col">
@@ -409,7 +409,7 @@
                                     </div>
                                     <div class="form-row">
                                         <div class="col">
-                                            <label class="form-label" >الأوكسجين | So2</label>
+                                            <label class="form-label" >*الأوكسجين | So2</label>
                                             <input  type="number"  name="So2" class="form-control">
                                         </div>
                                         <div class="col">
@@ -419,7 +419,7 @@
                                     </div>
                                     <div class="form-row">
                                         <div class="col">
-                                            <label class="form-label" >معدل الألم | Pain score :</label>
+                                            <label class="form-label" >*معدل الألم | Pain score :</label>
                                             <select name="Pain_score" class="form-control"  required style="height: 50px;">
                                                 <option selected disabled>--اختر المعدل--</option>
                                                 <option value="1">1</option>

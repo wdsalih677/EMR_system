@@ -1,4 +1,5 @@
 <div class="container-fluid">
+
     <div class="row">
         <!-- Left Sidebar start-->
         <div class="side-menu-fixed">
@@ -243,7 +244,7 @@
                                     @endcan
                                 </ul>
                             </li>
-                            <li>
+                            {{-- <li>
                                 @can('إرشيف المواليد و الوفيات')
                                 <a href="javascript:void(0);" data-toggle="collapse" data-target="#archive"> أرشيف المواليد و الوفيات<div class="pull-right"><i class="ti-plus"></i></div>
                                     <div class="clearfix"></div>
@@ -259,7 +260,7 @@
                                     <li> <a href="{{ route('birthArchive.create') }}">أرشيف الوفيات</a> </li>
                                     @endcan
                                 </ul>
-                            </li>
+                            </li> --}}
                         </ul>
                     </li>
                 </ul>

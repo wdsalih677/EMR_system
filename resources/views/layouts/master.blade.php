@@ -9,34 +9,37 @@
     <meta name="author" content="potenzaglobalsolutions.com" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     @include('layouts.head')
+    
+
 </head>
 
 <body>
+    @include('sweetalert::alert')
 
     <div class="wrapper">
 
         <!--=================================
- preloader -->
-
+            preloader -->
+            
         <div id="pre-loader">
             <img src="assets/images/pre-loader/loader-01.svg" alt="">
         </div>
-
+        
         <!--=================================
  preloader -->
-
-        @include('layouts.main-header')
-
-        @include('layouts.main-sidebar')
+ 
+ @include('layouts.main-header')
+ 
+ @include('layouts.main-sidebar')
 
         <!--=================================
- Main content -->
-        <!-- main-content -->
-        <div class="content-wrapper">
-
-            @yield('page-header')
-
-            @yield('content')
+            Main content -->
+            <!-- main-content -->
+            <div class="content-wrapper">
+                
+                @yield('page-header')
+                
+                @yield('content')
 
             <!--=================================
  wrapper -->

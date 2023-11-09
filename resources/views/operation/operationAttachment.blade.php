@@ -48,10 +48,10 @@
                         </div>
                     @endif
                   <div class="table-responsive">
-                    <button class="button x-small" data-reg_id="" data-toggle="modal" data-target="#AddAttachmenet" >
+                    {{-- <button class="button x-small" data-reg_id="" data-toggle="modal" data-target="#AddAttachmenet" >
                         <i class="text-with fa fa-plus"></i>
                         إضافة مرفق
-                    </button>
+                    </button> --}}
                     <br><br>
                     <table id="datatable" class="table-bordered border table table-striped dataTable p-0 text-center">
                       <thead>

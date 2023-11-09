@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Doctor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use RealRashid\SweetAlert\Facades\Alert;
+
 
 class DoctorController extends Controller
 {
@@ -83,7 +85,7 @@ class DoctorController extends Controller
             'degree'    =>$request->degree,
             'title_job' =>$request->title_job,
         ]);
-        toastr()->success("تمت إضافة الطبيب بنجاح");
+        toastr()->success( 'تم إضافة الطبيب بنجاح');
         return redirect()->route('doctor.index');
     }
 
@@ -124,7 +126,7 @@ class DoctorController extends Controller
             'phone_num'   => 'required|numeric|digits_between:9,9',
             'email' => 'required|max:255',
             'degree' => 'required|min:5',
-            'title_job' => 'required|min:5',
+            'title_job' => 'required|min:4',
         ];
         $messages =[
             'name.required'=>'يجب إدخال اسم الطبيب',
@@ -166,7 +168,7 @@ class DoctorController extends Controller
             'title_job' =>$request->title_job,
         ]);
 
-        toastr()->success("تم تعديل الطبيب بنجاح");
+        toastr()->success( 'تم تعديل الطبيب بنجاح');
         return redirect()->route('doctor.index');
     }
 
@@ -180,7 +182,7 @@ class DoctorController extends Controller
     {
         $doctors = Doctor::findOrFail($request->id);
         $doctors->delete();
-        toastr()->success("تم حذف الطبيب بنجاح");
+        Alert::success('delete doctor','add doctor successfully');
         return redirect()->route('doctor.index');
     }
 }

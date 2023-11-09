@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('css')
-    @toastr_css
+    {{-- @toastr_css --}}
 @section('title')
 قائمة الأطباء
 @stop
@@ -242,6 +242,6 @@
 {{-- end content --}}
 @endsection
 @section('js')
-@toastr_js
-@toastr_render
+{{-- @toastr_js
+@toastr_render --}}
 @endsection

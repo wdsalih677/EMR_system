@@ -58,10 +58,10 @@
                                 class="btn ripple btn-info btn-sm" data-toggle="dropdown"
                                 type="button">العمليات<i class="fa fa-caret-down ml-1"></i></button>
                             <div class="dropdown-menu tx-13">
-                                    <a  class="dropdown-item"  href="{{ route('birth.edit',$birth->id) }}"><i
+                                    {{-- <a  class="dropdown-item"  href="{{ route('birth.edit',$birth->id) }}"><i
                                         class="text-warning fa fa-edit"></i>
                                         تعديل
-                                    </a>
+                                    </a> --}}
                                     <button type="button" class="dropdown-item" data-toggle="modal" data-target="#delete{{ $birth->id }}"  title="حذف">
                                         <i class="text-danger fa fa-trash"></i>
                                         حذف
@@ -98,7 +98,7 @@
                                         <label id="Name" type="text" name="Name" class="form-control">{{ $birth->newBornName }}</label>
 
                                         <input id="id" type="hidden" name="id" class="form-control" value="{{ $birth->id }}">
-                                        <input type="text" name="id_page" id="id_page" value="1">
+                                        <input type="hidden" name="id_page" id="id_page" value="1">
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary"
                                                 data-dismiss="modal">إغلاق</button>
