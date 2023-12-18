@@ -59,9 +59,7 @@ Route::group(['middleware' => ['auth']], function() {
 
     Route::resource('users', UserController::class)  ;
 
-});
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');//الصفحه الرئيسيه
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');//الصفحه الرئيسيه
 
 Route::resource('doctor', DoctorController::class);//الأطباء
 
@@ -113,3 +111,5 @@ Route::get('downloadFile/{invoice_number}/{file_name}',[OperationAttachmentContr
 
 Route::resource('biometrics', BiometricsController::class);//العلامات الحيويه
 Route::resource('BioFollow', BioFollowUpController::class);//العلامات الحيويه للمتابعه
+
+});
